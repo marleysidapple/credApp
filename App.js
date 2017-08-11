@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Font } from 'expo';
 import Index from './src/Index';
+import Router from './src/routes/Router';
 
 export default class App extends React.Component {
 
@@ -26,7 +27,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
           {
             this.state.fontLoaded ? (
-              <Index />
+              <Router />
             ) : null
           }
       </View>
