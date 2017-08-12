@@ -15,7 +15,7 @@ class Index extends Component {
 					<Image source={require('./../assets/images/logo.png')} style={styles.logo}  resizeMode={'contain'} />
 					<Text style={styles.main}>Relationship Lending Platform</Text>
 
-					<TouchableOpacity style={styles.startButton}>
+					<TouchableOpacity style={styles.startButton} onPress={() => this.props.navigation.navigate('Login')}>
 						<Button
 						  buttonStyle={{backgroundColor: '#86C15D', borderRadius: 2}}
 						  textStyle={{textAlign: 'center'}}
