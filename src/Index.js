@@ -9,14 +9,18 @@ class Index extends Component {
 	}
 
 
+
+
 	render(){
+		console.log(this.props.navigation);
 		return(
 			<View style={styles.indexWrapper}>
 					<Image source={require('./../assets/images/logo.png')} style={styles.logo}  resizeMode={'contain'} />
 					<Text style={styles.main}>Relationship Lending Platform</Text>
 
-					<TouchableOpacity style={styles.startButton} onPress={() => this.props.navigation.navigate('Login')}>
+					<TouchableOpacity style={styles.startButton} >
 						<Button
+						  onPress={() => this.props.navigation.navigate('Login')}
 						  buttonStyle={{backgroundColor: '#86C15D', borderRadius: 2}}
 						  textStyle={{textAlign: 'center'}}
 						  title={`Get Started`}

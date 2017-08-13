@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Font } from 'expo';
 import Index from './src/Index';
 import Router from './src/routes/Router';
 
-export default class App extends React.Component {
+class App extends Component {
 
   constructor(props){
     super(props);
@@ -41,3 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default App;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { addNavigationHelpers, StackNavigator, TabNavigator }  from 'react-navigation';
 import { Text, View, Button } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Index from './../Index';
