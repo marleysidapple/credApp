@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 
-
 class Index extends Component {
 	constructor(props){
 		super(props);
 	}
 
 
-
-
 	render(){
-		console.log(this.props.navigation);
 		return(
 			<View style={styles.indexWrapper}>
 					<Image source={require('./../assets/images/logo.png')} style={styles.logo}  resizeMode={'contain'} />

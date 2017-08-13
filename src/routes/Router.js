@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Index from './../Index';
 import Login from './../components/Login';
+import Register from './../components/Register';
 
  const Router = StackNavigator({
   Landing: {
@@ -20,9 +21,19 @@ import Login from './../components/Login';
   		headerLeft: null,
   	}
   },
+
+   Register: {
+    screen: Register,
+    navigationOptions: {
+      title: 'Register',
+      //headerLeft: null,
+    }
+  },
 },
 {
   initialRouteName: 'Landing',
 });
+
+
 
 export default Router;

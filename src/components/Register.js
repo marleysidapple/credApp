@@ -4,7 +4,7 @@ import Input from './../elements/Input';
 import { Button } from 'react-native-elements';
 import './../../assets/css/globalcss';
 
-class Login extends Component {
+class Register extends Component {
 	constructor(props){
 		super(props);
 	}
@@ -23,6 +23,11 @@ class Login extends Component {
                        secureTextEntry={true}
                 />
 
+                <Input iconName={'key'}
+                       placeholder={'Confirm Password'}
+                       secureTextEntry={true}
+                />
+
                 <Button
 						  onPress={() => this.props.navigation.navigate('Login')}
 						  buttonStyle={styles.loginButton}
@@ -30,12 +35,11 @@ class Login extends Component {
 						  title={`Login`}
 						/>
 
-				 <View style={styles.linkToRegister}>
-                            <Text style={styles.registerInfo}>{'Dont have an account? '}</Text>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
-                              <Text style={styles.registerInfo}>{'Click here to register'}</Text>
+				 		<View style={styles.linkToRegister}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                              <Text style={styles.registerInfo}>{'Back to Login'}</Text>
                             </TouchableOpacity>
-                          </View>
+                       </View>
 			</View>
 		);
 	}
@@ -72,4 +76,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default Login;
+export default Register;
