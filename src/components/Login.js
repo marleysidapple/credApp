@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Input from './../elements/Input';
+import { handleLoginForm } from './../actions/Authentication';
 import { Button } from 'react-native-elements';
-import './../../assets/css/globalcss';
+import { connect } from 'react-redux';
 
 class Login extends Component {
 	constructor(props){
@@ -20,11 +21,15 @@ class Login extends Component {
 
 				<Input iconName={'envelope-o'}
                        placeholder={'Enter your email'}
+                       value={this.props.email}
+                       onInputChange={(value) => this.props.handleLoginForm({prop:'email', value: value})} 
                 />
 
                 <Input iconName={'key'}
                        placeholder={'Enter your password'}
                        secureTextEntry={true}
+                       value={this.props.password}
+                       onInputChange={(value) => this.props.handleLoginForm({prop: 'password', value: value})}
                 />
 
                 <Button
@@ -72,8 +77,20 @@ const styles = StyleSheet.create({
 	loginButton: {
 		backgroundColor: '#3EA7D9', 
 		borderRadius: 2,
-		marginTop: 10,
+		marginTop: 15,
 	}
 })
 
-export default Login;
+function mapStateToProps(state, props){
+  console.log(state);
+  return {
+      email: state.auth_login.email,
+      password: state.auth_login.password,
+      success: state.auth_login.success,
+      token: state.auth_login.token,
+      loading: state.auth_login.loading,
+      err: state.auth_login.err
+  };
+}
+
+export default connect(mapStateToProps, { handleLoginForm})(Login);
