@@ -7,7 +7,7 @@ import Index from './../Index';
 import Login from './../components/Login';
 import Register from './../components/Register';
 
- const Router = StackNavigator({
+ export const Router = StackNavigator({
   Landing: {
   	screen: Index,
   	navigationOptions: {
@@ -35,6 +35,23 @@ import Register from './../components/Register';
 });
 
 
+const AppWithNavigationState = ({dispatch, nav}) => (
+    <Router
+      navigation={addNavigationHelpers({
+        dispatch,
+        state: nav
+      })}
+      />
+);
 
 
-export default Router;
+
+const mapStateToProps = (state) => {
+  return{
+    nav: state.nav
+  }
+}
+
+export default connect(mapStateToProps)(AppWithNavigationState);
+
+//export default Router;

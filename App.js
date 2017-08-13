@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Font } from 'expo';
 import Index from './src/Index';
-import Router from './src/routes/Router';
+import AppWithNavigationState from './src/routes/Router';
+//adding redux 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import promise from 'redux-promise';
+import reducers from './src/reducers';
+
+const store = applyMiddleware(thunk, promise)(createStore);
 
 class App extends Component {
 
@@ -12,7 +20,6 @@ class App extends Component {
       fontLoaded: false
     }
   }
-
 
   async componentDidMount() {
        await Font.loadAsync({
@@ -27,7 +34,9 @@ class App extends Component {
       <View style={styles.container}>
           {
             this.state.fontLoaded ? (
-              <Router />
+              <Provider store={store(reducers)}>
+                  <AppWithNavigationState />
+              </Provider>
             ) : null
           }
       </View>
