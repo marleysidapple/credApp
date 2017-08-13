@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, StyleSheet } from 'react';
 import { addNavigationHelpers, StackNavigator, TabNavigator }  from 'react-navigation';
 import { Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
@@ -12,6 +12,7 @@ import Register from './../components/Register';
   	screen: Index,
   	navigationOptions: {
   		header: null,
+
   	}
   },
   Login: {
@@ -26,13 +27,13 @@ import Register from './../components/Register';
     screen: Register,
     navigationOptions: {
       title: 'Register',
-      //headerLeft: null,
     }
   },
 },
 {
   initialRouteName: 'Landing',
 });
+
 
 
 

@@ -9,6 +9,10 @@ class Login extends Component {
 		super(props);
 	}
 
+	static navigationOptions = {
+		  headerRight: <Text>Register</Text>
+	}
+
 	render(){
 		return(
 			<View style={styles.loginWrapper}>
