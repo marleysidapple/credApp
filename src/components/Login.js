@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Button} from 'react-native';
 import Input from './../elements/Input';
 import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
-import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { Button } from 'react-native-elements';
 
 class Login extends Component {
-	constructor(props){
-		super(props);
-	}
+		constructor(props){
+			super(props);
+		}
 
-	static navigationOptions = {
-		  headerRight: <Text>Register</Text>
-	}
+		static navigationOptions = ({ navigation, styles }) => {
+		  return {
+		    title: <Text style={{fontFamily: 'open-sans'}}>Login</Text>,
+		    headerRight: (
+		    	<TouchableOpacity onPress={() => thi.props.navigation.navigate('Register')}>
+			      <Text style={{fontWeight: 'bold', fontFamily: 'open-sans', paddingRight: 5}}>Register</Text>
+			    </TouchableOpacity>
+		    ),
+		  };
+		};
 
 	onLoginPress(){
-		console.log('pressed');
 		const user = {
 			user_name: this.props.email,
 			pwd: this.props.password
@@ -60,7 +66,7 @@ class Login extends Component {
 }
 
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
 	loginWrapper: {
 		flex: 1,
 		justifyContent: 'center',
@@ -87,6 +93,10 @@ const styles = StyleSheet.create({
 		backgroundColor: '#3EA7D9', 
 		borderRadius: 2,
 		marginTop: 15,
+	},
+	registrationHeader:{
+		fontFamily: 'open-sans',
+		paddingRight: 10
 	}
 })
 
