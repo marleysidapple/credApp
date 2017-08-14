@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Input from './../elements/Input';
-import { handleLoginForm } from './../actions/Authentication';
+import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
@@ -12,6 +12,15 @@ class Login extends Component {
 
 	static navigationOptions = {
 		  headerRight: <Text>Register</Text>
+	}
+
+	onLoginPress(){
+		console.log('pressed');
+		const user = {
+			user_name: this.props.email,
+			pwd: this.props.password
+		}
+		this.props.validateLoginCredential(user);
 	}
 
 	render(){
@@ -33,7 +42,7 @@ class Login extends Component {
                 />
 
                 <Button
-						  onPress={() => this.props.navigation.navigate('Login')}
+						  onPress={this.onLoginPress.bind(this)}
 						  buttonStyle={styles.loginButton}
 						  textStyle={{textAlign: 'center'}}
 						  title={`Login`}
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps(state, props){
-  console.log(state);
+  console.log(state.auth_login);
   return {
       email: state.auth_login.email,
       password: state.auth_login.password,
@@ -93,4 +102,4 @@ function mapStateToProps(state, props){
   };
 }
 
-export default connect(mapStateToProps, { handleLoginForm})(Login);
+export default connect(mapStateToProps, { handleLoginForm, validateLoginCredential})(Login);
