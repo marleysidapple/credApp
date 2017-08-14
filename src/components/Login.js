@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, Button} from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Input from './../elements/Input';
 import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ class Login extends Component {
 		  return {
 		    title: <Text style={{fontFamily: 'open-sans'}}>Login</Text>,
 		    headerRight: (
-		    	<TouchableOpacity onPress={() => thi.props.navigation.navigate('Register')}>
+		    	<TouchableOpacity onPress={() => navigate('Register')}>
 			      <Text style={{fontWeight: 'bold', fontFamily: 'open-sans', paddingRight: 5}}>Register</Text>
 			    </TouchableOpacity>
 		    ),
