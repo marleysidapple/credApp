@@ -1,32 +1,51 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 import Input from './../elements/Input';
 import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 
 class Login extends Component {
-		constructor(props){
-			super(props);
-		}
+	constructor(props){
+		super(props);
+	}
 
-		static navigationOptions = ({ navigation, styles }) => {
-		  return {
+	static navigationOptions = ({ navigation, styles }) => {
+		return {
 		    title: <Text style={{fontFamily: 'open-sans'}}>Login</Text>,
 		    headerRight: (
-		    	<TouchableOpacity onPress={() => navigate('Register')}>
+		    	<TouchableOpacity onPress={() => navigation.navigate('Register')}>
 			      <Text style={{fontWeight: 'bold', fontFamily: 'open-sans', paddingRight: 5}}>Register</Text>
 			    </TouchableOpacity>
 		    ),
-		  };
 		};
+	};
 
 	onLoginPress(){
-		const user = {
-			user_name: this.props.email,
-			pwd: this.props.password
+		if(this.props.email == "" || this.props.password == ""){
+			Alert.alert(
+				"missing data",
+				"All fields are mandatory"
+			);
+		} else{
+			const user = {
+				user_name: this.props.email,
+				pwd: this.props.password
+			}
+			this.props.validateLoginCredential(user);
 		}
-		this.props.validateLoginCredential(user);
+	}
+
+	componentWillReceiveProps(nexProps){
+		if (nexProps.detail != null && nexProps.detail.status == 'error'){
+			Alert.alert(
+				'Authentication failed',
+				'Invalid email/password'
+			);
+		} else if(nexProps.detail != null && nexProps.detail.status == 'success'){
+			this.props.navigation.navigate('Dashboard');
+		}
+	
 	}
 
 	render(){
@@ -101,8 +120,8 @@ export const styles = StyleSheet.create({
 })
 
 function mapStateToProps(state, props){
-  console.log(state.auth_login);
   return {
+  	  detail: state.auth_login.detail,
       email: state.auth_login.email,
       password: state.auth_login.password,
       success: state.auth_login.success,

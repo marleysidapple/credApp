@@ -32,7 +32,7 @@ export function validateLoginCredential(user){
 				type: USER_LOGIN_SUCCESS,
 				payload: user
 			});
-		 dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
+		// dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
 		})
 		.catch(err => {
 			dispatch({
