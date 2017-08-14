@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, StyleSheet } from 'react';
 import { Button } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Loans from './../components/dashboard/Loans';
+import Profile from './../components/dashboard/Profile';
 
 const DashboardTabsCollection = TabNavigator({
   Loans: {
@@ -33,14 +34,22 @@ const DashboardTabsCollection = TabNavigator({
   },
 
   Profile: {
-    screen: Loans,
+    screen: Profile,
     navigationOptions: {
     	title: 'Profile',
     	tabBarIcon: ({ tintColor }) => <Icon name="settings" size={25} color={tintColor} />,
     	headerLeft: null
     }
   },
-});
+},
+{
+  tabBarOptions: {
+    labelStyle: {
+      fontFamily: 'open-sans'
+    }
+  }
+}
+);
 
 
 export default DashboardTabsCollection;

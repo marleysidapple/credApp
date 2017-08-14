@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, StyleSheet } from 'react';
 import { Text, View } from 'react-native';
 
 class Loans extends Component {
@@ -8,11 +8,11 @@ class Loans extends Component {
 
 	render(){
 		return(
-			<View>
-				<Text>Loans page</Text>
-			</View>
+			<Text>Loans Page</Text>
 		);
 	}
 }
+
+
 
 export default Loans;
