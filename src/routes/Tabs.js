@@ -1,5 +1,5 @@
 import React, { Component, StyleSheet } from 'react';
-import { Button } from 'react-native';
+import { Button, TouchableOpacity } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Loans from './../components/dashboard/Loans';

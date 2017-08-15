@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import Input from './../elements/Input';
 import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
 import { connect } from 'react-redux';
@@ -48,6 +48,14 @@ class Login extends Component {
 	
 	}
 
+	 showEitherButtonOrSpinner(){
+	    if (this.props.loading){
+	      return <ActivityIndicator size={'small'}/>;
+	    }
+	    return  <Button onPress={this.onLoginPress.bind(this)} buttonStyle={styles.loginButton} textStyle={{textAlign: 'center'}}  title={`Login`}/>
+	  }
+
+
 	render(){
 		return(
 			<View style={styles.loginWrapper}>
@@ -66,12 +74,7 @@ class Login extends Component {
                        onInputChange={(value) => this.props.handleLoginForm({prop: 'password', value: value})}
                 />
 
-                <Button
-						  onPress={this.onLoginPress.bind(this)}
-						  buttonStyle={styles.loginButton}
-						  textStyle={{textAlign: 'center'}}
-						  title={`Login`}
-						/>
+                {this.showEitherButtonOrSpinner()}
 
 				 <View style={styles.linkToRegister}>
                             <Text style={styles.registerInfo}>{'Dont have an account? '}</Text>
