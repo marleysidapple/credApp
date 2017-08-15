@@ -10,7 +10,7 @@ const DashboardTabsCollection = TabNavigator({
     screen: Loans,
     navigationOptions: {
     	headerLeft: null,
-    	title: 'Loans',
+    //	title: 'Loans',
     	tabBarIcon: ({ tintColor }) => <Icon name="textsms" size={25} color={tintColor} />,
     }
   },

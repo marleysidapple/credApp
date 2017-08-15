@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Input from './../elements/Input';
 import { Button } from 'react-native-elements';
-import './../../assets/css/globalcss';
 
 class Register extends Component {
 	constructor(props){
