@@ -29,7 +29,7 @@ const DashboardTabsCollection = TabNavigator({
     	title: 'Notification',
     	tabBarIcon: ({ tintColor }) => <Icon name="contacts" size={25} color={tintColor} />,
     	headerLeft: null,
-      headerRight: <Button title="Add"></Button>,
+     // headerRight: <Button title="Add"></Button>,
     }
   },
 

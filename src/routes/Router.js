@@ -21,6 +21,7 @@ import DashboardTabsCollection from './Tabs';
       Login: {
       	screen: Login,
       	navigationOptions: {
+          title: 'Login',
       		headerLeft: null,
       	}
       },
@@ -37,7 +38,7 @@ import DashboardTabsCollection from './Tabs';
       },
   },
 {
-  initialRouteName: 'Dashboard',
+  initialRouteName: 'Landing',
 });
 
 

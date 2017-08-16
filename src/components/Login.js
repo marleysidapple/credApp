@@ -10,16 +10,11 @@ class Login extends Component {
 		super(props);
 	}
 
-	static navigationOptions = ({ navigation, styles }) => {
-		return {
-		    title: <Text style={{fontFamily: 'open-sans'}}>Login</Text>,
-		    headerRight: (
-		    	<TouchableOpacity onPress={() => navigation.navigate('Register')}>
-			      <Text style={{fontWeight: 'bold', fontFamily: 'open-sans', paddingRight: 5}}>Register</Text>
-			    </TouchableOpacity>
-		    ),
-		};
-	};
+	// static navigationOptions = ({ navigation, styles }) => {
+	// 	return {
+	// 	    title: <Text style={{fontFamily: 'open-sans'}}>Login</Text>,
+	// 	};
+	// };
 
 	onLoginPress(){
 		if(this.props.email == "" || this.props.password == ""){

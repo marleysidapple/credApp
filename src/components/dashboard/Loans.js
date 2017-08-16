@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { FONT_NORMAL, LOAN_FONT_COLOR } from './../../../assets/css/common';
+import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
+import { connect } from 'react-redux';
+import { validateLoginCredential } from './../../actions/Authentication';
 
 class Loans extends Component {
 	constructor(props){
 		super(props);
 	}
+
 
 	static navigationOptions = ({ navigation, styles }) => {
 		return {
@@ -13,19 +16,37 @@ class Loans extends Component {
 		};
 	};
 
+	listOfLoans(){
+		
+	}
+
+	renderEitherLoadingSpinnerOrLoanList(){
+		
+	}
+
+
 	render(){
 		return(
-			<View>
-				<View style={styles.cardWrapper}>
-					<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
-					<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
-				</View>
+			<ScrollView>
+			{
+				this.props.loanList.map((loan) => {
 
-				<View style={styles.cardWrapper}>
-					<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
-					<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
-				</View>
-			</View>
+					return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
+							<View style={styles.leftDetailWrapper}>
+								<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
+								<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
+								<Text style={styles.loanTitle}>Date: {'2017-02-12'}</Text>
+								<Text style={styles.loanTitle}>Status: Open</Text>
+							</View>
+
+							<View style={styles.amountWrapper}>
+								<Text style={styles.loanTitle}>Amount: $2000</Text>
+								<Text style={styles.loanTitle}>Balance: $850.56</Text>
+							</View>
+						</TouchableOpacity>
+					})
+			}
+			</ScrollView>
 		);
 	}
 }
@@ -33,20 +54,44 @@ class Loans extends Component {
 
 const styles = StyleSheet.create({
 	cardWrapper: {
+	    flex: 1,
+	    flexDirection: 'row',
 		borderWidth: 1,
-		borderColor: '#dbdbdb',
+		borderLeftWidth: 8,
+		borderLeftColor: '#3EA7D9',
+		borderColor: '#d6d4d4',
 		height: 120,
 		padding: 20,
-		margin: 10,
-		borderRadius: 4
+		margin: 8,
+		borderRadius: 2
+	},
+
+	leftDetailWrapper: {
+		flex: 4,
+	},
+
+	amountWrapper: {
+		flex: 2,
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 
 	loanTitle: {
 		fontFamily: FONT_NORMAL,
-		color: LOAN_FONT_COLOR
+		color: LOAN_FONT_COLOR,
+		fontSize: FONT_SIZE
 	}
+
+
 });
 
+function mapStateToProps(state){
+	return{
+		loanList: state.user_loan.loans
+	}
+}
 
 
-export default Loans;
+
+export default connect(mapStateToProps, { validateLoginCredential })(Loans);

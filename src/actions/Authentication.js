@@ -4,12 +4,15 @@ import {
 	USER_LOGIN_SUCCESS,
 	USER_LOGIN_FAILED,
 	USER_DETAIL_SUCCESS,
-	USER_DETAIL_FAILED
+	USER_DETAIL_FAILED,
+	GET_ALL_LOANS
 } from './types';
 import { API_URL, xRay } from 'react-native-dotenv';
+import { AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import axios from 'axios';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
+import { initialParamForLoans } from './loanParams';
 
 
 
@@ -32,6 +35,14 @@ export function validateLoginCredential(user){
 				type: USER_LOGIN_SUCCESS,
 				payload: user
 			});
+
+			axios.defaults.headers.common['token'] = user.data.loginToken;
+				axios.post(API_URL + '/loans/get', initialParamForLoans).then(loans => {
+					dispatch({
+						type: GET_ALL_LOANS,
+						payload: loans
+					});
+				});
 		// dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
 		})
 		.catch(err => {

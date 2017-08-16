@@ -13,3 +13,6 @@ export const HANDLE_LOGIN_FORM = 'HANDLE_LOGIN_FORM';
 export const LOGIN_USER = 'LOGIN_USER';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED';
+
+//get loan details
+export const GET_ALL_LOANS = 'GET_ALL_LOANS';
