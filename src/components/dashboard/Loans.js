@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
@@ -38,8 +39,8 @@ class Loans extends Component {
 									<View style={styles.leftDetailWrapper}>
 										<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
 										<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
-										<Text style={styles.loanTitle}>Date: {'2017-02-12'}</Text>
-										<Text style={styles.loanTitle}>Status: Open</Text>
+										<Text style={styles.loanTitle}>Date: {loan.created}</Text>
+										<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
 									</View>
 
 									<View style={styles.amountWrapper}>
