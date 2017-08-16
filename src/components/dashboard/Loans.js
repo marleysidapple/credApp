@@ -28,18 +28,19 @@ class Loans extends Component {
 
 
 	render(){
+
 		return(
 			<View>
 				<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
 					<ScrollView>
 					{
 						this.props.loanList.map((loan) => {
-
+							
 							return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
 									<View style={styles.leftDetailWrapper}>
 										<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
 										<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
-										<Text style={styles.loanTitle}>Date: {loan.created}</Text>
+										<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
 										<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
 									</View>
 
