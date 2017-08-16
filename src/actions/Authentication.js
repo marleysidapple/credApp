@@ -24,7 +24,7 @@ export function handleLoginForm({prop, value}){
 }
 
 
-export function validateLoginCredential(user){
+export async function validateLoginCredential(user){
 	axios.defaults.headers.common['xRay'] = xRay;
 	return(dispatch) => {
 		//for sake of showing spinner;
@@ -34,7 +34,9 @@ export function validateLoginCredential(user){
 			dispatch({
 				type: USER_LOGIN_SUCCESS,
 				payload: user
-			});
+			});		
+
+			setTokenToStorage(user.data.loginToken);
 
 			axios.defaults.headers.common['token'] = user.data.loginToken;
 				axios.post(API_URL + '/loans/get', initialParamForLoans).then(loans => {
@@ -52,4 +54,19 @@ export function validateLoginCredential(user){
 			});
 		});
 	}
+}
+
+export async function setTokenToStorage(token){
+	try {
+	  await AsyncStorage.setItem('loginToken', token);
+	} catch (error) {
+	  // Error saving data
+	}
+}
+
+export async function getTokenFromStorage(keyToSearch)
+{
+	const keys = await AsyncStorage.getAllKeys()
+	const values = await AsyncStorage.get(keyToSearch)
+	return values;
 }

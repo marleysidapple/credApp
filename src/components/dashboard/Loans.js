@@ -3,6 +3,7 @@ import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
+import { SearchBar } from 'react-native-elements';
 
 class Loans extends Component {
 	constructor(props){
@@ -17,36 +18,39 @@ class Loans extends Component {
 	};
 
 	listOfLoans(){
-		
+
 	}
 
 	renderEitherLoadingSpinnerOrLoanList(){
-		
+
 	}
 
 
 	render(){
 		return(
-			<ScrollView>
-			{
-				this.props.loanList.map((loan) => {
+			<View>
+				<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
+					<ScrollView>
+					{
+						this.props.loanList.map((loan) => {
 
-					return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
-							<View style={styles.leftDetailWrapper}>
-								<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
-								<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
-								<Text style={styles.loanTitle}>Date: {'2017-02-12'}</Text>
-								<Text style={styles.loanTitle}>Status: Open</Text>
-							</View>
+							return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
+									<View style={styles.leftDetailWrapper}>
+										<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
+										<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
+										<Text style={styles.loanTitle}>Date: {'2017-02-12'}</Text>
+										<Text style={styles.loanTitle}>Status: Open</Text>
+									</View>
 
-							<View style={styles.amountWrapper}>
-								<Text style={styles.loanTitle}>Amount: $2000</Text>
-								<Text style={styles.loanTitle}>Balance: $850.56</Text>
-							</View>
-						</TouchableOpacity>
-					})
-			}
-			</ScrollView>
+									<View style={styles.amountWrapper}>
+										<Text style={styles.loanTitle}>Amount: $2000</Text>
+										<Text style={styles.loanTitle}>Balance: $850.56</Text>
+									</View>
+								</TouchableOpacity>
+							})
+					}
+					</ScrollView>
+			</View>
 		);
 	}
 }
@@ -72,15 +76,30 @@ const styles = StyleSheet.create({
 
 	amountWrapper: {
 		flex: 2,
-		flexDirection: 'column',
-		alignItems: 'center',
+		//flexDirection: 'column',
+		alignItems: 'flex-start',
 		justifyContent: 'center'
 	},
 
 	loanTitle: {
 		fontFamily: FONT_NORMAL,
 		color: LOAN_FONT_COLOR,
-		fontSize: FONT_SIZE
+		fontSize: FONT_SIZE,
+		paddingTop: 3
+	},
+
+	searchContainerStyle: {
+		backgroundColor: 'transparent',
+		borderTopWidth: 0,
+		borderBottomWidth: 0,
+	},
+
+	inputContainerStyle: {
+		backgroundColor: '#fff',
+		borderColor: '#d6d4d4',
+		borderWidth: 1,
+		fontSize: 12,
+		fontFamily: FONT_NORMAL,
 	}
 
 
