@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements';
 
 class Loans extends Component {
 	constructor(props){
@@ -15,6 +15,7 @@ class Loans extends Component {
 	static navigationOptions = ({ navigation, styles }) => {
 		return {
 		    title: <Text style={{fontFamily: 'open-sans'}}>Loans</Text>,
+		    headerRight: <TouchableOpacity onPress={() => console.log('as')}><Icon name='playlist-plus' type='material-community' color='' /></TouchableOpacity>
 		};
 	};
 
@@ -39,13 +40,12 @@ class Loans extends Component {
 							return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
 									<View style={styles.leftDetailWrapper}>
 										<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
-										<Text style={styles.loanTitle}>Type: {'Lend'}</Text>
 										<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
 										<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
 									</View>
 
 									<View style={styles.amountWrapper}>
-										<Text style={styles.loanTitle}>Amount: $2000</Text>
+										<Text style={styles.loanTitle}>Amount: {loan.amount}</Text>
 										<Text style={styles.loanTitle}>Balance: $850.56</Text>
 									</View>
 								</TouchableOpacity>

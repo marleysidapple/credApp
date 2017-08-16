@@ -48,7 +48,7 @@ class Login extends Component {
 	    if (this.props.loading){
 	      return <ActivityIndicator size={'small'}/>;
 	    }
-	    return  <Button onPress={this.onLoginPress.bind(this)} buttonStyle={styles.loginButton} textStyle={{textAlign: 'center'}}  title={`Login`}/>
+	    return  <Button onPress={this.onLoginPress.bind(this)} buttonStyle={styles.loginButton} textStyle={styles.loginBtnTextStyle}  title={`Login`}/>
 	  }
 
 
@@ -75,7 +75,7 @@ class Login extends Component {
 				 <View style={styles.linkToRegister}>
                             <Text style={styles.registerInfo}>{'Dont have an account? '}</Text>
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
-                              <Text style={styles.registerInfo}>{'Click here to register'}</Text>
+                              <Text style={styles.registerInfo}>{'Register Now'}</Text>
                             </TouchableOpacity>
                           </View>
 			</View>
@@ -115,6 +115,10 @@ export const styles = StyleSheet.create({
 	registrationHeader:{
 		fontFamily: 'open-sans',
 		paddingRight: 10
+	},
+	loginBtnTextStyle: {
+		textAlign: 'center',
+		fontFamily: 'open-sans'
 	}
 })
 

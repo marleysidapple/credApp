@@ -36,7 +36,7 @@ export async function validateLoginCredential(user){
 				payload: user
 			});		
 
-			setTokenToStorage(user.data.loginToken);
+			//setTokenToStorage(user.data.loginToken);
 
 			axios.defaults.headers.common['token'] = user.data.loginToken;
 				axios.post(API_URL + '/loans/get', initialParamForLoans).then(loans => {
