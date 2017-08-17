@@ -1,16 +1,19 @@
 import React, { Component, StyleSheet } from 'react';
 import { Button, TouchableOpacity } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Loans from './../components/dashboard/Loans';
 import Profile from './../components/dashboard/Profile';
 
+//loan builder steps
+import Loanroutes from './Loanroutes';
+
+
 const DashboardTabsCollection = TabNavigator({
   Loans: {
-    screen: Loans,
+    screen: Loanroutes,
     navigationOptions: {
-    	headerLeft: null,
-    //	title: 'Loans',
+      header: null,
     	tabBarIcon: ({ tintColor }) => <Icon name="textsms" size={25} color={tintColor} />,
     }
   },
@@ -50,6 +53,8 @@ const DashboardTabsCollection = TabNavigator({
   }
 }
 );
+
+
 
 
 export default DashboardTabsCollection;

@@ -5,20 +5,33 @@ import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/c
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
 import { SearchBar, Icon } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation'
+
+
 
 class Loans extends Component {
 	constructor(props){
 		super(props);
 	}
-
-
-	 static navigationOptions = ({ navigation }) => {
-		return {
+	
+	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={{fontFamily: 'open-sans'}}>Loans</Text>,
-		    headerLeft: (<Text>sid</Text>),
-		    headerRight: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#636A73' /></TouchableOpacity>,
-		};
-	};
+		    headerRight: <TouchableOpacity onPress={() => {
+		    	const navigateAction = NavigationActions.reset({
+		    		index: 0,
+			    	routeName: 'Dashboard',
+					params: {},
+					actions: [NavigationActions.navigate({ routeName: 'NewloanStepOne' })],
+				})
+				  navigation.dispatch(navigateAction)
+		    }}>
+		    				<Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#636A73' />
+		    			</TouchableOpacity>,
+		   // headerLeft: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#636A73' size={19}/></TouchableOpacity>
+
+	});
+
+
 
 	listOfLoans(){
 
