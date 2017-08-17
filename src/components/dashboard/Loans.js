@@ -12,10 +12,11 @@ class Loans extends Component {
 	}
 
 
-	static navigationOptions = ({ navigation, styles }) => {
+	 static navigationOptions = ({ navigation }) => {
 		return {
 		    title: <Text style={{fontFamily: 'open-sans'}}>Loans</Text>,
-		    headerRight: <TouchableOpacity onPress={() => console.log('as')}><Icon name='playlist-plus' type='material-community' color='' /></TouchableOpacity>
+		    headerLeft: (<Text>sid</Text>),
+		    headerRight: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#636A73' /></TouchableOpacity>,
 		};
 	};
 

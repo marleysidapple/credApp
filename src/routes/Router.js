@@ -38,7 +38,7 @@ import DashboardTabsCollection from './Tabs';
       },
   },
 {
-  initialRouteName: 'Dashboard',
+  initialRouteName: 'Landing',
 });
 
 
