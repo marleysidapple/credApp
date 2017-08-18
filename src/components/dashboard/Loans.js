@@ -35,8 +35,8 @@ class Loans extends Component {
 	});
 
 	 gotoSpecificLoan(loanGuid){
-	 	
-	 	//this.props.navigation.navigate('Loandetail');
+
+	 	this.props.navigation.navigate('Loandetail');
 	 	console.log(loanGuid);
 	 }
 
