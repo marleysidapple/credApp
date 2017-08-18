@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
-import { SearchBar, Icon } from 'react-native-elements';
+import { SearchBar, Icon, ButtonGroup } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation'
 
 
@@ -34,6 +34,12 @@ class Loans extends Component {
 
 	});
 
+	 gotoSpecificLoan(loanGuid){
+	 	
+	 	//this.props.navigation.navigate('Loandetail');
+	 	console.log(loanGuid);
+	 }
+
 
 
 	listOfLoans(){
@@ -43,16 +49,17 @@ class Loans extends Component {
 							{
 								this.props.loanList.map((loan) => {
 									
-									return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
+									return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
 											<View style={styles.leftDetailWrapper}>
-												<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
+												<Text style={styles.loanTitle}>{loan.alias}</Text>
 												<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
 												<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
 											</View>
 
 											<View style={styles.amountWrapper}>
 												<Text style={styles.loanTitle}>Amount: {loan.amount}</Text>
-												<Text style={styles.loanTitle}>Balance: $850.56</Text>
+												<Text style={styles.loanTitle}>Repay fee: {loan.repaymentAmount ? loan.repaymentAmount : '' }</Text>
+												
 											</View>
 										</TouchableOpacity>
 									})
@@ -72,8 +79,13 @@ class Loans extends Component {
 
 
 	render(){
+		const buttons = ['Borrowed', 'Lent', 'Pending', 'Draft', 'Live'];
 		return(
 			<View>
+			<ButtonGroup
+		      	buttons={buttons}
+		     	 containerStyle={{height: 30}}
+		     	 textStyle={{fontFamily: 'open-sans', fontSize: 10}} />
 				{this.listOfLoans()}
 			</View>
 		);
@@ -89,7 +101,7 @@ const styles = StyleSheet.create({
 		borderLeftWidth: 8,
 		borderLeftColor: '#3EA7D9',
 		borderColor: '#d6d4d4',
-		height: 120,
+		height: 100,
 		padding: 20,
 		margin: 8,
 		borderRadius: 2

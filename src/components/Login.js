@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Alert, ActivityIndicator, Keyboard } from 'react-native';
 import Input from './../elements/Input';
 import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
 import { connect } from 'react-redux';
@@ -17,6 +17,7 @@ class Login extends Component {
 	// };
 
 	onLoginPress(){
+		Keyboard.dismiss();
 		if(this.props.email == "" || this.props.password == ""){
 			Alert.alert(
 				"missing data",
