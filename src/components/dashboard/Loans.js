@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, ListView } from 'react-native';
 import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
@@ -12,6 +12,10 @@ import { NavigationActions } from 'react-navigation'
 class Loans extends Component {
 	constructor(props){
 		super(props);
+		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+	    this.state = {
+	      dataSource: ds.cloneWithRows(this.props.loanList),
+	    };
 	}
 	
 	 static navigationOptions = ({ navigation }) => ({
@@ -35,9 +39,15 @@ class Loans extends Component {
 	});
 
 	 gotoSpecificLoan(loanGuid){
+	 		const navigateAction = NavigationActions.reset({
+		    		index: 0,
+			    	//routeName: 'Dashboard',
+					params: {loanGuid},
+					actions: [NavigationActions.navigate({ type: 'Navigate', routeName: 'LoanDetail' })],
+				});
+			this.props.navigation.dispatch(navigateAction)
 
-	 	this.props.navigation.navigate('Loandetail');
-	 	console.log(loanGuid);
+	 		console.log(loanGuid);
 	 }
 
 
