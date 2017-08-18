@@ -42,7 +42,9 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-  	alignSelf: 'center'
+  	alignSelf: 'center',
+  	width: 90,
+  	height: 43
   },
 
   startButton: {

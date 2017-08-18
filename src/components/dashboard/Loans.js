@@ -15,7 +15,10 @@ class Loans extends Component {
 	}
 	
 	 static navigationOptions = ({ navigation }) => ({
-		    title: <Text style={{fontFamily: 'open-sans'}}>Loans</Text>,
+		    title: <Text style={styles.textHeader}>Loans</Text>,
+		    headerStyle : {
+		    	backgroundColor: "#3EA7D9",
+		    },
 		    headerRight: <TouchableOpacity onPress={() => {
 		    	const navigateAction = NavigationActions.reset({
 		    		index: 0,
@@ -25,47 +28,53 @@ class Loans extends Component {
 				})
 				  navigation.dispatch(navigateAction)
 		    }}>
-		    				<Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#636A73' />
+		    				<Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
 		    			</TouchableOpacity>,
-		   // headerLeft: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#636A73' size={19}/></TouchableOpacity>
+		   headerLeft: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>
 
 	});
 
 
 
 	listOfLoans(){
+		return <View>
+					<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
+						<ScrollView>
+							{
+								this.props.loanList.map((loan) => {
+									
+									return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
+											<View style={styles.leftDetailWrapper}>
+												<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
+												<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
+												<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
+											</View>
 
+											<View style={styles.amountWrapper}>
+												<Text style={styles.loanTitle}>Amount: {loan.amount}</Text>
+												<Text style={styles.loanTitle}>Balance: $850.56</Text>
+											</View>
+										</TouchableOpacity>
+									})
+							}
+						</ScrollView></View>
 	}
 
+	/*
 	renderEitherLoadingSpinnerOrLoanList(){
-
+		if (this.props.loading){
+			return <ActivityIndicator size = {'small'} />
+		} else {
+			return this.listOfLoans();
+		}
 	}
+	*/
 
 
 	render(){
-
 		return(
 			<View>
-				<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
-					<ScrollView>
-					{
-						this.props.loanList.map((loan) => {
-							
-							return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid}>
-									<View style={styles.leftDetailWrapper}>
-										<Text style={styles.loanTitle}>Loan taken to buy a new car</Text>
-										<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
-										<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
-									</View>
-
-									<View style={styles.amountWrapper}>
-										<Text style={styles.loanTitle}>Amount: {loan.amount}</Text>
-										<Text style={styles.loanTitle}>Balance: $850.56</Text>
-									</View>
-								</TouchableOpacity>
-							})
-					}
-					</ScrollView>
+				{this.listOfLoans()}
 			</View>
 		);
 	}
@@ -116,14 +125,20 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		fontSize: 12,
 		fontFamily: FONT_NORMAL,
-	}
+	},
 
+	textHeader: {
+		fontFamily: 'open-sans-bold', 
+		color: '#eee',
+		fontWeight: '500'
+	}
 
 });
 
 function mapStateToProps(state){
 	return{
-		loanList: state.user_loan.loans
+		loading: state.user_loan.loading,
+		loanList: state.user_loan.loans,
 	}
 }
 

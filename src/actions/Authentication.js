@@ -5,7 +5,9 @@ import {
 	USER_LOGIN_FAILED,
 	USER_DETAIL_SUCCESS,
 	USER_DETAIL_FAILED,
-	GET_ALL_LOANS
+
+	GET_ALL_LOANS,
+	START_FETCH_LOANS
 } from './types';
 import { API_URL, xRay } from 'react-native-dotenv';
 import { AsyncStorage } from 'react-native';
@@ -37,6 +39,8 @@ export async function validateLoginCredential(user){
 			});		
 
 			//setTokenToStorage(user.data.loginToken);
+
+			dispatch({ type: START_FETCH_LOANS });
 
 			axios.defaults.headers.common['token'] = user.data.loginToken;
 				axios.post(API_URL + '/loans/get', initialParamForLoans).then(loans => {

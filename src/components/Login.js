@@ -55,7 +55,7 @@ class Login extends Component {
 	render(){
 		return(
 			<View style={styles.loginWrapper}>
-				<Image source={require('./../../assets/images/logo.png')} style={styles.logo}  resizeMode={'contain'} />
+				<Image source={require('./../../assets/images/logo2.png')} style={styles.logo}  resizeMode={'contain'} />
 
 				<Input iconName={'envelope-o'}
                        placeholder={'Enter your email'}
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
   	},
 
 	logo: {
-	  	alignSelf: 'center'
+	  	alignSelf: 'center',
 	 },
 
 	loginButton: {
