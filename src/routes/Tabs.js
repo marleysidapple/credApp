@@ -50,8 +50,9 @@ const DashboardTabsCollection = TabNavigator({
     labelStyle: {
       fontFamily: 'open-sans'
     }
-  }
-}
+  },
+},
+
 );
 
 

@@ -39,8 +39,7 @@ class Login extends Component {
 				'Invalid email/password'
 			);
 		} else if(nexProps.detail != null && nexProps.detail.status == 'success'){
-
-			this.props.navigation.navigate('Dashboard');
+			this.props.navigation.navigate('Loans');
 		}
 	
 	}

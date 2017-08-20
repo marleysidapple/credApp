@@ -16,7 +16,10 @@ const Loanroutes = StackNavigator({
       },
 
     LoanDetail: {
-    	screen: Loandetail 
+    	screen: Loandetail,
+    	navigationOptions: {
+        	title: 'My Loan details'
+        } 
     },
 
       NewloanStepOne: {

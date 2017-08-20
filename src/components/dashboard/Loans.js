@@ -26,28 +26,31 @@ class Loans extends Component {
 		    headerRight: <TouchableOpacity onPress={() => {
 		    	const navigateAction = NavigationActions.reset({
 		    		index: 0,
-			    	routeName: 'Dashboard',
-					params: {},
-					actions: [NavigationActions.navigate({ routeName: 'NewloanStepOne' })],
+					actions:  [NavigationActions.navigate({ routeName: 'NewloanStepOne' })]
 				})
-				  navigation.dispatch(navigateAction)
+				navigation.dispatch(navigateAction)
 		    }}>
-		    				<Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
-		    			</TouchableOpacity>,
+		    <Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
+		   </TouchableOpacity>,
 		   headerLeft: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>
-
 	});
 
 	 gotoSpecificLoan(loanGuid){
 	 		const navigateAction = NavigationActions.reset({
+		    	//	type: NavigationActions.RESET,
 		    		index: 0,
-			    	//routeName: 'Dashboard',
+			    	routeName: 'Loans',
 					params: {loanGuid},
-					actions: [NavigationActions.navigate({ type: 'Navigate', routeName: 'LoanDetail' })],
+					actions: [NavigationActions.navigate({ type: "Navigation/RESET", routeName: 'LoanDetail' })],
 				});
 			this.props.navigation.dispatch(navigateAction)
 
-	 		console.log(loanGuid);
+			this.props.navigation.dispatch({
+				type: 'NavigationActions/Navigate',
+				index: 0,
+			    routeName: 'Loans',
+				actions: [NavigationActions.navigate({ type: "Navigation/Navigate", routeName: 'LoanDetail' })],
+			});
 	 }
 
 
