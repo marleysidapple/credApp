@@ -18,7 +18,7 @@ const DashboardTabsCollection = TabNavigator({
     }
   },
   Repayments: {
-    screen: Loans,
+    screen: Profile,
     navigationOptions: {
     	title: 'Repayments',
     	tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={25} color={tintColor} />,
@@ -27,7 +27,7 @@ const DashboardTabsCollection = TabNavigator({
   },
 
   Notification: {
-    screen: Loans,
+    screen: Profile,
     navigationOptions: {
     	title: 'Notification',
     	tabBarIcon: ({ tintColor }) => <Icon name="contacts" size={25} color={tintColor} />,
@@ -54,8 +54,5 @@ const DashboardTabsCollection = TabNavigator({
 },
 
 );
-
-
-
 
 export default DashboardTabsCollection;

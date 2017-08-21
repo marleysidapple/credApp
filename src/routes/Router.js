@@ -8,9 +8,7 @@ import Login from './../components/Login';
 import Register from './../components/Register';
 import DashboardTabsCollection from './Tabs';
 
-
-
- export const Router = StackNavigator({
+export const Router = StackNavigator({
       Landing: {
       	screen: Index,
       	navigationOptions: {
@@ -38,6 +36,7 @@ import DashboardTabsCollection from './Tabs';
       },
   },
 {
+  stateName: 'MainAppNav',
   initialRouteName: 'Login',
 });
 
@@ -54,6 +53,7 @@ const AppWithNavigationState = ({dispatch, nav}) => (
 
 
 const mapStateToProps = (state) => {
+  console.log(state.nav);
   return{
     nav: state.nav
   }

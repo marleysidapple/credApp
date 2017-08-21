@@ -5,7 +5,8 @@ import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/c
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
 import { SearchBar, Icon, ButtonGroup } from 'react-native-elements';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
+
 
 
 
@@ -17,6 +18,10 @@ class Loans extends Component {
 	      dataSource: ds.cloneWithRows(this.props.loanList),
 	    };
 	}
+
+	componentWillMount(){
+		this.props.loanList;
+	}
 	
 	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>Loans</Text>,
@@ -24,11 +29,11 @@ class Loans extends Component {
 		    	backgroundColor: "#3EA7D9",
 		    },
 		    headerRight: <TouchableOpacity onPress={() => {
-		    	const navigateAction = NavigationActions.reset({
-		    		index: 0,
-					actions:  [NavigationActions.navigate({ routeName: 'NewloanStepOne' })]
-				})
-				navigation.dispatch(navigateAction)
+		  //   	const navigateAction = NavigationActions.reset({
+		  //   		index: 0,
+				// 	actions:  [NavigationActions.navigate({ routeName: 'NewloanStepOne' })]
+				// })
+				// navigation.dispatch(navigateAction)
 		    }}>
 		    <Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
 		   </TouchableOpacity>,
@@ -36,21 +41,12 @@ class Loans extends Component {
 	});
 
 	 gotoSpecificLoan(loanGuid){
-	 		const navigateAction = NavigationActions.reset({
-		    	//	type: NavigationActions.RESET,
+		   		const navigateAction = NavigationActions.reset({
+		   			stateName: 'MainAppNav',
 		    		index: 0,
-			    	routeName: 'Loans',
-					params: {loanGuid},
-					actions: [NavigationActions.navigate({ type: "Navigation/RESET", routeName: 'LoanDetail' })],
-				});
-			this.props.navigation.dispatch(navigateAction)
-
-			this.props.navigation.dispatch({
-				type: 'NavigationActions/Navigate',
-				index: 0,
-			    routeName: 'Loans',
-				actions: [NavigationActions.navigate({ type: "Navigation/Navigate", routeName: 'LoanDetail' })],
-			});
+					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
+				})
+				this.props.navigation.dispatch(navigateAction)
 	 }
 
 

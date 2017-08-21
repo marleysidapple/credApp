@@ -11,7 +11,7 @@ import Loanstepone from './../components/loans/Loanstepone';
 
 
 const Loanroutes = StackNavigator({
-    Loans: {
+    LoanList: {
        screen: Loans,
       },
 
