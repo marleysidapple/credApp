@@ -43,7 +43,7 @@ class Loans extends Component {
 	 gotoSpecificLoan(loanGuid){
 		   		const navigateAction = NavigationActions.reset({
 		   			stateName: 'MainAppNav',
-		    		index: 0,
+		    		//index: 0,
 					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
 				})
 				this.props.navigation.dispatch(navigateAction)
