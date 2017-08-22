@@ -13,15 +13,9 @@ import { NavigationActions } from 'react-navigation';
 class Loans extends Component {
 	constructor(props){
 		super(props);
-		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-	    this.state = {
-	      dataSource: ds.cloneWithRows(this.props.loanList),
-	    };
 	}
 
-	componentWillMount(){
-		this.props.loanList;
-	}
+	
 	
 	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>Loans</Text>,
@@ -42,8 +36,9 @@ class Loans extends Component {
 
 	 gotoSpecificLoan(loanGuid){
 		   		const navigateAction = NavigationActions.reset({
-		   			stateName: 'MainAppNav',
-		    		//index: 0,
+		   			//stateName: 'MainAppNav',
+		    		routeName: 'Loans',
+		    		index: 0,
 					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
 				})
 				this.props.navigation.dispatch(navigateAction)
