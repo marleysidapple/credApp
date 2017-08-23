@@ -24,6 +24,7 @@ class Login extends Component {
 				"All fields are mandatory"
 			);
 		} else{
+			//passing data to aciton
 			const user = {
 				user_name: this.props.email,
 				pwd: this.props.password
