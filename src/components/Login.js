@@ -74,7 +74,7 @@ class Login extends Component {
                 {this.showEitherButtonOrSpinner()}
 
 				 <View style={styles.linkToRegister}>
-                            <Text style={styles.registerInfo}>{'Dont have an account? '}</Text>
+                            <Text style={styles.registerInfo}>{'Not Registered? '}</Text>
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')}>
                               <Text style={styles.registerInfo}>{'Register Now'}</Text>
                             </TouchableOpacity>
