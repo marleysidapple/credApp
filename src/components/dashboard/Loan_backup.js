@@ -20,13 +20,10 @@ class Loans extends Component {
 	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>MY LOANS</Text>,
 		    headerStyle : {
-		    	backgroundColor: "#FF9F1C",
+		    	backgroundColor: "#3EA7D9",
 		    	height: 90,
 		    },
 		  
-		  	headerLeft: null,
-		  	headerRight: null
-		   	/*
 		    headerRight: <TouchableOpacity onPress={() => {
 		    	const navigateAction = NavigationActions.reset({
 		    		index: 0,
@@ -37,7 +34,7 @@ class Loans extends Component {
 		    <Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
 		   </TouchableOpacity>,
 		   headerLeft: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>
-		*/
+	
 	});
 
 	 gotoSpecificLoan(loanGuid){
@@ -94,7 +91,7 @@ class Loans extends Component {
 			<View>
 			<ButtonGroup
 		      	buttons={buttons}
-		     	 containerStyle={this.buttonGroupStyle}
+		     	 containerStyle={{height: 30}}
 		     	 textStyle={{fontFamily: 'open-sans', fontSize: 10}} />
 				{this.listOfLoans()}
 			</View>
@@ -139,10 +136,6 @@ const styles = StyleSheet.create({
 		backgroundColor: 'transparent',
 		borderTopWidth: 0,
 		borderBottomWidth: 0,
-	},
-
-	buttonGroupStyle: {
-		height: 50
 	},
 
 	inputContainerStyle: {
