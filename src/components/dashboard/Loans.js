@@ -26,28 +26,16 @@ class Loans extends Component {
 		  
 		  	headerLeft: null,
 		  	headerRight: null
-		   	/*
-		    headerRight: <TouchableOpacity onPress={() => {
-		    	const navigateAction = NavigationActions.reset({
-		    		index: 0,
-					actions:  [NavigationActions.navigate({ routeName: 'NewloanStepOne' })]
-				})
-				navigation.dispatch(navigateAction)
-		    }}>
-		    <Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
-		   </TouchableOpacity>,
-		   headerLeft: <TouchableOpacity onPress={() => console.log('as')}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>
-		*/
 	});
 
 	 gotoSpecificLoan(loanGuid){
-		   		const navigateAction = NavigationActions.reset({
-		   			//stateName: 'MainAppNav',
-		    		routeName: 'Loans',
-		    		index: 0,
-					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
-				})
-				this.props.navigation.dispatch(navigateAction)
+		  //  		const navigateAction = NavigationActions.reset({
+		  //  			//stateName: 'MainAppNav',
+		  //   		routeName: 'Loans',
+		  //   		index: 0,
+				// 	actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
+				// })
+				// this.props.navigation.dispatch(navigateAction)
 	 }
 
 
