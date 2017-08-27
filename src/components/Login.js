@@ -56,7 +56,7 @@ class Login extends Component {
 	render(){
 		return(
 			<View style={styles.loginWrapper}>
-				<Image source={require('./../../assets/images/logo2.png')} style={styles.logo}  resizeMode={'contain'} />
+				<Image source={require('./../../assets/images/logo-large.png')} style={styles.logo}  resizeMode={'contain'} />
 
 				<Input iconName={'envelope-o'}
                        placeholder={'Enter your email'}
@@ -89,11 +89,12 @@ export const styles = StyleSheet.create({
 	loginWrapper: {
 		flex: 1,
 		justifyContent: 'center',
+		backgroundColor: '#3EA7D9'
 	},
 
 	registerInfo: {
 		fontFamily: 'open-sans',
-		color: '#636A73'
+		color: '#fff'
 		
 	},
 
@@ -106,10 +107,13 @@ export const styles = StyleSheet.create({
 
 	logo: {
 	  	alignSelf: 'center',
+	  	width: 180,
+	  	height: 150
+	  	
 	 },
 
 	loginButton: {
-		backgroundColor: '#3EA7D9', 
+		backgroundColor: '#fff', 
 		borderRadius: 2,
 		marginTop: 15,
 	},
@@ -117,9 +121,11 @@ export const styles = StyleSheet.create({
 		fontFamily: 'open-sans',
 		paddingRight: 10
 	},
+
 	loginBtnTextStyle: {
 		textAlign: 'center',
-		fontFamily: 'open-sans'
+		color: '#3EA7D9',
+		fontFamily: 'open-sans-bold',
 	}
 })
 

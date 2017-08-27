@@ -23,11 +23,11 @@ class Loans extends Component {
 		    	backgroundColor: "#3EA7D9",
 		    },
 		    headerRight: <TouchableOpacity onPress={() => {
-		  //   	const navigateAction = NavigationActions.reset({
-		  //   		index: 0,
-				// 	actions:  [NavigationActions.navigate({ routeName: 'NewloanStepOne' })]
-				// })
-				// navigation.dispatch(navigateAction)
+		    	const navigateAction = NavigationActions.reset({
+		    		index: 0,
+					actions:  [NavigationActions.navigate({ routeName: 'NewloanStepOne' })]
+				})
+				navigation.dispatch(navigateAction)
 		    }}>
 		    <Icon containerStyle={{marginRight: 5, marginTop: 5}} name='playlist-plus' type='material-community' color='#fff' />
 		   </TouchableOpacity>,

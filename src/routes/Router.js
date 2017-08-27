@@ -19,8 +19,8 @@ export const Router = StackNavigator({
       Login: {
       	screen: Login,
       	navigationOptions: {
-          title: 'Login',
-      		headerLeft: null,
+         // title: 'Login',
+      		header: null,
       	}
       },
 

@@ -12,13 +12,14 @@ class Input extends Component {
 		return(
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
   			 <View style={styles.singleInputWrapper}>
-                  <Icon style={styles.iconWrapper} name={this.props.iconName} size={18} color="#605a5a" />
+                  <Icon style={styles.iconWrapper} name={this.props.iconName} size={18} color="#fff" />
                   <View style={styles.inputWrapper}>
                     <TextInput style={styles.textInputStyle}
                                autoCapitalize={'none'}
                                value={this.props.value}
                                onChangeText={this.props.onInputChange} 
                                placeholder={this.props.placeholder}
+                               placeholderTextColor={'#fff'}
                                secureTextEntry={this.props.secureTextEntry || false}
                                />
                   </View>
@@ -31,7 +32,7 @@ class Input extends Component {
 
 const styles = StyleSheet.create({
 	inputWrapper: {
-    borderBottomColor: '#b7b5b5',
+    borderBottomColor: '#fff',
     borderBottomWidth: 0.5,
     flex: 1,
     marginRight: 5
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 
   textInputStyle: {
     fontFamily: 'open-sans',
-    color: '#3d2e2e',
+    color: '#fff',
     fontSize: 14,
     margin: 10,
    // padding: 5,

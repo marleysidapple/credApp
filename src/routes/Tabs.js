@@ -45,7 +45,9 @@ const DashboardTabsCollection = TabNavigator({
     }
   },
 },
+
 {
+  swipeEnabled: true,
   tabBarOptions: {
     labelStyle: {
       fontFamily: 'open-sans'
