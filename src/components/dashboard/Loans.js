@@ -61,6 +61,8 @@ class Loans extends Component {
 					<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
 						<ScrollView>
 							{
+							!this.props.loading ?
+
 								this.props.loanList.map((loan) => {
 									return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
 											<View style={styles.leftDetailWrapper}>
@@ -75,11 +77,13 @@ class Loans extends Component {
 												
 											</View>
 										</TouchableOpacity>
-									})
+									}) : 
+								    <ActivityIndicator size={'small'}/>
+
 							}
 						</ScrollView></View>
 	}
-	
+
 	
 	render(){
 		const buttons = ['Borrowed', 'Lent', 'Pending', 'Draft', 'Live'];
