@@ -37,19 +37,13 @@ export async function validateLoginCredential(user){
 				type: USER_LOGIN_SUCCESS,
 				payload: user
 			});		
+			//dispatch({ type: START_FETCH_LOANS });
 
-			//setTokenToStorage(user.data.loginToken);
-
-			dispatch({ type: START_FETCH_LOANS });
-
-			axios.defaults.headers.common['token'] = user.data.loginToken;
-				axios.post(API_URL + '/loans/get', initialParamForLoans).then(loans => {
-					dispatch({
-						type: GET_ALL_LOANS,
-						payload: loans
-					});
-				});
-		// dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
+			try {
+				  AsyncStorage.setItem('@auth:loginToken', user.data.loginToken);
+				} catch (error) {
+				  // Error saving data
+				}
 		})
 		.catch(err => {
 			dispatch({
@@ -60,17 +54,3 @@ export async function validateLoginCredential(user){
 	}
 }
 
-export async function setTokenToStorage(token){
-	try {
-	  await AsyncStorage.setItem('loginToken', token);
-	} catch (error) {
-	  // Error saving data
-	}
-}
-
-export async function getTokenFromStorage(keyToSearch)
-{
-	const keys = await AsyncStorage.getAllKeys()
-	const values = await AsyncStorage.get(keyToSearch)
-	return values;
-}

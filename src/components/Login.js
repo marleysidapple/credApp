@@ -130,7 +130,6 @@ export const styles = StyleSheet.create({
 })
 
 function mapStateToProps(state, props){
-	console.log(state.nav);
   return {
   	  detail: state.auth_login.detail,
       email: state.auth_login.email,

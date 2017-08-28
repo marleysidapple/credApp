@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, ListView } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator, ListView, AsyncStorage } from 'react-native';
 import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
+import { fetchAvailableLoans } from './../../actions/Myloan';
 import { SearchBar, Icon, ButtonGroup } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 
@@ -16,6 +17,20 @@ class Loans extends Component {
 	}
 
 	
+	componentWillMount(){
+		this.props.fetchAvailableLoans(this.props.token);
+		// try {
+		// 	  const token = await AsyncStorage.getItem('@auth:loginToken');
+		// 	  if (token !== null){
+		// 	    // We have data!!
+		// 	  //  console.log(token);
+		// 	  	this.props.fetchAvailableLoans(this.props.);
+		// 	  }
+		// 	} catch (error) {
+		// 		console.log('no token');
+		// 	  // Error retrieving data
+		// 	}
+	}
 	
 	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>MY LOANS</Text>,
@@ -29,24 +44,24 @@ class Loans extends Component {
 	});
 
 	 gotoSpecificLoan(loanGuid){
-		  //  		const navigateAction = NavigationActions.reset({
-		  //  			//stateName: 'MainAppNav',
-		  //   		routeName: 'Loans',
-		  //   		index: 0,
-				// 	actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
-				// })
-				// this.props.navigation.dispatch(navigateAction)
+		   		const navigateAction = NavigationActions.reset({
+		   			//stateName: 'MainAppNav',
+		    		routeName: 'Loans',
+		    		index: 0,
+					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
+				})
+				this.props.navigation.dispatch(navigateAction)
 	 }
 
 
 
+	
 	listOfLoans(){
 		return <View>
 					<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
 						<ScrollView>
 							{
 								this.props.loanList.map((loan) => {
-									
 									return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
 											<View style={styles.leftDetailWrapper}>
 												<Text style={styles.loanTitle}>{loan.alias}</Text>
@@ -64,18 +79,8 @@ class Loans extends Component {
 							}
 						</ScrollView></View>
 	}
-
-	/*
-	renderEitherLoadingSpinnerOrLoanList(){
-		if (this.props.loading){
-			return <ActivityIndicator size = {'small'} />
-		} else {
-			return this.listOfLoans();
-		}
-	}
-	*/
-
-
+	
+	
 	render(){
 		const buttons = ['Borrowed', 'Lent', 'Pending', 'Draft', 'Live'];
 		return(
@@ -88,6 +93,9 @@ class Loans extends Component {
 			</View>
 		);
 	}
+	
+
+
 }
 
 
@@ -153,6 +161,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
 	return{
+		token: state.auth_login.detail.loginToken,
 		loading: state.user_loan.loading,
 		loanList: state.user_loan.loans,
 	}
@@ -160,4 +169,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, { validateLoginCredential })(Loans);
+export default connect(mapStateToProps, { fetchAvailableLoans })(Loans);
