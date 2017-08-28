@@ -42,13 +42,24 @@ class Loans extends Component {
 	});
 
 	 gotoSpecificLoan(loanGuid){
+		   		/*
 		   		const navigateAction = NavigationActions.reset({
 		   			//stateName: 'MainAppNav',
-		    		routeName: 'Loans',
+		    		routeName: 'LoanList',
 		    		index: 0,
 					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
 				})
-				this.props.navigation.dispatch(navigateAction)
+				*/
+				//this.props.navigation.dispatch(navigateAction)
+
+				// const navigateAction = NavigationActions.reset({
+				// 	routeName: 'LoanList',
+				// 	index: 0,
+				// 	actions: [NavigationActions.navigate({routeName: 'LoanDetail'})]
+				// });
+
+				this.props.navigation.navigate('Loandetail');
+
 	 }
 
 

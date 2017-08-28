@@ -6,6 +6,10 @@ import { bindActionCreators } from 'redux';
 import Index from './../Index';
 import Login from './../components/Login';
 import Register from './../components/Register';
+
+//loan routes
+import Loandetail from './../components/dashboard/Loandetail';
+
 import DashboardTabsCollection from './Tabs';
 
 export const Router = StackNavigator({
@@ -34,10 +38,16 @@ export const Router = StackNavigator({
       Dashboard: {
         screen: DashboardTabsCollection
       }, // end of dashboard
+
+      Loandetail: {
+        screen: Loandetail
+      }
   }, // end of main stack navigator
 {
   stateName: 'MainAppNav',
   initialRouteName: 'Login',
+  lazyLoad: true,
+  animationEnabled: false,
 });
 
 
@@ -53,6 +63,7 @@ const AppWithNavigationState = ({dispatch, nav}) => (
 
 
 const mapStateToProps = (state) => {
+  console.log(state.nav);
   return{
     nav: state.nav
   }
