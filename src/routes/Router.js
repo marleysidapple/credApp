@@ -33,8 +33,8 @@ export const Router = StackNavigator({
 
       Dashboard: {
         screen: DashboardTabsCollection
-      },
-  },
+      }, // end of dashboard
+  }, // end of main stack navigator
 {
   stateName: 'MainAppNav',
   initialRouteName: 'Login',

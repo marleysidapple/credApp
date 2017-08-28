@@ -17,19 +17,17 @@ class Loans extends Component {
 	}
 
 	
-	componentWillMount(){
+	async componentWillMount(){
 		this.props.fetchAvailableLoans(this.props.token);
-		// try {
-		// 	  const token = await AsyncStorage.getItem('@auth:loginToken');
-		// 	  if (token !== null){
-		// 	    // We have data!!
-		// 	  //  console.log(token);
-		// 	  	this.props.fetchAvailableLoans(this.props.);
-		// 	  }
-		// 	} catch (error) {
-		// 		console.log('no token');
-		// 	  // Error retrieving data
-		// 	}
+		try {
+			  const token = await AsyncStorage.getItem('@auth:loginToken');
+			  if (token !== null){
+			 		this.props.fetchAvailableLoans(token);
+			  }
+			} catch (error) {
+				console.log('no token');
+			  // Error retrieving data
+			}
 	}
 	
 	 static navigationOptions = ({ navigation }) => ({
