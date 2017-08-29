@@ -16,7 +16,7 @@ class Loandetail extends Component {
 	          tabBarVisible: false,
 	        },
 		  
-		    headerLeft: <TouchableOpacity onPress={() => {navigation.dispatch(NavigationActions.navigate({routeName: 'LoanList'}))}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>,
+		    headerLeft: <TouchableOpacity onPress={() => {navigation.dispatch(NavigationActions.navigate({routeName: 'LoanList'}))}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='arrow-left' type='material-community' color='#fff' size={19}/></TouchableOpacity>,
 		  	headerRight: null
 	});
 
