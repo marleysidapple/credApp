@@ -23,7 +23,7 @@ export function fetchAvailableLoans(loginToken){
 				payload: loans
 			});
 		}).catch(err => {
-			console.log(err);
+			// some err
 		});
 	}
 }

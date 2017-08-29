@@ -38,10 +38,6 @@ export const Router = StackNavigator({
       Dashboard: {
         screen: DashboardTabsCollection
       }, // end of dashboard
-
-      Loandetail: {
-        screen: Loandetail
-      }
   }, // end of main stack navigator
 {
   stateName: 'MainAppNav',

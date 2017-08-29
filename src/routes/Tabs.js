@@ -47,6 +47,7 @@ const DashboardTabsCollection = TabNavigator({
 },
 
 {
+  initialRouteName: 'Loans',
   tabBarOptions: {
     labelStyle: {
       fontFamily: 'open-sans'

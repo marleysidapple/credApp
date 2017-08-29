@@ -25,7 +25,6 @@ class Loans extends Component {
 			 		this.props.fetchAvailableLoans(token);
 			  }
 			} catch (error) {
-				console.log('no token');
 			  // Error retrieving data
 			}
 	}
@@ -42,23 +41,15 @@ class Loans extends Component {
 	});
 
 	 gotoSpecificLoan(loanGuid){
-		   		/*
-		   		const navigateAction = NavigationActions.reset({
-		   			//stateName: 'MainAppNav',
-		    		routeName: 'LoanList',
-		    		index: 0,
-					actions:  [NavigationActions.navigate({ routeName: 'LoanDetail' })]
-				})
-				*/
-				//this.props.navigation.dispatch(navigateAction)
+				const navigateAction = NavigationActions.reset({
+					stateName: 'MainAppNav',
+					index: 0,
+					params: { loanGuid },
+					actions: [NavigationActions.reset({routeName: 'LoanDetail'})]
+				});
 
-				// const navigateAction = NavigationActions.reset({
-				// 	routeName: 'LoanList',
-				// 	index: 0,
-				// 	actions: [NavigationActions.navigate({routeName: 'LoanDetail'})]
-				// });
-
-				this.props.navigation.navigate('Loandetail');
+				this.props.navigation.dispatch(navigateAction);				
+				
 
 	 }
 
