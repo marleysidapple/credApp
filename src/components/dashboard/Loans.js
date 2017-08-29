@@ -45,7 +45,7 @@ class Loans extends Component {
 					stateName: 'MainAppNav',
 					index: 0,
 					params: { loanGuid },
-					actions: [NavigationActions.reset({routeName: 'LoanDetail'})]
+					actions: [NavigationActions.navigate({routeName: 'LoanDetail'})]
 				});
 
 				this.props.navigation.dispatch(navigateAction);				

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation';
 
 class Loandetail extends Component {
 
@@ -15,7 +16,7 @@ class Loandetail extends Component {
 	          tabBarVisible: false,
 	        },
 		  
-		    headerLeft: <TouchableOpacity onPress={() => {navigation.goBack('LoanList')}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>,
+		    headerLeft: <TouchableOpacity onPress={() => {navigation.dispatch(NavigationActions.navigate({routeName: 'LoanList'}))}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='filter' type='material-community' color='#fff' size={19}/></TouchableOpacity>,
 		  	headerRight: null
 	});
 
