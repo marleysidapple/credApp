@@ -59,7 +59,6 @@ const AppWithNavigationState = ({dispatch, nav}) => (
 
 
 const mapStateToProps = (state) => {
-  console.log(state.nav);
   return{
     nav: state.nav
   }

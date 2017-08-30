@@ -5,8 +5,8 @@ import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/c
 import { connect } from 'react-redux';
 import { validateLoginCredential } from './../../actions/Authentication';
 import { fetchAvailableLoans } from './../../actions/Myloan';
+import Loanlist from './../loans/Loanlist';
 import { SearchBar, Icon, ButtonGroup } from 'react-native-elements';
-import { NavigationActions } from 'react-navigation';
 
 
 
@@ -19,6 +19,7 @@ class Loans extends Component {
 	
 	async componentWillMount(){
 		this.props.fetchAvailableLoans(this.props.token);
+		this.createDataSource(this.props);
 		try {
 			  const token = await AsyncStorage.getItem('@auth:loginToken');
 			  if (token !== null){
@@ -28,6 +29,17 @@ class Loans extends Component {
 			  // Error retrieving data
 			}
 	}
+
+	componentWillReceiveProps(nextProps){
+		this.createDataSource(nextProps);
+	}
+
+	createDataSource(props){
+		//creating a data source
+		 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		 this.dataSource = ds.cloneWithRows(props.loanList);
+	}
+
 	
 	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>MY LOANS</Text>,
@@ -35,105 +47,32 @@ class Loans extends Component {
 		    	backgroundColor: "#FF9F1C",
 		    	height: 90,
 		    },
-		  
 		  	headerLeft: null,
 		  	headerRight: null
 	});
 
-	 gotoSpecificLoan(loanGuid){
-				const navigateAction = NavigationActions.reset({
-					stateName: 'MainAppNav',
-					index: 0,
-					params: { loanGuid },
-					actions: [NavigationActions.navigate({routeName: 'LoanDetail'})]
-				});
 
-				this.props.navigation.dispatch(navigateAction);				
-				
-
-	 }
-
-
-
-	
-	listOfLoans(){
-		return <View>
-					<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
-						<ScrollView>
-							{
-							!this.props.loading ?
-
-								this.props.loanList.map((loan) => {
-									return	<TouchableOpacity style={styles.cardWrapper}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
-											<View style={styles.leftDetailWrapper}>
-												<Text style={styles.loanTitle}>{loan.alias}</Text>
-												<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
-												<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
-											</View>
-
-											<View style={styles.amountWrapper}>
-												<Text style={styles.loanTitle}>Amount: {loan.amount}</Text>
-												<Text style={styles.loanTitle}>Repay fee: {loan.repaymentAmount ? loan.repaymentAmount : '' }</Text>
-												
-											</View>
-										</TouchableOpacity>
-									}) : 
-								    <ActivityIndicator size={'small'}/>
-
-							}
-						</ScrollView></View>
+	renderRow(loan){
+		return <Loanlist loan={loan} />;
 	}
+
 
 	
 	render(){
 		const buttons = ['Borrowed', 'Lent', 'Pending', 'Draft', 'Live'];
 		return(
 			<View>
-			<ButtonGroup
-		      	buttons={buttons}
-		     	 containerStyle={this.buttonGroupStyle}
-		     	 textStyle={{fontFamily: 'open-sans', fontSize: 10}} />
-				{this.listOfLoans()}
+				<ButtonGroup buttons={buttons} containerStyle={this.buttonGroupStyle} textStyle={{fontFamily: 'open-sans', fontSize: 10}} />
+				<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
+				<ListView enableEmptySections dataSource={this.dataSource} renderRow={(data) => <Loanlist loan={data} />} />
 			</View>
-		);
-	}
-	
-
-
+		);	
+	}	
 }
 
 
 const styles = StyleSheet.create({
-	cardWrapper: {
-	    flex: 1,
-	    flexDirection: 'row',
-		borderWidth: 1,
-		borderLeftWidth: 8,
-		borderLeftColor: '#3EA7D9',
-		borderColor: '#d6d4d4',
-		height: 100,
-		padding: 20,
-		margin: 8,
-		borderRadius: 2
-	},
-
-	leftDetailWrapper: {
-		flex: 4,
-	},
-
-	amountWrapper: {
-		flex: 2,
-		//flexDirection: 'column',
-		alignItems: 'flex-start',
-		justifyContent: 'center'
-	},
-
-	loanTitle: {
-		fontFamily: FONT_NORMAL,
-		color: LOAN_FONT_COLOR,
-		fontSize: FONT_SIZE,
-		paddingTop: 3
-	},
+	
 
 	searchContainerStyle: {
 		backgroundColor: 'transparent',
