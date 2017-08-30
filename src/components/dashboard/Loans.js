@@ -51,12 +51,6 @@ class Loans extends Component {
 		  	headerRight: null
 	});
 
-
-	renderRow(loan){
-		return <Loanlist loan={loan} />;
-	}
-
-
 	
 	render(){
 		const buttons = ['Borrowed', 'Lent', 'Pending', 'Draft', 'Live'];
@@ -64,7 +58,7 @@ class Loans extends Component {
 			<View>
 				<ButtonGroup buttons={buttons} containerStyle={this.buttonGroupStyle} textStyle={{fontFamily: 'open-sans', fontSize: 10}} />
 				<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
-				<ListView enableEmptySections dataSource={this.dataSource} renderRow={(data) => <Loanlist loan={data} />} />
+				<ListView enableEmptySections dataSource={this.dataSource} renderRow={(data) => <Loanlist loan={data} navigation={this.props.navigation} />} />
 			</View>
 		);	
 	}	

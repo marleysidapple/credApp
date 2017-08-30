@@ -11,6 +11,10 @@ class Loanlist extends Component {
 		super(props);
 	}
 
+	componentWillMount(){
+		console.log(this.props.navigation);
+	}
+
 
 	gotoSpecificLoan(loanGuid){
 				const navigateAction = NavigationActions.reset({
