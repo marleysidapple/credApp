@@ -6,6 +6,10 @@ import { NavigationActions } from 'react-navigation';
 class Loandetail extends Component {
 
 
+	componentWillMount(){
+		console.log(this.props.navigation);
+	}
+
 	static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>OVERVIEW</Text>,
 		    headerStyle : {
