@@ -39,6 +39,7 @@ class Loans extends Component {
 		 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 		 this.dataSource = ds.cloneWithRows(props.loanList);
 	}
+	
 
 	
 	 static navigationOptions = ({ navigation }) => ({
@@ -52,15 +53,16 @@ class Loans extends Component {
 	});
 
 	
+	
 	render(){
 		const buttons = ['Borrowed', 'Lent', 'Pending', 'Draft', 'Live'];
 		return(
 			<View>
 				<ButtonGroup buttons={buttons} containerStyle={this.buttonGroupStyle} textStyle={{fontFamily: 'open-sans', fontSize: 10}} />
-				<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />
+				{/*<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />*/}
 				{
 					(!this.props.loading) ?
-						<ListView enableEmptySections dataSource={this.dataSource} renderRow={(data) => <Loanlist loan={data} navigation={this.props.navigation} loading={this.props.loading} />} />
+						<ListView enableEmptySections dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <Loanlist row={rowID} loan={data} navigation={this.props.navigation} loading={this.props.loading} />} />
 					: <ActivityIndicator size={'small'} />
 				}
 			</View>

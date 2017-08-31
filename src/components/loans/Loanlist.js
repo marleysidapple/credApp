@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import {Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import Moment from 'react-moment';
@@ -26,47 +26,63 @@ class Loanlist extends Component {
 				this.props.navigation.dispatch(navigateAction);				
 	 }
 
+	 
+
+	
+
 
 	render(){
 		const {loan}  = this.props;
-		return(
-				<TouchableOpacity style={styles.cardWrapper}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
+		var row = Number(this.props.row) + 1;
+			return(
+				<TouchableOpacity style={(row % 2 == 1) ? styles.cardWrapper : styles.cardWrapperOne}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
 					<View style={styles.leftDetailWrapper}>
-						<Text style={styles.loanTitle}>{loan.alias}</Text>
-						<Text style={styles.loanTitle}>Date: <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
-						<Text style={styles.loanTitle}>Status: {loan.status_short}</Text>
+						<Image source={require('./../../../assets/images/usericon.png')} style={styles.usericon}  resizeMode={'contain'} />
 					</View>
 
-					<View style={styles.amountWrapper}>
-						<Text style={styles.loanTitle}>Amount: {loan.amount}</Text>
-						<Text style={styles.loanTitle}>Repay fee: {loan.repaymentAmount ? loan.repaymentAmount : '' }</Text>
+					<View style={styles.detailWrapper}>
+						<Text style={styles.amountDetail}>{'$'+loan.amount}</Text>
+						<Text style={styles.loanTitle} numberOfLines={1}>{loan.alias} lorem ipsum dolar</Text>
+						<Text style={styles.loanTitle} numberOfLines={1}><Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment> - <Moment element={Text} format="YYYY-MM-DD">{loan.created}</Moment></Text>
 					</View>
-				</TouchableOpacity>
+
+					<View style={styles.iconStyle}>
+						<Icon containerStyle={{marginLeft: 5, marginTop: 5}} name={'book-multiple'} type='material-community' color='#444445' size={20}/>
+					</View>
+				</TouchableOpacity> 
 		);
 	}
 
 } 
 
 const styles=StyleSheet.create({
+	cardWrapperOne: {
+	    flex: 1,
+	    flexDirection: 'row',
+		backgroundColor: '#fff',
+		height: 85,
+		padding: 20
+	},
+
 	cardWrapper: {
 	    flex: 1,
 	    flexDirection: 'row',
-		borderWidth: 1,
-		borderLeftWidth: 8,
-		borderLeftColor: '#3EA7D9',
-		borderColor: '#d6d4d4',
-		height: 100,
-		padding: 20,
-		margin: 8,
-		borderRadius: 2
+		backgroundColor: '#f2f2f2',
+		height: 85,
+		padding: 20
 	},
 
 	leftDetailWrapper: {
-		flex: 4,
+		alignSelf: 'center',
+		justifyContent: 'center',
+		borderRightWidth: 0.5,
+		borderRightColor: '#d6d4d4',
+		paddingRight: 20,
+		marginRight: 20
 	},
 
-	amountWrapper: {
-		flex: 2,
+	detailWrapper: {
+		flex: 1,
 		//flexDirection: 'column',
 		alignItems: 'flex-start',
 		justifyContent: 'center'
@@ -74,10 +90,31 @@ const styles=StyleSheet.create({
 
 	loanTitle: {
 		fontFamily: FONT_NORMAL,
-		color: LOAN_FONT_COLOR,
-		fontSize: FONT_SIZE,
-		paddingTop: 3
+		color: '#444445',
+		fontSize: 11,
+		paddingTop: 3,
+		letterSpacing: 0.5
 	},
+
+	amountDetail: {
+		fontFamily: 'open-sans-bold',
+		color: '#FF9F1C',
+		fontSize: 13,
+		paddingTop: 3,
+		letterSpacing: 1
+	},
+
+	usericon: {
+	  	alignSelf: 'center',
+	  	width: 50,
+	  	height: 50,
+	  	backgroundColor: 'transparent'
+	  	
+	 },
+
+	 iconStyle: {
+	 	justifyContent: 'center'
+	 }
 
 });
 
