@@ -26,8 +26,14 @@ class Loandetail extends Component {
 
 	render(){
 		return(
-			<View>
-				<Text>This is loan detail</Text>
+			<View style={styles.overviewWrapper}>
+				<View style={styles.innerHeader}>
+					<Text>LOAN REF: 121290</Text>
+					<View style={styles.loanAction}>
+						<Text> Ed </Text>
+						<Text> Ed </Text>
+					</View>
+				</View>
 			</View>
 		);
 	}
@@ -40,6 +46,21 @@ const styles = StyleSheet.create({
 		fontWeight: '500',
 		fontSize: 20,
 		letterSpacing: 4
+	},
+
+	overviewWrapper: {
+		margin: 10,
+		padding: 10,
+		flex: 1
+	},
+
+	innerHeader: {
+		flexDirection: 'row'
+	},
+
+	loanAction: {
+		flex: 1,
+		alignItems: 'flex-end',
 	}
 
 });

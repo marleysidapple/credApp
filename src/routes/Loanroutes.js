@@ -30,7 +30,8 @@ const Loanroutes = StackNavigator({
       }
 },
 {
-  initialRouteName: 'LoanList'
+  initialRouteName: 'LoanDetail'
+// initialRouteName : 'LoanList
 });
 
 
