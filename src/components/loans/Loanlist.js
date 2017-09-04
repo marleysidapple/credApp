@@ -32,6 +32,7 @@ class Loanlist extends Component {
 
 
 	render(){
+		console.log('test');
 		const {loan}  = this.props;
 		var row = Number(this.props.row) + 1;
 			return(
