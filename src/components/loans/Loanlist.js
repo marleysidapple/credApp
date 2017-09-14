@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Icon, Button } from 'react-native-elements';
+import { Icon, Button, Avatar } from 'react-native-elements';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import Moment from 'react-moment';
 import { NavigationActions } from 'react-navigation';
@@ -37,7 +37,10 @@ class Loanlist extends Component {
 			return(
 				<TouchableOpacity style={(row % 2 == 1) ? styles.cardWrapper : styles.cardWrapperOne}  key={loan.guid} onPress={() => this.gotoSpecificLoan(loan.guid)} >
 					<View style={styles.leftDetailWrapper}>
-						<Image source={require('./../../../assets/images/usericon.png')} style={styles.usericon}  resizeMode={'contain'} />
+						<Avatar medium rounded
+  								source={require('./../../../assets/images/lady.jpg')}
+  								activeOpacity={0.7}
+								/>
 					</View>
 
 					<View style={styles.detailWrapper}>

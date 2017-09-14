@@ -10,6 +10,11 @@ class Notification extends Component {
 		super(props);
 	}
 
+
+	componentDidMount(){
+		console.log('fetch alert');
+	}
+
 	 static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>NOTIFICATIONS</Text>,
 		    headerStyle : {
@@ -24,10 +29,17 @@ class Notification extends Component {
 	render(){
 		return( 
 			<View style={styles.notificationWrapper}>
-				
+
 			</View>
 		);
 	}
+}
+
+
+function mapStateToProps(state){
+	return {
+
+	};
 }
 
 
@@ -42,4 +54,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Notification;
+export default connect(mapStateToProps, { })(Notification);
