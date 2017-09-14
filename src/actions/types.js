@@ -17,3 +17,8 @@ export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED';
 //get loan details
 export const START_FETCH_LOANS = 'START_FETCH_LOANS';
 export const GET_ALL_LOANS = 'GET_ALL_LOANS';
+
+//get all the alerts
+export const START_FETCH_ALERT = 'START_FETCH_ALERT';
+export const GET_ALERT = 'GET_ALERT';
+export const DELETE_ALERT = 'DELETE_ALERT';
