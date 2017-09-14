@@ -51,7 +51,7 @@ class Loans extends Component {
 		    	height: 70,
 		    },
 		  	headerLeft: null,
-		  	headerRight: null
+		  	headerRight: <Icon name='plus' style={styles.addLoan} type='material-community' color='#fff'  onPress={() => navigation.navigate('LoanBuilderStepOne')} />
 	});
 
 	
@@ -100,6 +100,10 @@ const styles = StyleSheet.create({
 		fontWeight: '500',
 		fontSize: 20,
 		letterSpacing: 4
+	},
+
+	addLoan: {
+		marginRight: 5
 	}
 
 });

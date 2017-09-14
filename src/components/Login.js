@@ -48,7 +48,7 @@ class Login extends Component {
 
 	 showEitherButtonOrSpinner(){
 	    if (this.props.loading){
-	      return <ActivityIndicator size={'small'}/>;
+	      return <ActivityIndicator size={'small'} color={'#fff'}/>;
 	    }
 	    return  <Button onPress={this.onLoginPress.bind(this)} buttonStyle={styles.loginButton} textStyle={styles.loginBtnTextStyle}  title={`Login`}/>
 	  }

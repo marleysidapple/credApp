@@ -15,7 +15,7 @@ class Loandetail extends Component {
 		    title: <Text style={styles.textHeader}>OVERVIEW</Text>,
 		    headerStyle : {
 		    	backgroundColor: "#FF9F1C",
-		    	height: 90,
+		    	//height: 90,
 		    },
 			navigationOptions: {
 	          tabBarVisible: false,
