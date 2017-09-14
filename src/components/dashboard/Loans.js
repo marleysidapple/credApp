@@ -20,6 +20,7 @@ class Loans extends Component {
 	async componentWillMount(){
 		this.props.fetchAvailableLoans(this.props.token);
 		this.createDataSource(this.props);
+	
 		try {
 			  const token = await AsyncStorage.getItem('@auth:loginToken');
 			  if (token !== null){
@@ -28,6 +29,7 @@ class Loans extends Component {
 			} catch (error) {
 			  // Error retrieving data
 			}
+	
 	}
 
 	componentWillReceiveProps(nextProps){

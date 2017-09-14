@@ -22,9 +22,9 @@ class Notification extends Component {
 
 
 	render(){
-		return(
-			<View>
-				<Text>This is Notification</Text>
+		return( 
+			<View style={styles.notificationWrapper}>
+				
 			</View>
 		);
 	}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 		color: '#eee',
 		fontWeight: '500',
 		fontSize: 20,
-		letterSpacing: 4
+		letterSpacing: 3
 	}
 });
 
