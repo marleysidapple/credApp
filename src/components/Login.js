@@ -4,6 +4,7 @@ import Input from './../elements/Input';
 import { handleLoginForm, validateLoginCredential } from './../actions/Authentication';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
+import PropTypes from 'prop-types';
 
 class Login extends Component {
 	constructor(props){

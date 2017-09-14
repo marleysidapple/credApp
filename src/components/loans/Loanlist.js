@@ -4,6 +4,7 @@ import { Icon, Button, Avatar } from 'react-native-elements';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import Moment from 'react-moment';
 import { NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 
 class Loanlist extends Component {
 

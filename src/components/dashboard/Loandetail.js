@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Avatar, Icon } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
+import PropTypes from 'prop-types';
 
 class Loandetail extends Component {
 
