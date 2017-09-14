@@ -7,7 +7,7 @@ import { validateLoginCredential } from './../../actions/Authentication';
 import { fetchAvailableLoans } from './../../actions/Myloan';
 import Loanlist from './../loans/Loanlist';
 import { SearchBar, Icon, ButtonGroup } from 'react-native-elements';
-
+import PropTypes from 'prop-types';
 
 
 
@@ -64,7 +64,7 @@ class Loans extends Component {
 				{/*<SearchBar round containerStyle={styles.searchContainerStyle} inputStyle={styles.inputContainerStyle} placeholder='Search Loans..' />*/}
 				{
 					(!this.props.loading) ?
-						<ListView enableEmptySections dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <Loanlist row={rowID} loan={data} navigation={this.props.navigation} loading={this.props.loading} />} />
+						<ListView enableEmptySections  initialListSize={10} dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <Loanlist row={rowID} loan={data} navigation={this.props.navigation} loading={this.props.loading} />} />
 					: <ActivityIndicator size={'small'} />
 				}
 			</View>
