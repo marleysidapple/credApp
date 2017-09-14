@@ -47,6 +47,7 @@ const DashboardTabsCollection = TabNavigator({
 },
 
 {
+  lazy: true,
   initialRouteName: 'Loans',
   tabBarOptions: {
     labelStyle: {
