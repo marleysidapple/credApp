@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 
@@ -25,8 +25,12 @@ class LoanbuilderStepOne extends Component {
 
 	render(){
 		return(
-			<View>
-				<Text>This is loan builder step one</Text>
+			<View style={styles.stepOneWrapper}>
+				<Image source={require('./../../../assets/images/builder/borrow.png')} resizeMode={'contain'} style={styles.borrowAndLend}/>
+				
+				<Text>LEND</Text>
+				<Image source={require('./../../../assets/images/builder/lend.png')}  resizeMode={'contain'} style={styles.borrowAndLend}/>
+
 			</View>
 		);
 	}
@@ -42,6 +46,17 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		letterSpacing: 4
 	},
+
+	stepOneWrapper: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+
+	borrowAndLend: {
+		width: 200,
+		height: 200
+	}
 
 });
 
