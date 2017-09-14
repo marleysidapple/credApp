@@ -26,10 +26,15 @@ class LoanbuilderStepOne extends Component {
 	render(){
 		return(
 			<View style={styles.stepOneWrapper}>
-				<Image source={require('./../../../assets/images/builder/borrow.png')} resizeMode={'contain'} style={styles.borrowAndLend}/>
-				
-				<Text>LEND</Text>
-				<Image source={require('./../../../assets/images/builder/lend.png')}  resizeMode={'contain'} style={styles.borrowAndLend}/>
+				<View style={styles.borrower}>
+					<Image source={require('./../../../assets/images/builder/borrow.png')} resizeMode={'contain'} style={styles.borrowAndLend}/>
+					<Text style={styles.loanTypeStyle}>BORROW</Text>
+				</View>
+
+				<View style={styles.lender}>
+					<Text style={styles.loanTypeStyle}>LEND</Text>
+					<Image source={require('./../../../assets/images/builder/lend.png')}  resizeMode={'contain'} style={styles.borrowAndLend}/>
+				</View>
 
 			</View>
 		);
@@ -54,8 +59,28 @@ const styles = StyleSheet.create({
 	},
 
 	borrowAndLend: {
-		width: 200,
-		height: 200
+		margin: 0,
+		padding: 0,
+		width: 100,
+		height: 100
+	},
+
+	borrower: {
+		alignItems: 'center',
+		justifyContent: 'center',	
+	},
+
+	lender: {
+		marginTop: 60,
+		alignItems: 'center',
+		justifyContent: 'center',	
+	},
+
+	loanTypeStyle: {
+		fontFamily: 'open-sans', 
+		color: '#25ADE4',
+		fontSize: 18,
+		letterSpacing: 4
 	}
 
 });
