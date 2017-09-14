@@ -4,6 +4,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Loans from './../components/dashboard/Loans';
 import Profile from './../components/dashboard/Profile';
+import Notification from './../components/dashboard/Notification';
 
 //loan builder steps
 import Loanroutes from './Loanroutes';
@@ -27,11 +28,10 @@ const DashboardTabsCollection = TabNavigator({
   },
 
   Notification: {
-    screen: Profile,
+    screen: Notification,
     navigationOptions: {
-    	title: 'Notification',
+    	//title: 'Notification',
     	tabBarIcon: ({ tintColor }) => <Icon name="contacts" size={25} color={tintColor} />,
-    	headerLeft: null,
      // headerRight: <Button title="Add"></Button>,
     }
   },

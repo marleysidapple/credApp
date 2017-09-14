@@ -46,7 +46,7 @@ class Loans extends Component {
 		    title: <Text style={styles.textHeader}>MY LOANS</Text>,
 		    headerStyle : {
 		    	backgroundColor: "#FF9F1C",
-		    	height: 90,
+		    	height: 70,
 		    },
 		  	headerLeft: null,
 		  	headerRight: null
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 	},
 
 	buttonGroupStyle: {
-		height: 50
+		height: 80,
 	},
 
 	inputContainerStyle: {
