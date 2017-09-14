@@ -11,8 +11,8 @@ class Notification extends Component {
 	}
 
 
-	componentDidMount(){
-		console.log('fetch alert');
+	componentWillMount(){
+		console.log('oasd');
 	}
 
 	 static navigationOptions = ({ navigation }) => ({
