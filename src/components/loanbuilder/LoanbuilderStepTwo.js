@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon,  FormLabel, FormInput } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 
 
@@ -27,7 +27,10 @@ class LoanbuilderStepTwo extends Component {
 	render(){
 		return(
 			<View style={styles.stepOneWrapper}>
-				<Text>Loan builder step two</Text>
+				<View style={styles.formGroup}>
+					<FormLabel fontFamily={'open-sans'}>Title</FormLabel>
+					<FormInput containerStyle={styles.inputStyle}/>
+				</View>
 			</View>
 		);
 	}
@@ -46,34 +49,17 @@ const styles = StyleSheet.create({
 
 	stepOneWrapper: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center'
 	},
 
-	borrowAndLend: {
-		margin: 0,
-		padding: 0,
-		width: 100,
-		height: 100
+	formGroup: {
+		flex: 1,
+		flexDirection: 'row'
 	},
 
-	borrower: {
-		alignItems: 'center',
-		justifyContent: 'center',	
-	},
-
-	lender: {
-		marginTop: 60,
-		alignItems: 'center',
-		justifyContent: 'center',	
-	},
-
-	loanTypeStyle: {
-		fontFamily: 'open-sans', 
-		color: '#25ADE4',
-		fontSize: 18,
-		letterSpacing: 5
+	inputStyle: {
+		borderColor: 'black'
 	}
+
 
 });
 
