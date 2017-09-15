@@ -9,11 +9,12 @@ class LoanbuilderStepOne extends Component {
 		super(props);
 	}
 
+
 	static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>BUILD</Text>,
 		    headerStyle : {
 		    	backgroundColor: "#25ADE4",
-		    	//height: 90,
+		    	height: 90,
 		    },
 			navigationOptions: {
 	          tabBarVisible: false,
