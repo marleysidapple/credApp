@@ -8,6 +8,7 @@ import Loandetail from './../components/dashboard/Loandetail';
 
 //steps for building loan
 import LoanbuilderStepOne from './../components/loanbuilder/LoanbuilderStepOne';
+import LoanbuilderStepTwo from './../components/loanbuilder/LoanbuilderStepTwo';
 
 
 const Loanroutes = StackNavigator({
@@ -23,6 +24,10 @@ const Loanroutes = StackNavigator({
     
      LoanBuilderStepOne: {
         screen: LoanbuilderStepOne,
+      },
+
+      LoanBuilderStepTwo: {
+        screen: LoanbuilderStepTwo,
       },
 },
 {

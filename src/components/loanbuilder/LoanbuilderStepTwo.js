@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation';
 
 
-class LoanbuilderStepOne extends Component {
+class LoanbuilderStepTwo extends Component {
 
 	constructor(props){
 		super(props);
 	}
 
 	static navigationOptions = ({ navigation }) => ({
-		    title: <Text style={styles.textHeader}>BUILD</Text>,
+		    title: <Text style={styles.textHeader}>DETAILS</Text>,
 		    headerStyle : {
 		    	backgroundColor: "#25ADE4",
 		    	//height: 90,
@@ -19,23 +20,14 @@ class LoanbuilderStepOne extends Component {
 	          tabBarVisible: false,
 	        },
 		  
-		    headerLeft: <TouchableOpacity onPress={() => {navigation.dispatch(NavigationActions.navigate({routeName: 'LoanList'}))}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='arrow-left' type='material-community' color='#fff' size={25}/></TouchableOpacity>,
+		    headerLeft: <TouchableOpacity onPress={() => {navigation.dispatch(NavigationActions.navigate({routeName: 'LoanBuilderStepOne'}))}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='arrow-left' type='material-community' color='#fff' size={25}/></TouchableOpacity>,
 		  	headerRight: null
 	});
 
 	render(){
 		return(
 			<View style={styles.stepOneWrapper}>
-				<TouchableOpacity style={styles.borrower} onPress={() => this.props.navigation.navigate('LoanBuilderStepTwo')}>
-					<Image source={require('./../../../assets/images/builder/borrow.png')} resizeMode={'contain'} style={styles.borrowAndLend}/>
-					<Text style={styles.loanTypeStyle}>BORROW</Text>
-				</TouchableOpacity>
-
-				<TouchableOpacity style={styles.lender} onPress={() => this.props.navigation.navigate('LoanBuilderStepTwo')}>
-					<Text style={styles.loanTypeStyle}>LEND</Text>
-					<Image source={require('./../../../assets/images/builder/lend.png')}  resizeMode={'contain'} style={styles.borrowAndLend}/>
-				</TouchableOpacity>
-
+				<Text>Loan builder step two</Text>
 			</View>
 		);
 	}
@@ -85,4 +77,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoanbuilderStepOne;
+export default LoanbuilderStepTwo;
