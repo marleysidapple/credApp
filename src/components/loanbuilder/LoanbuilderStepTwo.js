@@ -9,7 +9,8 @@ class LoanbuilderStepTwo extends Component {
 	constructor(props){
 		super(props);
 		 this.state = {
-            date: new Date(),
+           // date: ''new Date(),
+           date: ''
         }
 	}
 
@@ -49,10 +50,10 @@ class LoanbuilderStepTwo extends Component {
 
 				<View style={styles.formGroup}>
 					  <DatePicker
-					        style={{width: 200}}
+					        style={styles.datePicker}
 					        date={this.state.date}
 					        mode="date"
-					        placeholder="select date"
+					        placeholder="Select Loan Start Date"
 					        format="YYYY-MM-DD"
 					        minDate="2016-05-01"
 					        maxDate="2016-06-01"
@@ -66,7 +67,8 @@ class LoanbuilderStepTwo extends Component {
 					            marginLeft: 0
 					          },
 					          dateInput: {
-					            marginLeft: 36
+					          	borderWidth: 0,
+
 					          }
 					        }}
 					        onDateChange={(date) => {this.setState({date: date})}}
@@ -127,8 +129,6 @@ const styles = StyleSheet.create({
 
 	datePicker: {
 		flex: 1,
-		height: 40,
-		//flex: 1,
 	}
 
 
