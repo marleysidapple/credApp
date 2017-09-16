@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, DatePickerIOS } from 'react-native';
 import { Icon,  FormLabel, FormInput, Divider } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
-
+import DatePicker from 'react-native-datepicker'
 
 class LoanbuilderStepTwo extends Component {
 
@@ -48,11 +48,29 @@ class LoanbuilderStepTwo extends Component {
 
 
 				<View style={styles.formGroup}>
-					  <DatePickerIOS
-		                style={styles.datePicker}
-		                date={this.state.date} onDateChange={(date)=>this.setState({date})}
-		                minimumInterval = "1"
-		                mode="date"/> 
+					  <DatePicker
+					        style={{width: 200}}
+					        date={this.state.date}
+					        mode="date"
+					        placeholder="select date"
+					        format="YYYY-MM-DD"
+					        minDate="2016-05-01"
+					        maxDate="2016-06-01"
+					        confirmBtnText="Confirm"
+					        cancelBtnText="Cancel"
+					        customStyles={{
+					          dateIcon: {
+					            position: 'absolute',
+					            left: 0,
+					            top: 4,
+					            marginLeft: 0
+					          },
+					          dateInput: {
+					            marginLeft: 36
+					          }
+					        }}
+					        onDateChange={(date) => {this.setState({date: date})}}
+					      />
 				</View>
 				<Divider style={styles.divider} />
 
@@ -78,6 +96,7 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		flexDirection: 'row',
 	},
+
 
 
 	formLabelStyle: {
@@ -108,6 +127,7 @@ const styles = StyleSheet.create({
 
 	datePicker: {
 		flex: 1,
+		height: 40,
 		//flex: 1,
 	}
 
