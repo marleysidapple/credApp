@@ -49,8 +49,9 @@ class LoanbuilderStepTwo extends Component {
 
 				<View style={styles.formGroup}>
 					  <DatePickerIOS
-		                style={{ flex: 1, height: 20 }}
+		                style={styles.datePicker}
 		                date={this.state.date} onDateChange={(date)=>this.setState({date})}
+		                minimumInterval = "1"
 		                mode="date"/> 
 				</View>
 				<Divider style={styles.divider} />
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		flexDirection: 'row',
 	},
+
 
 	formLabelStyle: {
 		color: '#333333',
@@ -105,7 +107,8 @@ const styles = StyleSheet.create({
 	},
 
 	datePicker: {
-		height: 50,
+		flex: 1,
+		//flex: 1,
 	}
 
 
