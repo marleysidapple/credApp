@@ -46,14 +46,14 @@ class LoanBuilderStepThree extends Component {
 					<ModalSelector
 	                    data={data}
 	                    initValue="Interest %"
-	                    sectionTextStyle={{fontFamily: 'open-sans'}}
-	                    optionTextStyle={{fontFamily: 'open-sans'}}
+	                    sectionTextStyle={styles.selectStyle}
+	                    optionTextStyle={styles.selectStyle}
 	                    cancelStyle={{padding: 10}}
 	                    supportedOrientations={['portrait']}
 	                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
 						<View style={styles.formGroup}>
 							<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Interest Type</FormLabel>
-							<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Interest %'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+							<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Interest %'} value={'Interest %'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
 						</View>
 					</ModalSelector>
 				</View>
@@ -115,6 +115,11 @@ const styles = StyleSheet.create({
 		height: 0.5,
 		margin: 12,
 	},
+
+	selectStyle: {
+		fontFamily: 'open-sans', 
+		letterSpacing: 1
+	}
 
 });
 
