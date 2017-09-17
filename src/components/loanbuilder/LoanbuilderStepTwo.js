@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, DatePickerIOS } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, DatePickerIOS, Keyboard } from 'react-native';
 import { Icon,  FormLabel, FormInput, Divider } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import DatePicker from 'react-native-datepicker'
@@ -37,13 +37,13 @@ class LoanbuilderStepTwo extends Component {
 			<View style={styles.stepOneWrapper}>
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Title</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} placeholder={'Give it a friendly title'}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} onBlur={() => Keyboard.dismiss()} placeholder={'Give it a friendly title'}/>
 				</View>
 				<Divider style={styles.divider} />
 
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Total Loan Amount</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} placeholder={'$200'}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} keyboardType={'numeric'} placeholder={'$200'} onBlur={() => Keyboard.dismiss()}/>
 				</View>
 				<Divider style={styles.divider} />
 
@@ -55,14 +55,14 @@ class LoanbuilderStepTwo extends Component {
 					        mode="date"
 					        placeholder="Select Loan Start Date"
 					        format="YYYY-MM-DD"
-					        minDate="2016-05-01"
-					        maxDate="2016-06-01"
+					        minDate="2015-05-01"
+					        maxDate="2019-06-01"
 					        confirmBtnText="Confirm"
 					        cancelBtnText="Cancel"
 					        customStyles={{
 					          dateIcon: {
 					            position: 'absolute',
-					            left: 0,
+					            left: 8,
 					            top: 4,
 					            marginLeft: 0
 					          },
@@ -95,8 +95,9 @@ const styles = StyleSheet.create({
 
 
 	formGroup: {
-		marginTop: 20,
+		margin: 20,
 		flexDirection: 'row',
+
 	},
 
 
