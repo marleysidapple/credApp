@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, ScrollView, Picker } from 'react-native';
 import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import DatePicker from 'react-native-datepicker'
@@ -30,6 +30,17 @@ class LoanBuilderStepThree extends Component {
 	render(){
 		return(
 			<ScrollView>
+
+				<View style={styles.formGroup}>
+					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Interest Type</FormLabel>
+					<Picker style={{height: 50, width: 50, flex: 1, justifyContent: 'center'}} triggerType="onClick">
+					  <Picker.Item label="Annual Interest(%)" value="java" />
+					  <Picker.Item label="Flat Fee" value="js" />
+					</Picker>
+				</View>
+
+				
+
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Annual Interest(%)</FormLabel>
 					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Give it a friendly title'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
