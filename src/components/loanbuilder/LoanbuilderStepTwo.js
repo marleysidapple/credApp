@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, DatePickerIOS, Keyboard } from 'react-native';
-import { Icon,  FormLabel, FormInput, Divider } from 'react-native-elements';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, DatePickerIOS, Keyboard } from 'react-native';
+import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import DatePicker from 'react-native-datepicker'
 
@@ -13,6 +13,7 @@ class LoanbuilderStepTwo extends Component {
            date: ''
         }
 	}
+
 
 	static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>DETAILS</Text>,
@@ -34,16 +35,22 @@ class LoanbuilderStepTwo extends Component {
 
 	render(){
 		return(
-			<View style={styles.stepOneWrapper}>
+			<ScrollView style={styles.stepOneWrapper}>
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Title</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} onBlur={() => Keyboard.dismiss()} placeholder={'Give it a friendly title'}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Give it a friendly title'} returnKeyType={'next'} onSubmitEditing={()=>Keyboard.dismiss()}/>
 				</View>
 				<Divider style={styles.divider} />
 
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Total Loan Amount</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} keyboardType={'numeric'} placeholder={'$200'} onBlur={() => Keyboard.dismiss()}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} keyboardType={'numeric'} placeholder={'$200'} returnKeyType={'next'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+				</View>
+				<Divider style={styles.divider} />
+
+				<View style={styles.formGroup}>
+					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Description</FormLabel>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Loan Description'} onSubmitEditing={()=>Keyboard.dismiss()}  returnKeyType={'next'} />
 				</View>
 				<Divider style={styles.divider} />
 
@@ -53,7 +60,7 @@ class LoanbuilderStepTwo extends Component {
 					        style={styles.datePicker}
 					        date={this.state.date}
 					        mode="date"
-					        placeholder="Select Loan Start Date"
+					        placeholder={'Loan Start Date'}
 					        format="YYYY-MM-DD"
 					        minDate="2015-05-01"
 					        maxDate="2019-06-01"
@@ -62,13 +69,15 @@ class LoanbuilderStepTwo extends Component {
 					        customStyles={{
 					          dateIcon: {
 					            position: 'absolute',
-					            left: 8,
+					            left: 10,
 					            top: 4,
 					            marginLeft: 0
 					          },
 					          dateInput: {
 					          	borderWidth: 0,
-
+					          },
+					          placeholderText: {
+					          	fontFamily: 'open-sans'
 					          }
 					        }}
 					        onDateChange={(date) => {this.setState({date: date})}}
@@ -77,7 +86,17 @@ class LoanbuilderStepTwo extends Component {
 				<Divider style={styles.divider} />
 
 
-			</View>
+				<View style={styles.stepAction}>
+					<Button
+					  fontFamily='open-sans'
+					  backgroundColor= '#25ADE4'
+					  onPress={() => this.props.navigation.navigate('LoanBuilderStepThree')}
+					  raised
+					  title='NEXT' />
+				</View>
+
+
+			</ScrollView>
 		);
 	}
 
@@ -123,15 +142,20 @@ const styles = StyleSheet.create({
 	},
 
 	divider: {
-		backgroundColor: '#a39f9f',
+		backgroundColor: '#a8a6a6',
 		height: 0.5,
 		margin: 15,
 	},
 
 	datePicker: {
 		flex: 1,
-	}
+	},
 
+	stepAction: {
+		padding: 10,
+		flex: 1,
+		
+	},
 
 });
 
