@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, ScrollView, Picker, Dimensions, Animated } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, ScrollView, Picker, Modal } from 'react-native';
 import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
-import DatePicker from 'react-native-datepicker'
-
+import DatePicker from 'react-native-datepicker';
+import ModalSelector from 'react-native-modal-selector';
 
 
 class LoanBuilderStepThree extends Component {
 
 	constructor(props){
 		super(props);
+		this.state = {
+			showModal: false
+		}
 	}
+
 
 
 	static navigationOptions = ({ navigation }) => ({
@@ -28,18 +32,33 @@ class LoanBuilderStepThree extends Component {
 	});
 
 	render(){
+
+		const data = [
+			{key: 1, section: true, label: 'Interest/Flat fee'},
+			{key: 2, label: 'Interest % '},
+			{key: 3, label: 'Flat Fee'},
+		];
+
 		return(
 			<ScrollView>
 
-				<View style={styles.formGroup}>
-					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Interest Type</FormLabel>
-					<Picker style={{height: 50, width: 50, flex: 1, justifyContent: 'center'}} triggerType="onClick">
-					  <Picker.Item label="Annual Interest(%)" value="java" />
-					  <Picker.Item label="Flat Fee" value="js" />
-					</Picker>
+				<View>
+					<ModalSelector
+	                    data={data}
+	                    initValue="Interest %"
+	                    sectionTextStyle={{fontFamily: 'open-sans'}}
+	                    optionTextStyle={{fontFamily: 'open-sans'}}
+	                    cancelStyle={{padding: 10}}
+	                    supportedOrientations={['portrait']}
+	                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
+						<View style={styles.formGroup}>
+							<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Interest Type</FormLabel>
+							<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Interest %'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+						</View>
+					</ModalSelector>
 				</View>
-
 				
+				<Divider style={styles.divider} />
 
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Annual Interest(%)</FormLabel>
