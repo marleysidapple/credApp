@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, DatePickerIOS, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Keyboard } from 'react-native';
 import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import DatePicker from 'react-native-datepicker'
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 	divider: {
 		backgroundColor: '#a8a6a6',
 		height: 0.5,
-		margin: 15,
+		margin: 12,
 	},
 
 	datePicker: {

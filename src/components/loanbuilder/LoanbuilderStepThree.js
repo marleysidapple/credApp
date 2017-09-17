@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Text, View, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
+import DatePicker from 'react-native-datepicker'
 
 
 
@@ -28,9 +29,14 @@ class LoanBuilderStepThree extends Component {
 
 	render(){
 		return(
-			<View>
-				<Text>This is step three</Text>
-			</View>
+			<ScrollView>
+				<View style={styles.formGroup}>
+					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Annual Interest(%)</FormLabel>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Give it a friendly title'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+				</View>
+				<Divider style={styles.divider} />
+
+			</ScrollView>
 		);
 	}
 
@@ -44,6 +50,40 @@ const styles = StyleSheet.create({
 		fontWeight: '500',
 		fontSize: 20,
 		letterSpacing: 4
+	},
+
+	formGroup: {
+		margin: 20,
+		flexDirection: 'row',
+
+	},
+
+
+
+	formLabelStyle: {
+		color: '#333333',
+		fontSize: 14,
+		letterSpacing: 1
+	},
+
+	inputContainerStyle: {
+		flex: 1,
+		borderBottomWidth: 0,
+		marginTop: 8,
+		borderColor: 'black'
+	},
+
+	inputStyle: {
+		fontFamily: 'open-sans',
+		alignItems: 'flex-start',
+		fontSize: 14,
+		color: '#333333'
+	},
+
+	divider: {
+		backgroundColor: '#a8a6a6',
+		height: 0.5,
+		margin: 12,
 	},
 
 });

@@ -22,7 +22,6 @@ const Loanroutes = StackNavigator({
     	screen: Loandetail,
     },
 
-    
      LoanBuilderStepOne: {
         screen: LoanbuilderStepOne,
       },
