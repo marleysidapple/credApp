@@ -38,7 +38,6 @@ class LoanBuilderStepThree extends Component {
 
 		return(
 			<ScrollView>
-
 				<View>
 					<ModalSelector
 	                    data={data}
@@ -59,10 +58,30 @@ class LoanBuilderStepThree extends Component {
 
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Annual Interest(%)</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Give it a friendly title'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'e.g 5%'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
 				</View>
 				<Divider style={styles.divider} />
+				
+				<View style={styles.formGroup}>
+					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Loan Term</FormLabel>
+					
+					<View style={styles.customInputStyle}>
+						<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+						<ModalSelector
+		                    data={data}
+		                    initValue="Interest %"
+		                    sectionTextStyle={styles.selectStyle}
+		                    optionTextStyle={styles.selectStyle}
+		                    cancelStyle={{padding: 10}}
+		                    supportedOrientations={['portrait']}
+		                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
+								<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+						</ModalSelector>
+					</View>
+				</View>
 
+
+				<Divider style={styles.divider} />
 			</ScrollView>
 		);
 	}
@@ -84,7 +103,6 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 
 	},
-
 
 
 	formLabelStyle: {
