@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Keyboard }
 import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import DatePicker from 'react-native-datepicker'
+import { CARD_STYLE } from './../../../assets/css/common';
+
 
 class LoanbuilderStepTwo extends Component {
 
@@ -35,7 +37,7 @@ class LoanbuilderStepTwo extends Component {
 
 	render(){
 		return(
-			<ScrollView style={styles.stepOneWrapper}>
+			<ScrollView contentContainerStyle={ CARD_STYLE }>
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Title</FormLabel>
 					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Give it a friendly title'} returnKeyType={'next'} onSubmitEditing={()=>Keyboard.dismiss()}/>
@@ -104,6 +106,7 @@ class LoanbuilderStepTwo extends Component {
 
 
 const styles = StyleSheet.create({
+	
 	textHeader: {
 		fontFamily: 'open-sans-bold', 
 		color: '#eee',
@@ -112,13 +115,11 @@ const styles = StyleSheet.create({
 		letterSpacing: 4
 	},
 
-
 	formGroup: {
-		margin: 20,
+		margin: 15,
 		flexDirection: 'row',
 
 	},
-
 
 
 	formLabelStyle: {
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
 	inputContainerStyle: {
 		flex: 1,
 		borderBottomWidth: 0,
-		marginTop: 8,
+		marginTop: 4,
 		borderColor: 'black'
 	},
 
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
 	divider: {
 		backgroundColor: '#a8a6a6',
 		height: 0.5,
-		margin: 12,
+		margin: 8,
 	},
 
 	datePicker: {

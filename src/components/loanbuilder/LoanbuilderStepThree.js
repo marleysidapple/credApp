@@ -4,6 +4,7 @@ import { Icon,  FormLabel, FormInput, Divider, Button } from 'react-native-eleme
 import { NavigationActions } from 'react-navigation';
 import DatePicker from 'react-native-datepicker';
 import ModalSelector from 'react-native-modal-selector';
+import { CARD_STYLE } from './../../../assets/css/common';
 
 
 class LoanBuilderStepThree extends Component {
@@ -37,7 +38,7 @@ class LoanBuilderStepThree extends Component {
 		];
 
 		return(
-			<ScrollView>
+			<ScrollView style={styles.cardStyle}>
 				<View>
 					<ModalSelector
 	                    data={data}
@@ -66,7 +67,7 @@ class LoanBuilderStepThree extends Component {
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Loan Term</FormLabel>
 					
 					<View style={styles.customInputStyle}>
-						<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+							   <FormInput containerStyle={styles.inputContainerStyleForTerm}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
 						<ModalSelector
 		                    data={data}
 		                    initValue="Interest %"
@@ -75,7 +76,7 @@ class LoanBuilderStepThree extends Component {
 		                    cancelStyle={{padding: 10}}
 		                    supportedOrientations={['portrait']}
 		                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
-								<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+								<FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
 						</ModalSelector>
 					</View>
 				</View>
@@ -90,6 +91,17 @@ class LoanBuilderStepThree extends Component {
 
 
 const styles = StyleSheet.create({
+	
+	cardStyle: {
+		borderWidth: 0,
+		margin: 4,
+		borderRadius: 2,
+		backgroundColor:'#fff',
+		elevation: 5,
+		flex: 1
+  
+	},
+
 	textHeader: {
 		fontFamily: 'open-sans-bold', 
 		color: '#eee',
@@ -99,11 +111,25 @@ const styles = StyleSheet.create({
 	},
 
 	formGroup: {
+		flex: 1,
 		margin: 20,
 		flexDirection: 'row',
 
 	},
 
+	customInputStyle: {
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+		//backgroundColor: 'blue',
+	},
+
+	inputContainerStyleForDuration: {
+		borderBottomWidth: 0,
+		marginTop: 8,
+		justifyContent: 'center',
+		
+	},
 
 	formLabelStyle: {
 		color: '#333333',
@@ -115,7 +141,14 @@ const styles = StyleSheet.create({
 		flex: 1,
 		borderBottomWidth: 0,
 		marginTop: 8,
-		borderColor: 'black'
+		borderColor: 'black',
+	},
+
+	inputContainerStyleForTerm: {
+		flex: 1,
+		borderBottomWidth: 0,
+		marginTop: 8,
+		borderColor: 'black',
 	},
 
 	inputStyle: {

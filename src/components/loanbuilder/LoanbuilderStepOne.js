@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { Icon } from 'react-native-elements';
-
+import { CARD_STYLE } from './../../../assets/css/common';
 
 class LoanbuilderStepOne extends Component {
 
@@ -26,7 +26,7 @@ class LoanbuilderStepOne extends Component {
 
 	render(){
 		return(
-			<View style={styles.stepOneWrapper}>
+			<ScrollView contentContainerStyle={styles.cardStyle}>
 				<TouchableOpacity style={styles.borrower} onPress={() => this.props.navigation.navigate('LoanBuilderStepTwo')}>
 					<Image source={require('./../../../assets/images/builder/borrow.png')} resizeMode={'contain'} style={styles.borrowAndLend}/>
 					<Text style={styles.loanTypeStyle}>BORROW</Text>
@@ -37,7 +37,7 @@ class LoanbuilderStepOne extends Component {
 					<Image source={require('./../../../assets/images/builder/lend.png')}  resizeMode={'contain'} style={styles.borrowAndLend}/>
 				</TouchableOpacity>
 
-			</View>
+			</ScrollView>
 		);
 	}
 
@@ -53,10 +53,15 @@ const styles = StyleSheet.create({
 		letterSpacing: 4
 	},
 
-	stepOneWrapper: {
-		flex: 1,
+	cardStyle: {
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		flex: 1,
+		borderWidth: 0,
+		margin: 4,
+		borderRadius: 2,
+		backgroundColor:'#fff',
+		elevation: 5
 	},
 
 	borrowAndLend: {
