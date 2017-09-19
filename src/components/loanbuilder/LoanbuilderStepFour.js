@@ -42,7 +42,7 @@ class LoanbuilderStepFour extends Component {
 
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Balloon Amount</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} keyboardType={'numeric'} placeholder={'Add Balloon Amount'} returnKeyType={'next'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} keyboardType={'numeric'} placeholder={'Add Balloon Amount'} returnKeyType={'done'} onSubmitEditing={()=>Keyboard.dismiss()}/>
 				</View>
 				<Divider style={styles.divider} />
 
@@ -55,7 +55,7 @@ class LoanbuilderStepFour extends Component {
 
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Special Condition</FormLabel>
-					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} multiline={true}  placeholder={'Add Special Condition'} returnKeyType={'next'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+					<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle} multiline={true}  placeholder={'Add Special Condition'} returnKeyType={'done'} onSubmitEditing={()=>Keyboard.dismiss()}/>
 				</View>
 				<Divider style={styles.divider} />
 
@@ -63,12 +63,14 @@ class LoanbuilderStepFour extends Component {
 
 
 				<View style={styles.stepAction}>
-					<Button
-					  fontFamily='open-sans'
-					  backgroundColor= '#25ADE4'
-					  onPress={() => this.props.navigation.navigate('LoanBuilderStepThree')}
-					  raised
-					  title='NEXT' />
+					<TouchableOpacity>
+						<Button
+						  fontFamily='open-sans'
+						  backgroundColor= '#25ADE4'
+						  onPress={() => this.props.navigation.navigate('LoanBuilderStepThree')}
+						  raised
+						  title='NEXT' />
+					  </TouchableOpacity>
 				</View>
 
 
