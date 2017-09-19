@@ -65,9 +65,23 @@ class LoanBuilderStepThree extends Component {
 				
 				<View style={styles.formGroup}>
 					<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Loan Term</FormLabel>
+					<FormInput containerStyle={styles.inputContainerStyleForTerm}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>	
 					
-					<View style={styles.customInputStyle}>
-							   <FormInput containerStyle={styles.inputContainerStyleForTerm}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
+					<ModalSelector
+		                    data={data}
+		                    initValue="Interest %"
+		                    sectionTextStyle={styles.selectStyle}
+		                    optionTextStyle={styles.selectStyle}
+		                    cancelStyle={{padding: 10}}
+		                    supportedOrientations={['portrait']}
+		                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
+		                    <FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+		            </ModalSelector>
+
+
+					{/*
+							<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Loan Term</FormLabel>
+							 <FormInput containerStyle={styles.inputContainerStyleForTerm}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
 						<ModalSelector
 		                    data={data}
 		                    initValue="Interest %"
@@ -78,7 +92,7 @@ class LoanBuilderStepThree extends Component {
 		                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
 								<FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
 						</ModalSelector>
-					</View>
+					*/}
 				</View>
 
 
@@ -114,27 +128,25 @@ const styles = StyleSheet.create({
 		flex: 1,
 		margin: 20,
 		flexDirection: 'row',
-
 	},
 
 	customInputStyle: {
 		flex: 1,
 		flexDirection: 'row',
-		justifyContent: 'space-between'
-		//backgroundColor: 'blue',
 	},
 
 	inputContainerStyleForDuration: {
+		flex: 1,
 		borderBottomWidth: 0,
 		marginTop: 8,
-		justifyContent: 'center',
 		
 	},
 
 	formLabelStyle: {
+		flex: 1,
 		color: '#333333',
 		fontSize: 14,
-		letterSpacing: 1
+		letterSpacing: 1,
 	},
 
 	inputContainerStyle: {
@@ -149,13 +161,13 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 0,
 		marginTop: 8,
 		borderColor: 'black',
+
 	},
 
 	inputStyle: {
 		fontFamily: 'open-sans',
-		alignItems: 'flex-start',
 		fontSize: 14,
-		color: '#333333'
+		color: '#333333',
 	},
 
 	divider: {
@@ -167,6 +179,22 @@ const styles = StyleSheet.create({
 	selectStyle: {
 		fontFamily: 'open-sans', 
 		letterSpacing: 1
+	},
+
+	whicha: {
+		flex: 1,
+		backgroundColor: 'blue'
+	},
+
+	whichb: {
+		flex: 1,
+		backgroundColor: 'yellow'
+	},
+
+	whichc: {
+		textAlign: 'center',
+		flex: 2,
+		backgroundColor: 'red'
 	}
 
 });

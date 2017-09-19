@@ -23,8 +23,8 @@ class App extends Component {
 
   async componentDidMount() {
        await Font.loadAsync({
-        'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-        'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+        'open-sans': require('./assets/fonts/lato/Lato-Regular.ttf'),
+        'open-sans-bold': require('./assets/fonts/lato/Lato-Bold.ttf'),
       });
       this.setState({ fontLoaded: true });
     }
