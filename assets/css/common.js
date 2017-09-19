@@ -10,7 +10,7 @@ export const CARD_STYLE =  {
 		margin: 4,
 		borderRadius: 2,
 		backgroundColor:'#fff',
-		elevation: 5
+		elevation: 7
   
 	};
 

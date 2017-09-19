@@ -37,12 +37,20 @@ class LoanBuilderStepThree extends Component {
 			{key: 3, label: 'Flat Fee'},
 		];
 
+		const duration = [
+			{key: 1, section: true, label: 'Duration'},
+			{key: 2, label: 'Weeks'},
+			{key: 3, label: 'Fortnight'},
+			{key: 4, label: 'Months'},
+			{key: 5, label: 'Years'},
+		];
+
 		return(
 			<ScrollView style={styles.cardStyle}>
 				<View>
 					<ModalSelector
 	                    data={data}
-	                    initValue="Interest %"
+	                    initValue="Choose Interest Type"
 	                    sectionTextStyle={styles.selectStyle}
 	                    optionTextStyle={styles.selectStyle}
 	                    cancelStyle={{padding: 10}}
@@ -50,7 +58,7 @@ class LoanBuilderStepThree extends Component {
 	                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
 						<View style={styles.formGroup}>
 							<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Interest Type</FormLabel>
-							<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Interest %'} value={'Interest %'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+							<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Choose Interest Type'} value={''} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
 						</View>
 					</ModalSelector>
 				</View>
@@ -68,31 +76,16 @@ class LoanBuilderStepThree extends Component {
 					<FormInput containerStyle={styles.inputContainerStyleForTerm}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>	
 					
 					<ModalSelector
-		                    data={data}
+		                    data={duration}
+		                    style={styles.modalStyle}
 		                    initValue="Interest %"
 		                    sectionTextStyle={styles.selectStyle}
 		                    optionTextStyle={styles.selectStyle}
 		                    cancelStyle={{padding: 10}}
 		                    supportedOrientations={['portrait']}
 		                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
-		                    <FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+		                    <FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Choose Duration'}  returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
 		            </ModalSelector>
-
-
-					{/*
-							<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Loan Term</FormLabel>
-							 <FormInput containerStyle={styles.inputContainerStyleForTerm}  inputStyle={styles.inputStyle}  placeholder={'e.g. 1 year'} returnKeyType={'next'} keyboardType={'numeric'} onSubmitEditing={()=>Keyboard.dismiss()}/>
-						<ModalSelector
-		                    data={data}
-		                    initValue="Interest %"
-		                    sectionTextStyle={styles.selectStyle}
-		                    optionTextStyle={styles.selectStyle}
-		                    cancelStyle={{padding: 10}}
-		                    supportedOrientations={['portrait']}
-		                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
-								<FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Term'} value={'Month'} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
-						</ModalSelector>
-					*/}
 				</View>
 
 
@@ -124,6 +117,10 @@ const styles = StyleSheet.create({
 		letterSpacing: 4
 	},
 
+	modalStyle: {
+		flex: 2,
+	},
+
 	formGroup: {
 		flex: 1,
 		margin: 20,
@@ -139,6 +136,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		borderBottomWidth: 0,
 		marginTop: 8,
+		marginLeft: 10
 		
 	},
 
