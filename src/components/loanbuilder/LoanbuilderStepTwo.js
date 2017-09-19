@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 	},
 
 	formGroup: {
-		margin: 15,
+		margin: 20,
 		flexDirection: 'row',
 
 	},
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
 	},
 
 	divider: {
-		backgroundColor: '#a8a6a6',
+		backgroundColor: '#d3d1d1',
 		height: 0.5,
 		margin: 8,
 	},

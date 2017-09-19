@@ -45,6 +45,17 @@ class LoanBuilderStepThree extends Component {
 			{key: 5, label: 'Years'},
 		];
 
+		const frequency = [
+			{key: 1, section: true, label: 'Repayment Frequency'},
+			{key: 2, label: 'Weekly'},
+			{key: 3, label: 'Fortnightly'},
+			{key: 4, label: 'Quarterly'},
+			{key: 5, label: 'Semi Annually'},
+			{key: 6, label: 'Anually'},
+		];
+
+
+
 		return(
 			<ScrollView style={styles.cardStyle}>
 				<View>
@@ -87,9 +98,63 @@ class LoanBuilderStepThree extends Component {
 		                    <FormInput containerStyle={styles.inputContainerStyleForDuration}  inputStyle={styles.inputStyle}  placeholder={'Choose Duration'}  returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
 		            </ModalSelector>
 				</View>
-
-
 				<Divider style={styles.divider} />
+
+				<View style={styles.formGroup}>
+					  <DatePicker
+					        style={{flex: 1}}
+					        date={''}
+					        mode="date"
+					        placeholder={'First Repayment Date'}
+					        format="YYYY-MM-DD"
+					        minDate="2015-05-01"
+					        maxDate="2019-06-01"
+					        confirmBtnText="Confirm"
+					        cancelBtnText="Cancel"
+					        customStyles={{
+					          dateIcon: {
+					            position: 'absolute',
+					            left: 10,
+					            top: 4,
+					            marginLeft: 0
+					          },
+					          dateInput: {
+					          	borderWidth: 0,
+					          },
+					          placeholderText: {
+					          	fontFamily: 'open-sans'
+					          }
+					        }}
+					        onDateChange={(date) => {this.setState({date: date})}}
+					      />
+				</View>
+				<Divider style={styles.divider} />
+
+				<View>
+					<ModalSelector
+	                    data={frequency}
+	                    initValue="Choose Interest Type"
+	                    sectionTextStyle={styles.selectStyle}
+	                    optionTextStyle={styles.selectStyle}
+	                    cancelStyle={{padding: 10}}
+	                    supportedOrientations={['portrait']}
+	                    onChange={(option)=>{ this.setState({textInputValue:option.label})}} >
+						<View style={styles.formGroup}>
+							<FormLabel labelStyle={styles.formLabelStyle} fontFamily={'open-sans'}>Frequency</FormLabel>
+							<FormInput containerStyle={styles.inputContainerStyle}  inputStyle={styles.inputStyle}  placeholder={'Choose Repayment Frequency'} value={''} returnKeyType={'next'}  onSubmitEditing={()=>Keyboard.dismiss()}/>
+						</View>
+					</ModalSelector>
+				</View>
+				<Divider style={styles.divider} />
+
+				<View style={styles.stepAction}>
+					<Button
+					  fontFamily='open-sans'
+					  backgroundColor= '#25ADE4'
+					  onPress={() => this.props.navigation.navigate('LoanBuilderStepFour')}
+					  raised
+					  title='NEXT' />
+				</View>
 			</ScrollView>
 		);
 	}
@@ -123,7 +188,7 @@ const styles = StyleSheet.create({
 
 	formGroup: {
 		flex: 1,
-		margin: 20,
+		margin: 10,
 		flexDirection: 'row',
 	},
 
@@ -169,7 +234,7 @@ const styles = StyleSheet.create({
 	},
 
 	divider: {
-		backgroundColor: '#a8a6a6',
+		backgroundColor: '#d3d1d1',
 		height: 0.5,
 		margin: 12,
 	},
