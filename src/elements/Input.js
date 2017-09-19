@@ -19,7 +19,10 @@ class Input extends Component {
                                value={this.props.value}
                                onChangeText={this.props.onInputChange} 
                                placeholder={this.props.placeholder}
+                               keyboardType={this.props.keyboardType}
                                placeholderTextColor={'#fff'}
+                               returnKeyType={this.props.returnKeyType}  
+                               onSubmitEditing={()=>Keyboard.dismiss()}
                                secureTextEntry={this.props.secureTextEntry || false}
                                />
                   </View>

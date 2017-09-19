@@ -48,7 +48,7 @@ class Loans extends Component {
 		    title: <Text style={styles.textHeader}>MY LOANS</Text>,
 		    headerStyle : {
 		    	backgroundColor: "#FF9F1C",
-		    	height: 70,
+		    	height: 90,
 		    },
 		  	headerLeft: null,
 		  	headerRight: <Icon name='plus' style={styles.addLoan} type='material-community' color='#fff'  onPress={() => navigation.navigate('LoanBuilderStepOne')} />

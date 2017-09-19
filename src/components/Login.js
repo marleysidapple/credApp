@@ -63,6 +63,8 @@ class Login extends Component {
 				<Input iconName={'envelope-o'}
                        placeholder={'Enter your email'}
                        value={this.props.email}
+                       returnKeyType={'next'}  
+                       keyboardType={'email-address'}
                        onInputChange={(value) => this.props.handleLoginForm({prop:'email', value: value})} 
                 />
 
@@ -70,6 +72,7 @@ class Login extends Component {
                        placeholder={'Enter your password'}
                        secureTextEntry={true}
                        value={this.props.password}
+                       returnKeyType={'done'}  
                        onInputChange={(value) => this.props.handleLoginForm({prop: 'password', value: value})}
                 />
 
