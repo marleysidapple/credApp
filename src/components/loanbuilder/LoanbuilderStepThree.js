@@ -151,7 +151,7 @@ class LoanBuilderStepThree extends Component {
 					<Button
 					  fontFamily='open-sans'
 					  backgroundColor= '#25ADE4'
-					  onPress={() => this.props.navigation.navigate('LoanBuilderStepFour')}
+					  onPress={() => this.props.navigation.navigate('Esign')}
 					  raised
 					  title='NEXT' />
 				</View>

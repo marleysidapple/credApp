@@ -67,7 +67,7 @@ class LoanbuilderStepFour extends Component {
 						<Button
 						  fontFamily='open-sans'
 						  backgroundColor= '#25ADE4'
-						  onPress={() => this.props.navigation.navigate('LoanBuilderStepThree')}
+						  onPress={() => this.props.navigation.navigate('Esign')}
 						  raised
 						  title='NEXT' />
 					  </TouchableOpacity>
