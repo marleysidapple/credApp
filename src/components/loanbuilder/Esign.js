@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Icon, Button } from 'react-native-elements';
 import { CARD_STYLE } from './../../../assets/css/common';
 import { NavigationActions } from 'react-navigation';
 import SignaturePad from 'react-native-signature-pad';
@@ -17,8 +17,13 @@ class Esign extends Component {
 	  };
  
 	  _signaturePadChange = ({base64DataUrl}) => {
-	    console.log("Got new signature: " + base64DataUrl);
+	    console.log(base64DataUrl);
 	  };
+
+
+	  signatureInstance(){
+	  	return <SignaturePad onError={this._signaturePadError} onChange={this._signaturePadChange}  style={styles.signatureWrapper} />;
+	  }
 
 	static navigationOptions = ({ navigation }) => ({
 		    title: <Text style={styles.textHeader}>ISSUE REQUEST</Text>,
@@ -36,18 +41,29 @@ class Esign extends Component {
 	
 	render(){
 		return(
-			<ScrollView contentContainerStyle={styles.cardStyle}>
+			<View style={styles.cardStyle}>
 				<View style={styles.issueInformation}>
 					<Text style={styles.esignInfo}>Please sign on the dotted line to send loan request to Jon Evans</Text>
 				</View>
-
-				
           				
-          				<SignaturePad onError={this._signaturePadError}
-                        onChange={this._signaturePadChange}
-                        style={{flex: 1, backgroundColor: 'white'}}/>
+          		
+          		<View style={styles.signatureContainer}>	  
+          				{this.signatureInstance()}
+                     <View>
+                     	<Text style={{fontFamily: 'open-sans'}} onPress={() => this.props.navigation.navigate('Esign')}>Redraw</Text>
+                     </View>
+                </View>
 
-			</ScrollView>
+                <View style={styles.stepAction}>
+					<Button
+					  fontFamily='open-sans'
+					  backgroundColor= '#25ADE4'
+					  onPress={() => this.props.navigation.navigate('Esign')}
+					  raised
+					  title='SEND LOAN' />
+				</View>
+
+			</View>
 		);
 	}
 
@@ -81,6 +97,24 @@ const styles = StyleSheet.create({
 	esignInfo: {
 		textAlign: 'center',
 		fontFamily: 'open-sans',
+	},
+
+	stepAction: {
+		marginTop: 30,
+		marginBottom: 40
+	},
+
+	signatureContainer: {
+		 flex: 1, 
+		 borderWidth: 0.5, 
+		 borderStyle: 'dotted',
+		 borderColor: '#c9c9c9',
+		 margin: 15
+		// borderColor: 'black'
+	},
+
+	signatureWrapper: {
+		margin: 20
 	}
 
 	

@@ -244,21 +244,7 @@ const styles = StyleSheet.create({
 		letterSpacing: 1
 	},
 
-	whicha: {
-		flex: 1,
-		backgroundColor: 'blue'
-	},
-
-	whichb: {
-		flex: 1,
-		backgroundColor: 'yellow'
-	},
-
-	whichc: {
-		textAlign: 'center',
-		flex: 2,
-		backgroundColor: 'red'
-	}
+	
 
 });
 
