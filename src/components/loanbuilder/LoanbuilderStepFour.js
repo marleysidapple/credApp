@@ -82,7 +82,6 @@ class LoanbuilderStepFour extends Component {
 
 
 const styles = StyleSheet.create({
-	
 	textHeader: {
 		fontFamily: 'open-sans-bold', 
 		color: '#eee',

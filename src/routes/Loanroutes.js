@@ -9,6 +9,7 @@ import Loandetail from './../components/dashboard/Loandetail';
 //steps for building loan
 import LoanbuilderStepOne from './../components/loanbuilder/LoanbuilderStepOne';
 import LoanbuilderStepTwo from './../components/loanbuilder/LoanbuilderStepTwo';
+import Freemium from './../components/loanbuilder/pricing/Freemium';
 import LoanbuilderStepThree from './../components/loanbuilder/LoanbuilderStepThree';
 import LoanbuilderStepFour from './../components/loanbuilder/LoanbuilderStepFour';
 import Esign from './../components/loanbuilder/Esign';
@@ -27,6 +28,10 @@ const Loanroutes = StackNavigator({
      LoanBuilderStepOne: {
         screen: LoanbuilderStepOne,
       },
+
+     Freemium: {
+        screen: Freemium
+     },
 
       LoanBuilderStepTwo: {
         screen: LoanbuilderStepTwo,

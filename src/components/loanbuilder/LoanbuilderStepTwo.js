@@ -92,7 +92,7 @@ class LoanbuilderStepTwo extends Component {
 					<Button
 					  fontFamily='open-sans'
 					  backgroundColor= '#25ADE4'
-					  onPress={() => this.props.navigation.navigate('LoanBuilderStepThree')}
+					  onPress={() => this.props.navigation.navigate('Freemium')}
 					  raised
 					  title='NEXT' />
 				</View>
