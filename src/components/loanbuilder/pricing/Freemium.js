@@ -26,7 +26,7 @@ class Freemium extends Component {
 
 	render(){
 		return(
-			<ScrollView contentContainer={CARD_STYLE}>
+			<ScrollView contentContainerStyle={CARD_STYLE}>
 				<Text style={styles.freeLoanInfo}>This is free loan</Text>
 			</ScrollView>
 		);
