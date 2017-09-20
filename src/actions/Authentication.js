@@ -38,12 +38,13 @@ export async function validateLoginCredential(user){
 				payload: user
 			});		
 			//dispatch({ type: START_FETCH_LOANS });
-
+			if (typeof user.data.loginToken != "undefined" ){
 			try {
 				  AsyncStorage.setItem('@auth:loginToken', user.data.loginToken);
 				} catch (error) {
 				  // Error saving data
 				}
+			}
 		})
 		.catch(err => {
 			dispatch({
