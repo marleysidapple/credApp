@@ -32,8 +32,12 @@ const Loanroutes = StackNavigator({
         screen: LoanbuilderStepTwo,
       },
 
-       LoanBuilderStepThree: {
+      LoanBuilderStepThree: {
         screen: LoanbuilderStepThree,
+      },
+
+      LoanBuilderStepFour: {
+        screen: LoanbuilderStepFour
       },
 
        Esign: {
@@ -42,7 +46,7 @@ const Loanroutes = StackNavigator({
 },
 {
   //initialRouteName: 'LoanDetail'
-  initialRouteName : 'Esign'
+  initialRouteName : 'LoanBuilderStepOne'
 });
 
 
