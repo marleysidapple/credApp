@@ -11,12 +11,7 @@ class Login extends Component {
 		super(props);
 	}
 
-	// static navigationOptions = ({ navigation, styles }) => {
-	// 	return {
-	// 	    title: <Text style={{fontFamily: 'open-sans'}}>Login</Text>,
-	// 	};
-	// };
-
+	
 
 	onLoginPress(){
 		Keyboard.dismiss();
