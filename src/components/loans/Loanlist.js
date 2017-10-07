@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 class Loanlist extends Component {
 
 	constructor(props){
-		super(props);
 	}
 
 	componentWillMount(){
@@ -26,10 +25,6 @@ class Loanlist extends Component {
 				});
 				this.props.navigation.dispatch(navigateAction);				
 	 }
-
-	 
-
-	
 
 
 	render(){
