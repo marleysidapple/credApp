@@ -22,3 +22,5 @@ export const GET_ALL_LOANS = 'GET_ALL_LOANS';
 export const START_FETCH_ALERT = 'START_FETCH_ALERT';
 export const GET_ALERT = 'GET_ALERT';
 export const DELETE_ALERT = 'DELETE_ALERT';
+
+//handles profile
