@@ -103,6 +103,10 @@ const styles = StyleSheet.create({
 
 	addLoan: {
 		marginRight: 5
+	},
+
+	detail: {
+		
 	}
 
 });
