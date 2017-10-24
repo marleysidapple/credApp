@@ -8,6 +8,12 @@ class Alert extends Component {
 		super(props);
 	}
 
+	render(){
+		return(
+
+		);
+	}
+
 }
 
 
