@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 class Loanlist extends Component {
 
 	constructor(props){
+		super(props);
 	}
 
 	componentWillMount(){
