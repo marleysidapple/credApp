@@ -13,7 +13,6 @@ class Loanlist extends Component {
 	}
 
 	componentWillMount(){
-		console.log();
 	}
 
 
