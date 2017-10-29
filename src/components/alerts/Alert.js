@@ -10,7 +10,7 @@ class Alert extends Component {
 
 	render(){
 		return(
-
+			<Text>This is alert page</Text>
 		);
 	}
 
