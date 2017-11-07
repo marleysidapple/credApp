@@ -1,3 +1,4 @@
+//to be added mark as read
 import {
 	START_FETCH_ALERT,
 	GET_ALERT,
