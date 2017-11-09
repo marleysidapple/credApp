@@ -21,6 +21,7 @@ class Input extends Component {
                                placeholder={this.props.placeholder}
                                keyboardType={this.props.keyboardType}
                                placeholderTextColor={'#fff'}
+                               autoCorrect = {false}
                                returnKeyType={this.props.returnKeyType}  
                                onSubmitEditing={()=>Keyboard.dismiss()}
                                secureTextEntry={this.props.secureTextEntry || false}
