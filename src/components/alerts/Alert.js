@@ -10,11 +10,20 @@ class Alert extends Component {
 
 	render(){
 		return(
-
+			<View style={styles.alertWrapper}>
+				<Text>This is alert</Text>
+			</View>
 		);
 	}
 
 }
+
+
+const styles = StyleSheet.create({
+	alertWrapper: {
+		flex: 1
+	}
+});
 
 
 export default Alert;
