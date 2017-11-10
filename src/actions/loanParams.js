@@ -5,4 +5,5 @@ export const initialParamForLoans = {
 	lent:false,
 	live:true,
 	pending:true,
+	closed: true,
 }

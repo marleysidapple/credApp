@@ -18,6 +18,7 @@ export function fetchAvailableLoans(loginToken){
 		
 		dispatch({ type: START_FETCH_LOANS });
 		axios.post(API_URL + '/loans/get', initialParamForLoans).then(loans => {
+			console.log(loans);
 			dispatch({
 				type: GET_ALL_LOANS,
 				payload: loans
