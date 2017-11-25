@@ -12,14 +12,14 @@ class Index extends Component {
 	render(){
 		return(
 			<View style={styles.indexWrapper}>
-					<Image source={require('./../assets/images/logo.png')} style={styles.logo}  resizeMode={'contain'} />
+					<Image source={require('./../assets/images/logo-large.png')} style={styles.logo}  resizeMode={'contain'} />
 					<Text style={styles.main}>Relationship Lending Platform</Text>
 
 					<TouchableOpacity style={styles.startButton} >
 						<Button
 						  onPress={() => this.props.navigation.navigate('Login')}
 						  buttonStyle={{backgroundColor: '#86C15D', borderRadius: 2}}
-						  textStyle={{textAlign: 'center'}}
+						  textStyle={{textAlign: 'center', fontFamily: 'open-sans'}}
 						  title={`Get Started`}
 						/>
 					</TouchableOpacity>
@@ -30,10 +30,10 @@ class Index extends Component {
 
 const styles = StyleSheet.create({
   main: {
-   fontFamily: 'open-sans', 
+   fontFamily: 'open-sans',
    marginTop: 5,
    color: '#fff'
-  }, 
+  },
 
   indexWrapper: {
   	flex: 1,
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
 
   logo: {
   	alignSelf: 'center',
-  	width: 90,
-  	height: 43
+		width: 180,
+		height: 150
   },
 
   startButton: {

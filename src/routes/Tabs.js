@@ -5,6 +5,7 @@ import { Icon } from 'react-native-elements';
 import Loans from './../components/dashboard/Loans';
 import Profile from './../components/dashboard/Profile';
 import Notification from './../components/dashboard/Notification';
+import Repayments from './../components/repayments/Repayments';
 
 //loan builder steps
 import Loanroutes from './Loanroutes';
@@ -19,7 +20,7 @@ const DashboardTabsCollection = TabNavigator({
     }
   },
   Repayments: {
-    screen: Profile,
+    screen: Repayments,
     navigationOptions: {
     	title: 'Repayments',
     	tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={25} color={tintColor} />,
