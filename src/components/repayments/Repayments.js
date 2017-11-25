@@ -23,8 +23,10 @@ class Repayment extends Component {
 
 
  render(){
+   const buttons = ['Payments In', 'Payments Out'];
    return(
       <View>
+        <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
         <Text>Repayment List</Text>
       </View>
    );
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		letterSpacing: 4
 	},
+
 });
 
 
