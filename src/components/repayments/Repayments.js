@@ -25,10 +25,20 @@ class Repayment extends Component {
  render(){
    const buttons = ['Payments In', 'Payments Out'];
    return(
-      <View>
+      <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
-        <Text>Repayment List</Text>
-      </View>
+        <View style={styles.repaymentCell}>
+
+        </View>
+
+        <View style={styles.repaymentCell}>
+
+        </View>
+
+        <View style={styles.repaymentCell}>
+
+        </View>
+      </ScrollView>
    );
  }
 
@@ -43,6 +53,23 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		letterSpacing: 4
 	},
+
+  repaymentWrapper: {
+    flex: 1,
+    backgroundColor: "white"
+  },
+
+  repaymentCell: {
+    padding: 20,
+    marginLeft: 11,
+    marginRight: 11,
+    height: 90,
+    backgroundColor: "#EBEDF0",
+    //borderColor: "blue",
+    flexDirection: 'row',
+    borderWidth: 0,
+    marginTop: 5
+  }
 
 });
 
