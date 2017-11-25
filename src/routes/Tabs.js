@@ -22,9 +22,7 @@ const DashboardTabsCollection = TabNavigator({
   Repayments: {
     screen: Repayments,
     navigationOptions: {
-    	title: 'Repayments',
     	tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={25} color={tintColor} />,
-    	headerLeft: null
     }
   },
 
@@ -49,7 +47,8 @@ const DashboardTabsCollection = TabNavigator({
 
 {
   lazy: true,
-  initialRouteName: 'Loans',
+  //  initialRouteName: 'Loans',
+  initialRouteName: 'Repayments',
   tabBarOptions: {
     labelStyle: {
       fontFamily: 'open-sans'

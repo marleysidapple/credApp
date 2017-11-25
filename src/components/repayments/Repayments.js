@@ -35,7 +35,7 @@ class Repayment extends Component {
 
 const styles = StyleSheet.create({
   textHeader: {
-		fontFamily: 'open-sans-bold',
+		fontFamily: 'open-sans',
 		color: '#eee',
 		fontWeight: '500',
 		fontSize: 20,
