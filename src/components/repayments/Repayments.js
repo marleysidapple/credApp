@@ -37,16 +37,27 @@ class Repayment extends Component {
                 <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
                 <Text style={styles.loanContractNo}>C102909383</Text>
               </View>
+          </View>
 
-              <View style={styles.repaymentAmount}>
+          <View style={styles.repaymentAmount}>
                   <Text>$600</Text>
-              </View>
           </View>
         </View>
 
         <View style={styles.repaymentCell}>
         <View style={styles.imageWrapper}>
           <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
+        </View>
+
+        <View style={styles.loanDescription}>
+            <View style={styles.description}>
+              <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
+              <Text style={styles.loanContractNo}>C102909383</Text>
+            </View>
+        </View>
+
+        <View style={styles.repaymentAmount}>
+                <Text>$600</Text>
         </View>
         </View>
 
@@ -100,10 +111,11 @@ const styles = StyleSheet.create({
     marginRight: 11,
     height: 90,
     backgroundColor: "#EBEDF0",
-    //borderColor: "blue",
+    flex: 1,
     flexDirection: 'row',
     borderWidth: 0,
-    marginTop: 5
+    marginTop: 5,
+    justifyContent: "center"
   },
 
   imageWrapper: {
@@ -114,6 +126,10 @@ const styles = StyleSheet.create({
   repaymentIcon: {
     width: 40,
     height: 40
+  },
+
+  loanDescription: {
+      flex: 1,
   },
 
   loanTitle: {
@@ -128,6 +144,11 @@ const styles = StyleSheet.create({
       marginLeft: 10,
       fontSize: 10,
       color: "#576068"
+  },
+
+  repaymentAmount: {
+    alignItems: "flex-end",
+    justifyContent: "center",
   }
 
 });
