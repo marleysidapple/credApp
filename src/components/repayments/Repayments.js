@@ -27,38 +27,48 @@ class Repayment extends Component {
    return(
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
-        <View style={styles.repaymentCell}>
-          <View style={styles.imageWrapper}>
-            <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-          </View>
 
-          <View style={styles.loanDescription}>
-              <View style={styles.description}>
-                <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
-                <Text style={styles.loanContractNo}>C102909383</Text>
+
+        <View style={styles.repaymentCell}>
+            <View style={styles.repaymentContent}>
+              <View style={styles.imageWrapper}>
+                <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
               </View>
-          </View>
 
-          <View style={styles.repaymentAmount}>
-                  <Text>$600</Text>
-          </View>
-        </View>
+              <View style={styles.loanDescription}>
+                  <View style={styles.description}>
+                    <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
+                    <Text style={styles.loanContractNo}>Date Due: 2017-02-19</Text>
+                  </View>
+              </View>
 
-        <View style={styles.repaymentCell}>
-        <View style={styles.imageWrapper}>
-          <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-        </View>
+              <View style={styles.repaymentAmount}>
+                      <Text style={styles.amount}>$600</Text>
+              </View>
+            </View>
 
-        <View style={styles.loanDescription}>
-            <View style={styles.description}>
-              <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
-              <Text style={styles.loanContractNo}>C102909383</Text>
+            <View style={styles.additionalInfo}>
+                <Text>asdas</Text>
             </View>
         </View>
 
-        <View style={styles.repaymentAmount}>
-                <Text>$600</Text>
-        </View>
+        <View style={styles.repaymentCell}>
+            <View style={styles.repaymentContent}>
+              <View style={styles.imageWrapper}>
+                <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
+              </View>
+
+              <View style={styles.loanDescription}>
+                  <View style={styles.description}>
+                    <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
+                    <Text style={styles.loanContractNo}>Date Due: 2017-02-19</Text>
+                  </View>
+              </View>
+
+              <View style={styles.repaymentAmount}>
+                      <Text style={styles.amount}>$600</Text>
+              </View>
+            </View>
         </View>
 
         <View style={styles.repaymentCell}>
@@ -109,13 +119,17 @@ const styles = StyleSheet.create({
     padding: 20,
     marginLeft: 11,
     marginRight: 11,
-    height: 90,
+    height: 110,
     backgroundColor: "#EBEDF0",
     flex: 1,
-    flexDirection: 'row',
     borderWidth: 0,
     marginTop: 5,
     justifyContent: "center"
+  },
+
+  repaymentContent: {
+    flex: 1,
+    flexDirection: 'row'
   },
 
   imageWrapper: {
@@ -130,6 +144,7 @@ const styles = StyleSheet.create({
 
   loanDescription: {
       flex: 1,
+      justifyContent: 'center'
   },
 
   loanTitle: {
@@ -149,6 +164,16 @@ const styles = StyleSheet.create({
   repaymentAmount: {
     alignItems: "flex-end",
     justifyContent: "center",
+  },
+
+  amount: {
+    fontFamily: 'open-sans'
+  },
+
+
+  additionalInfo: {
+    flexDirection: 'row',
+    backgroundColor: 'blue',
   }
 
 });
