@@ -143,7 +143,6 @@ const styles = StyleSheet.create({
   },
 
   loanDescription: {
-      flex: 1,
       justifyContent: 'center'
   },
 
@@ -162,6 +161,7 @@ const styles = StyleSheet.create({
   },
 
   repaymentAmount: {
+    flex: 1,
     alignItems: "flex-end",
     justifyContent: "center",
   },
@@ -173,7 +173,12 @@ const styles = StyleSheet.create({
 
   additionalInfo: {
     flexDirection: 'row',
-    backgroundColor: 'blue',
+    //backgroundColor: 'blue',
+    flex: 1,
+    padding: -20,
+    margin: -11,
+    borderWidth: 1,
+    borderColor: "blue"
   }
 
 });
