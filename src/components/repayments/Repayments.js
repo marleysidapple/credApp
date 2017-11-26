@@ -37,7 +37,7 @@ class Repayment extends Component {
 
               <View style={styles.loanDescription}>
                   <View style={styles.description}>
-                    <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
+                    <Text style={styles.loanTitle}>Trip To Las Vegas asdas</Text>
                     <Text style={styles.loanContractNo}>Date Due: 2017-02-19</Text>
                   </View>
               </View>
@@ -48,7 +48,8 @@ class Repayment extends Component {
             </View>
 
             <View style={styles.additionalInfo}>
-                <Text>asdas</Text>
+                <Text style={styles.person}>From: Sid</Text>
+                <Text style={styles.number}>C120394543</Text>
             </View>
         </View>
 
@@ -71,29 +72,6 @@ class Repayment extends Component {
             </View>
         </View>
 
-        <View style={styles.repaymentCell}>
-          <View style={styles.imageWrapper}>
-            <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-          </View>
-        </View>
-
-        <View style={styles.repaymentCell}>
-          <View style={styles.imageWrapper}>
-            <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-          </View>
-        </View>
-
-        <View style={styles.repaymentCell}>
-          <View style={styles.imageWrapper}>
-            <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-          </View>
-        </View>
-
-        <View style={styles.repaymentCell}>
-          <View style={styles.imageWrapper}>
-            <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-          </View>
-        </View>
       </ScrollView>
    );
  }
@@ -116,7 +94,6 @@ const styles = StyleSheet.create({
   },
 
   repaymentCell: {
-    padding: 20,
     marginLeft: 11,
     marginRight: 11,
     height: 110,
@@ -124,12 +101,13 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 0,
     marginTop: 5,
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   repaymentContent: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    padding: 15,
   },
 
   imageWrapper: {
@@ -150,7 +128,7 @@ const styles = StyleSheet.create({
     fontFamily: 'open-sans',
     padding: 5,
     marginLeft: 5,
-    color: "#576068"
+    color: "#576068",
   },
 
   loanContractNo: {
@@ -173,12 +151,25 @@ const styles = StyleSheet.create({
 
   additionalInfo: {
     flexDirection: 'row',
-    //backgroundColor: 'blue',
     flex: 1,
-    padding: -20,
-    margin: -11,
-    borderWidth: 1,
-    borderColor: "blue"
+    borderTopWidth: 0.5,
+    alignItems: 'center',
+    paddingLeft: 15,
+    borderTopColor: "#d1d5da",
+  },
+
+  person: {
+    fontFamily: 'open-sans',
+    flex: 2,
+    color: "#576068",
+    //backgroundColor: 'yellow',
+  },
+
+  number: {
+    fontFamily: 'open-sans',
+    flex: 1,
+    color: "#576068",
+    //backgroundColor: 'blue',
   }
 
 });
