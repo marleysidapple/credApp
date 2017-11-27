@@ -29,7 +29,7 @@ class Repayment extends Component {
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
 
 
-        <View style={styles.repaymentCell}>
+        <TouchableOpacity style={styles.repaymentCell}>
             <View style={styles.repaymentContent}>
               <View style={styles.imageWrapper}>
                 <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
@@ -51,9 +51,9 @@ class Repayment extends Component {
                 <Text style={styles.person}>From: Sid</Text>
                 <Text style={styles.number}>C120394543</Text>
             </View>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.repaymentCell}>
+        <TouchableOpacity style={styles.repaymentCell}>
             <View style={styles.repaymentContent}>
               <View style={styles.imageWrapper}>
                 <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
@@ -75,7 +75,7 @@ class Repayment extends Component {
                 <Text style={styles.person}>From: Sid</Text>
                 <Text style={styles.number}>C120394543</Text>
             </View>
-        </View>
+        </TouchableOpacity>
 
 
       </ScrollView>
