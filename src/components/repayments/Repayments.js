@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Image, StyleSheet, TouchableOpacity, ActivityIndicator, ListView, AsyncStorage } from 'react-native';
-import { Icon, ButtonGroup } from 'react-native-elements';
+import { Icon, ButtonGroup, Badge } from 'react-native-elements';
 import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
@@ -15,10 +15,9 @@ class Repayment extends Component {
         },
       navigationOptions: {
             tabBarVisible: false,
-          },
-
-        headerLeft: null,
-        headerRight: null
+        },
+      headerLeft: null,
+      headerRight: null
   });
 
 
@@ -27,8 +26,7 @@ class Repayment extends Component {
    return(
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
-
-
+        
         <TouchableOpacity style={styles.repaymentCell}>
             <View style={styles.repaymentContent}>
               <View style={styles.imageWrapper}>
@@ -76,8 +74,6 @@ class Repayment extends Component {
                 <Text style={styles.number}>C120394543</Text>
             </View>
         </TouchableOpacity>
-
-
       </ScrollView>
    );
  }
