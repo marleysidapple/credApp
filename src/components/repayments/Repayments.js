@@ -69,6 +69,11 @@ class Repayment extends Component {
               <View style={styles.repaymentAmount}>
                       <Text style={styles.amount}>$600</Text>
               </View>
+
+              <View style={styles.additionalInfo}>
+                  <Text style={styles.person}>From: Sid</Text>
+                  <Text style={styles.number}>C120394543</Text>
+              </View>
             </View>
         </View>
 
