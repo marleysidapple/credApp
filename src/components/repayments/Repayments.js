@@ -61,7 +61,7 @@ class Repayment extends Component {
 
               <View style={styles.loanDescription}>
                   <View style={styles.description}>
-                    <Text style={styles.loanTitle}>Trip To Las Vegas</Text>
+                    <Text style={styles.loanTitle}>Trip To Las Vegas asdas</Text>
                     <Text style={styles.loanContractNo}>Date Due: 2017-02-19</Text>
                   </View>
               </View>
@@ -69,13 +69,14 @@ class Repayment extends Component {
               <View style={styles.repaymentAmount}>
                       <Text style={styles.amount}>$600</Text>
               </View>
+            </View>
 
-              <View style={styles.additionalInfo}>
-                  <Text style={styles.person}>From: Sid</Text>
-                  <Text style={styles.number}>C120394543</Text>
-              </View>
+            <View style={styles.additionalInfo}>
+                <Text style={styles.person}>From: Sid</Text>
+                <Text style={styles.number}>C120394543</Text>
             </View>
         </View>
+
 
       </ScrollView>
    );
