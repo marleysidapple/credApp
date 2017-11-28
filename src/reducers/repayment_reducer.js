@@ -15,10 +15,10 @@ const INITIAL_STATE = {
 export default function(state=INITIAL_STATE, action){
 	switch(action.type){
 		case START_FETCH_REPAYMENTS:
-			return {...state, loading: true};
+			return {...state, loading: true };
 
 		case GET_ALL_REPAYMENTS:
-			return { ...state, loading: false, repayments:action.payload.data.data };
+			return { ...state, loading: false, repayments:action.payload};
 
 		default:
 			return state;

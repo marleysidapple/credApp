@@ -10,20 +10,26 @@ class Repayment extends Component {
 
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-     dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-    };
+    this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+    this.createDataSource(this.props);
   }
 
   async componentWillMount(){
     try {
 			   this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
 			} catch (error) {
-			  // Error retrieving data
         console.log(error);
 			}
   }
+
+  componentWillReceiveProps(nextProps){
+		this.createDataSource(nextProps);
+	}
+
+	createDataSource(props){
+		 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		 this.dataSource = ds.cloneWithRows(props.repaymentList);
+	}
 
   static navigationOptions = ({ navigation }) => ({
         title: <Text style={styles.textHeader}>REPAYMENTS</Text>,
@@ -196,7 +202,8 @@ const styles = StyleSheet.create({
 function mapStateToProps(state){
   return {
     token: state.auth_login.detail.loginToken,
-    clientGuid: state.auth_login.detail.clientGuid
+    clientGuid: state.auth_login.detail.clientGuid,
+    repaymentList: state.user_repayment.repayment
   }
 }
 

@@ -20,10 +20,9 @@ export function fetchAllRepayments(loginToken, client_guid){
 
 		dispatch({ type: START_FETCH_REPAYMENTS });
 		axios.post(API_URL + '/current-loans/get-mobile-repayments', {client_guid}).then(repayments => {
-			console.log(repayments);
 			dispatch({
 				type: GET_ALL_REPAYMENTS,
-				payload: repayments
+				payload: repayments.data
 			});
 		}).catch(err => {
 			// some err
