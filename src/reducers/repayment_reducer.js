@@ -7,7 +7,7 @@ import {
 
 
 const INITIAL_STATE = {
-	loading: false,
+	loading: true,
 	repayments: []
 }
 

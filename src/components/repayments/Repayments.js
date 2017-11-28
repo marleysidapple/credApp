@@ -11,7 +11,7 @@ class Repayment extends Component {
   constructor(props) {
     super(props);
     this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
-    this.createDataSource(this.props);
+    //this.createDataSource(this.props);
   }
 
   async componentWillMount(){
@@ -200,10 +200,12 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state){
+  console.log(state.user_repayment);
   return {
     token: state.auth_login.detail.loginToken,
     clientGuid: state.auth_login.detail.clientGuid,
-    repaymentList: state.user_repayment.repayment
+    repaymentLoadingStatus: state.user_repayment.loading,
+    repaymentList: state.user_repayment.repayment,
   }
 }
 
