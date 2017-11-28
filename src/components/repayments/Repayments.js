@@ -3,9 +3,22 @@ import { Text, View, ScrollView, Image, StyleSheet, TouchableOpacity, ActivityIn
 import { Icon, ButtonGroup, Badge } from 'react-native-elements';
 import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
+import { fetchAllRepayments } from './../../actions/Repayment';
 import { connect } from 'react-redux';
 
 class Repayment extends Component {
+
+  constructor(props) {
+    super(props);
+    //const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    //this.state = {
+    //  dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    //};
+  }
+
+  async componentWillMount(){
+    this.props.fetchAllRepayments(this.props.token. this.props.clientGuid);
+  }
 
   static navigationOptions = ({ navigation }) => ({
         title: <Text style={styles.textHeader}>REPAYMENTS</Text>,
@@ -26,7 +39,6 @@ class Repayment extends Component {
    return(
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
-        
         <TouchableOpacity style={styles.repaymentCell}>
             <View style={styles.repaymentContent}>
               <View style={styles.imageWrapper}>
@@ -176,6 +188,13 @@ const styles = StyleSheet.create({
 
 });
 
+function mapStateToProps(state){
+  return {
+    token: state.auth_login.detail.loginToken,
+    clientGuid: state.auth_login.detail.clientGuid
+  }
+}
 
 
-export default Repayment;
+
+export default connect(mapStateToProps, {fetchAllRepayments})(Repayment);

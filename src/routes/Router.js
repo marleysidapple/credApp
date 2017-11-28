@@ -41,7 +41,7 @@ export const Router = StackNavigator({
   }, // end of main stack navigator
 {
   stateName: 'MainAppNav',
-  initialRouteName: 'Dashboard',
+  initialRouteName: 'Login',
   lazyLoad: true,
   animationEnabled: false,
 });
