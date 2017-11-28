@@ -10,14 +10,19 @@ class Repayment extends Component {
 
   constructor(props) {
     super(props);
-    //const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    //this.state = {
-    //  dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-    //};
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+     dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+    };
   }
 
   async componentWillMount(){
-    this.props.fetchAllRepayments(this.props.token. this.props.clientGuid);
+    try {
+			   this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+			} catch (error) {
+			  // Error retrieving data
+        console.log(error);
+			}
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -197,4 +202,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, {fetchAllRepayments})(Repayment);
+export default connect(mapStateToProps, { fetchAllRepayments })(Repayment);
