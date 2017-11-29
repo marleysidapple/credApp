@@ -50,6 +50,7 @@ class Repayment extends Component {
    return(
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
+        {(!this.props.repaymentLoadingStatus) ?
         <TouchableOpacity style={styles.repaymentCell}>
             <View style={styles.repaymentContent}>
               <View style={styles.imageWrapper}>
@@ -73,30 +74,7 @@ class Repayment extends Component {
                 <Text style={styles.number}>C120394543</Text>
             </View>
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.repaymentCell}>
-            <View style={styles.repaymentContent}>
-              <View style={styles.imageWrapper}>
-                <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-              </View>
-
-              <View style={styles.loanDescription}>
-                  <View style={styles.description}>
-                    <Text style={styles.loanTitle}>Trip To Las Vegas asdas</Text>
-                    <Text style={styles.loanContractNo}>Date Due: 2017-02-19</Text>
-                  </View>
-              </View>
-
-              <View style={styles.repaymentAmount}>
-                      <Text style={styles.amount}>$600</Text>
-              </View>
-            </View>
-
-            <View style={styles.additionalInfo}>
-                <Text style={styles.person}>From: Sid</Text>
-                <Text style={styles.number}>C120394543</Text>
-            </View>
-        </TouchableOpacity>
+       : <Text>Loading.....</Text>}
       </ScrollView>
    );
  }
