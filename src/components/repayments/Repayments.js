@@ -10,16 +10,11 @@ class Repayment extends Component {
 
   constructor(props) {
     super(props);
-    this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
-    //this.createDataSource(this.props);
   }
 
   async componentWillMount(){
-    try {
-			   this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
-			} catch (error) {
-        console.log(error);
-			}
+		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+		this.createDataSource(this.props);
   }
 
   componentWillReceiveProps(nextProps){
@@ -183,7 +178,7 @@ function mapStateToProps(state){
     token: state.auth_login.detail.loginToken,
     clientGuid: state.auth_login.detail.clientGuid,
     repaymentLoadingStatus: state.user_repayment.loading,
-    repaymentList: state.user_repayment.repayment,
+    repaymentList: state.user_repayment.repayments,
   }
 }
 
