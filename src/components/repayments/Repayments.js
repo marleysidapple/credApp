@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { fetchAllRepayments } from './../../actions/Repayment';
 import { connect } from 'react-redux';
+import RepaymentListCell from './RepaymentListCell';
 
 class Repayment extends Component {
 
@@ -46,29 +47,7 @@ class Repayment extends Component {
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
         {(!this.props.repaymentLoadingStatus) ?
-        <TouchableOpacity style={styles.repaymentCell}>
-            <View style={styles.repaymentContent}>
-              <View style={styles.imageWrapper}>
-                <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
-              </View>
-
-              <View style={styles.loanDescription}>
-                  <View style={styles.description}>
-                    <Text style={styles.loanTitle}>Trip To Las Vegas asdas</Text>
-                    <Text style={styles.loanContractNo}>Date Due: 2017-02-19</Text>
-                  </View>
-              </View>
-
-              <View style={styles.repaymentAmount}>
-                      <Text style={styles.amount}>$600</Text>
-              </View>
-            </View>
-
-            <View style={styles.additionalInfo}>
-                <Text style={styles.person}>From: Sid</Text>
-                <Text style={styles.number}>C120394543</Text>
-            </View>
-        </TouchableOpacity>
+        <ListView enableEmptySections  initialListSize={10} dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />} />
        : <Text>Loading.....</Text>}
       </ScrollView>
    );
