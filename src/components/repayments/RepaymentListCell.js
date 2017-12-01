@@ -14,6 +14,7 @@ class RepaymentListCell extends Component {
   componentWillMount(){
   }
 
+
   render(){
     const {repayment}  = this.props;
     return(
@@ -36,7 +37,12 @@ class RepaymentListCell extends Component {
           </View>
 
           <View style={styles.additionalInfo}>
-              <Text style={styles.person}>From: Sid</Text>
+              <Text style={styles.person}>
+              {(repayment.payments_in) ?
+                <Text>From: {repayment.borrower_name}</Text>
+                :<Text>To: {repayment.lender_name}</Text>
+              }
+              </Text>
               <Text style={styles.number}>{repayment.loan_number}</Text>
           </View>
       </TouchableOpacity>
