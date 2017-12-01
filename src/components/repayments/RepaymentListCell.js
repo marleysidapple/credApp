@@ -15,21 +15,36 @@ class RepaymentListCell extends Component {
 
   }
 
+  showActionSheet(){
+    ActionSheetIOS.showActionSheetWithOptions({
+     options: ['Option 0', 'Option 1', 'Option 2', 'Delete', 'Cancel'],
+     cancelButtonIndex: 3,
+     destructiveButtonIndex: 4,
+   },
+   (buttonIndex) => {
+     this.setState({ clicked: 2 });
+   });
+  }
+
 
   render(){
     const {repayment}  = this.props;
     return(
-      <TouchableOpacity style={styles.repaymentCell} key={repayment.guid}>
+      <TouchableOpacity style={styles.repaymentCell} key={repayment.guid} onPress={() => this.showActionSheet()}>
           <View style={styles.repaymentContent}>
             <View style={styles.imageWrapper}>
               <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
             </View>
 
+
             <View style={styles.loanDescription}>
-                <View style={styles.description}>
-                  <Text style={styles.loanTitle}>{repayment.loan_alias}</Text>
-                  <Text style={styles.loanContractNo}>Date Due: {repayment.scheduled_date}</Text>
-                </View>
+                  <View style={styles.description}>
+                      <Text style={styles.loanTitle} numberOfLines={1}>{repayment.loan_alias}</Text>
+                          <Badge containerStyle={{ backgroundColor: '#FAFAFB', height: 20, justifyContent: 'center', alignItems: 'center'}} textStyle={styles.loanStatus}>
+                            <Text style={styles.loanStatus}>{repayment.status_name}</Text>
+                          </Badge>
+                  </View>
+                  <Text style={styles.loanContractNo}>Date Due: 2017-02-05</Text>
             </View>
 
             <View style={styles.repaymentAmount}>
@@ -85,13 +100,14 @@ const styles = StyleSheet.create({
   },
 
   loanDescription: {
-      justifyContent: 'center'
+      flex: 3,
   },
 
   loanTitle: {
     fontFamily: 'open-sans',
     padding: 5,
     marginLeft: 5,
+    flex:1,
     color: "#576068",
   },
 
@@ -103,14 +119,31 @@ const styles = StyleSheet.create({
   },
 
   repaymentAmount: {
-    flex: 1,
+    flex: 2,
     alignItems: "flex-end",
     justifyContent: "center",
   },
 
   amount: {
-    fontFamily: 'open-sans',
+    fontFamily: 'open-sans-bold',
     color: "#576068",
+    fontSize: 12,
+    color: '#25ADE4'
+  },
+
+  description: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center'
+  },
+
+  loanStatus: {
+    fontFamily: 'open-sans',
+    flex: 2,
+    color: '#25ADE4',
+    justifyContent: 'center',
+    fontSize: 11,
+
   },
 
 
@@ -127,14 +160,12 @@ const styles = StyleSheet.create({
     fontFamily: 'open-sans',
     flex: 2,
     color: "#576068",
-    //backgroundColor: 'yellow',
   },
 
   number: {
     fontFamily: 'open-sans',
     flex: 1,
     color: "#576068",
-    //backgroundColor: 'blue',
   }
 
 });
