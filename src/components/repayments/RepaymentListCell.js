@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Text, View, ScrollView, Image, StyleSheet, TouchableOpacity, ActivityIndicator, ListView, AsyncStorage } from 'react-native';
+import { Text, View, ScrollView, Image, StyleSheet, TouchableOpacity, ActivityIndicator, ListView, AsyncStorage, ActionSheetIOS } from 'react-native';
 import { Icon, ButtonGroup, Badge } from 'react-native-elements';
 import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
@@ -12,6 +12,7 @@ class RepaymentListCell extends Component {
   }
 
   componentWillMount(){
+
   }
 
 
