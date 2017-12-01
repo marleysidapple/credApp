@@ -31,7 +31,7 @@ class RepaymentListCell extends Component {
             </View>
 
             <View style={styles.repaymentAmount}>
-                    <Text style={styles.amount}>{repayment.repayment_amount != null ? repayment.repayment_amount : '-'}</Text>
+                    <Text style={styles.amount}>{repayment.currency_code} {repayment.currency_symbol}{repayment.repayment_amount}</Text>
             </View>
           </View>
 
@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
   },
 
   amount: {
-    fontFamily: 'open-sans'
+    fontFamily: 'open-sans',
+    color: "#576068",
   },
 
 
