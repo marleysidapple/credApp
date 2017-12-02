@@ -19,6 +19,28 @@ class RepaymentListCell extends Component {
 
   }
 
+  getRepaymentStatus(description){
+    switch (description) {
+      case "Pending":
+        return 0;
+        break;
+      case "Cleared":
+        return 1;
+        break;
+      case "Canceled":
+        return 3;
+        break;
+      case "Overdue":
+        return 4;
+        break;
+      case "Forgiven":
+        return 5;
+        break;
+      default:
+        return 1;
+    }
+  }
+
   showActionSheet(availableActions){
     if (availableActions != null && availableActions.length != 0){
             availableActions.map((status) => {
@@ -32,7 +54,7 @@ class RepaymentListCell extends Component {
            title: "Mark Repayment As"
          },
          (buttonIndex) => {
-           console.log(this.state.actions[buttonIndex]);
+           console.log(this.getRepaymentStatus(this.state.actions[buttonIndex]));
            this.setState({actions: []});
          });
        } else {
