@@ -20,13 +20,11 @@ class RepaymentListCell extends Component {
   }
 
   showActionSheet(availableActions){
-    this.setState({actions: []});
     if (availableActions != null && availableActions.length != 0){
             availableActions.map((status) => {
-              this.state.actions.push(status.rst_title);
+               this.state.actions.push(status.rst_title);
             });
-            this.state.actions.push('Dismiss');
-
+          this.state.actions.push('Dismiss');
           ActionSheetIOS.showActionSheetWithOptions({
            options: this.state.actions,
            cancelButtonIndex: ((this.state.actions.length) -1),
@@ -34,7 +32,8 @@ class RepaymentListCell extends Component {
            title: "Mark Repayment As"
          },
          (buttonIndex) => {
-           this.setState({ clicked: 1 });
+           console.log(this.state.actions[buttonIndex]);
+           this.setState({actions: []});
          });
        } else {
            this.state.actions.push('Silence Reminder');
