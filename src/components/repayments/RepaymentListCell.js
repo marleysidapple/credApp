@@ -10,7 +10,8 @@ class RepaymentListCell extends Component {
   constructor(props){
     super(props);
     this.state = {
-      actions: []
+      actions: [],
+      clicked: null,
     }
   }
 
@@ -19,23 +20,39 @@ class RepaymentListCell extends Component {
   }
 
   showActionSheet(availableActions){
-    availableActions.map((status) => {
-      this.state.actions.push(status.rst_title);
-    });
-    ActionSheetIOS.showActionSheetWithOptions({
-     options: this.state.actions,
-     cancelButtonIndex: 0,
-     destructiveButtonIndex: 1,
-   },
-   (buttonIndex) => {
-     this.setState({ clicked: 1 });
-   });
+    this.setState({actions: []});
+    if (availableActions != null && availableActions.length != 0){
+            availableActions.map((status) => {
+              this.state.actions.push(status.rst_title);
+            });
+            this.state.actions.push('Dismiss');
+
+          ActionSheetIOS.showActionSheetWithOptions({
+           options: this.state.actions,
+           cancelButtonIndex: ((this.state.actions.length) -1),
+          // destructiveButtonIndex: ((this.state.actions.length) -1),
+           title: "Mark Repayment As"
+         },
+         (buttonIndex) => {
+           this.setState({ clicked: 1 });
+         });
+       } else {
+           this.state.actions.push('Silence Reminder');
+           this.state.actions.push('Dismiss');
+           ActionSheetIOS.showActionSheetWithOptions({
+            options: this.state.actions,
+            //cancelButtonIndex: 1,
+            destructiveButtonIndex: 1,
+          },
+          (buttonIndex) => {
+            this.setState({ clicked: 0 });
+          });
+       }
   }
 
 
   render(){
     const {repayment}  = this.props;
-    console.log(this.props.repayment);
     return(
       <TouchableOpacity style={styles.repaymentCell} key={repayment.guid} onPress={() => this.showActionSheet(repayment.myactions)}>
           <View style={styles.repaymentContent}>
