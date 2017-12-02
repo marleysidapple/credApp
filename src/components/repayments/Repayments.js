@@ -12,6 +12,8 @@ class Repayment extends Component {
     super(props);
   }
 
+
+
   async componentWillMount(){
 		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
 		this.createDataSource(this.props);
@@ -46,7 +48,7 @@ class Repayment extends Component {
    const buttons = ['Payments In', 'Payments Out'];
    return(
       <ScrollView style={styles.repaymentWrapper}>
-        <ButtonGroup buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
+        <ButtonGroup onPress={() => this.updateIndex(selectedIndex)}  buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
         {(!this.props.repaymentLoadingStatus) ?
         <ListView enableEmptySections  initialListSize={10} dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />} />
         : <Text>Loading.....</Text>}
