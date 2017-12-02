@@ -9,28 +9,35 @@ import { connect } from 'react-redux';
 class RepaymentListCell extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      actions: []
+    }
   }
 
   componentWillMount(){
 
   }
 
-  showActionSheet(){
+  showActionSheet(availableActions){
+    availableActions.map((status) => {
+      this.state.actions.push(status.rst_title);
+    });
     ActionSheetIOS.showActionSheetWithOptions({
-     options: ['Option 0', 'Option 1', 'Option 2', 'Delete', 'Cancel'],
-     cancelButtonIndex: 3,
-     destructiveButtonIndex: 4,
+     options: this.state.actions,
+     cancelButtonIndex: 0,
+     destructiveButtonIndex: 1,
    },
    (buttonIndex) => {
-     this.setState({ clicked: 2 });
+     this.setState({ clicked: 1 });
    });
   }
 
 
   render(){
     const {repayment}  = this.props;
+    console.log(this.props.repayment);
     return(
-      <TouchableOpacity style={styles.repaymentCell} key={repayment.guid} onPress={() => this.showActionSheet()}>
+      <TouchableOpacity style={styles.repaymentCell} key={repayment.guid} onPress={() => this.showActionSheet(repayment.myactions)}>
           <View style={styles.repaymentContent}>
             <View style={styles.imageWrapper}>
               <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
