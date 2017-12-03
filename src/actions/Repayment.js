@@ -13,13 +13,13 @@ import { NavigationActions } from 'react-navigation';
 
 
 
-export function fetchAllRepayments(loginToken, client_guid){
+export function fetchAllRepayments(loginToken, client_guid, repayment_filter){
 	return(dispatch) => {
 		axios.defaults.headers.common['xRay'] = xRay;
 		axios.defaults.headers.common['token'] = loginToken;
 
 		dispatch({ type: START_FETCH_REPAYMENTS });
-		axios.post(API_URL + '/current-loans/get-mobile-repayments', {client_guid}).then(repayments => {
+		axios.post(API_URL + '/current-loans/get-mobile-repayments', {client_guid: client_guid, repayment_filter: repayment_filter}).then(repayments => {
 			dispatch({
 				type: GET_ALL_REPAYMENTS,
 				payload: repayments.data

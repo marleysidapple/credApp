@@ -10,12 +10,13 @@ class Repayment extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      index: 0
+    }
   }
 
-
-
   async componentWillMount(){
-		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
 		this.createDataSource(this.props);
   }
 
@@ -27,6 +28,11 @@ class Repayment extends Component {
 		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 		this.dataSource = ds.cloneWithRows(props.repaymentList);
 	}
+
+  updateIndex = (index) => {
+    this.setState({index});
+    this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
+  }
 
   static navigationOptions = ({ navigation }) => ({
         title: <Text style={styles.textHeader}>REPAYMENTS</Text>,
@@ -45,13 +51,17 @@ class Repayment extends Component {
 
 
  render(){
-   const buttons = ['Payments In', 'Payments Out'];
+   const buttons = ['All', 'Payments In', 'Payments Out'];
    return(
       <ScrollView style={styles.repaymentWrapper}>
-        <ButtonGroup onPress={() => this.updateIndex(selectedIndex)}  buttons={buttons} textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
+        <ButtonGroup  selectedBackgroundColor="#25ADE4"
+                      onPress={this.updateIndex}
+                      selectedIndex={this.state.index}
+                      buttons={buttons}
+                      textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
         {(!this.props.repaymentLoadingStatus) ?
         <ListView enableEmptySections  initialListSize={10} dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />} />
-        : <Text>Loading.....</Text>}
+        : <ActivityIndicator size={'small'} />}
 
       </ScrollView>
    );
@@ -78,6 +88,7 @@ const styles = StyleSheet.create({
 
 
 function mapStateToProps(state){
+  console.log(state.user_repayment.repayments);
   return {
     token: state.auth_login.detail.loginToken,
     clientGuid: state.auth_login.detail.clientGuid,
