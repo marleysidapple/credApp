@@ -12,7 +12,7 @@ class Notification extends Component {
 
 
 	componentWillMount(){
-		console.log('oasd');
+
 	}
 
 	 static navigationOptions = ({ navigation }) => ({
@@ -52,7 +52,7 @@ class Notification extends Component {
 
 function mapStateToProps(state){
 	return {
-
+		token: state.auth_login.detail.loginToken
 	};
 }
 
