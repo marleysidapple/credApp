@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -29,12 +29,21 @@ class Notification extends Component {
 	render(){
 		return(
 			<View style={styles.notificationWrapper}>
-					<View style={styles.outerWrapper}>
+					<TouchableOpacity style={styles.outerWrapper}>
 							<View style={styles.iconWrapper}>
-								<Icon name={'bell-o'} type='font-awesome' color='#8f8f91' size={25}/>
+								<Image source={require('./../../../assets/images/agreed.png')} resizeMode={'contain'} style={styles.iconStyle} />
 							</View>
-							<View style={styles.descriptionWrapper}></View>
-					</View>
+							<View style={styles.descriptionWrapper}>
+								<View style={styles.description}>
+										<Text style={styles.alertText}>A loan was accepted by sid credi</Text>
+								</View>
+
+								<View style={styles.alertInterval}>
+									<Text style={styles.alertTime}>21 hours ago</Text>
+								</View>
+							</View>
+					</TouchableOpacity>
+
 			</View>
 		);
 	}
@@ -59,7 +68,6 @@ const styles = StyleSheet.create({
 
 	notificationWrapper:{
 	 flex: 1,
-	 backgroundColor: '#fff'
   },
 
 
@@ -67,7 +75,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		height: 80,
 		borderBottomWidth: 0.5,
-		borderColor: '#bdbdbf'
+		borderColor: '#bdbdbf',
+		backgroundColor: '#fff'
 	},
 
 	iconWrapper: {
@@ -76,9 +85,36 @@ const styles = StyleSheet.create({
 		//backgroundColor: 'blue'
 	},
 
+	iconStyle: {
+		height: 70,
+		width: 70
+	},
+
 	descriptionWrapper: {
 		flex: 4,
-		backgroundColor: 'yellow'
+		//backgroundColor: 'yellow',
+		borderLeftWidth: 0.5,
+		borderColor: '#bdbdbf'
+	},
+
+	description: {
+		padding: 15
+	},
+
+	alertText: {
+		fontFamily: 'open-sans',
+		color: "#576068"
+	},
+
+	alertInterval: {
+		paddingLeft: 15,
+		//paddingTop: 2
+	},
+
+	alertTime: {
+		fontFamily: 'open-sans',
+		color: "#576068",
+		fontSize: 11
 	}
 });
 
