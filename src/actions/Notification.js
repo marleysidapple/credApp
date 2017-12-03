@@ -21,7 +21,7 @@ export function fetchAllNotification(loginToken){
       console.log(notification);
 			dispatch({
 				type: GET_ALL_NOTIFICATION,
-				payload: notification.data
+				payload: notification.data.alerts
 			});
 		}).catch(err => {
 			// some err

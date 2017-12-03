@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, ListView, ScrollView, ActivityIndicator } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchAllNotification } from './../../actions/Notification';
 import PropTypes from 'prop-types';
+import NotificationCell from './NotificationCell';
 
 class Notification extends Component {
 
@@ -12,9 +13,19 @@ class Notification extends Component {
 	}
 
 
-	componentWillMount(){
+	async componentWillMount(){
 		this.props.fetchAllNotification(this.props.token);
+		this.createDataSource(this.props);
+	}
 
+
+	componentWillReceiveProps(nextProps){
+		this.createDataSource(nextProps);
+	}
+
+	createDataSource(props){
+		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		this.dataSource = ds.cloneWithRows(props.notification);
 	}
 
 	 static navigationOptions = ({ navigation }) => ({
@@ -30,32 +41,26 @@ class Notification extends Component {
 
 	render(){
 		return(
-			<View style={styles.notificationWrapper}>
-					<TouchableOpacity style={styles.outerWrapper}>
-							<View style={styles.iconWrapper}>
-								<Image source={require('./../../../assets/images/agreed.png')} resizeMode={'contain'} style={styles.iconStyle} />
-							</View>
-							<View style={styles.descriptionWrapper}>
-								<View style={styles.description}>
-										<Text style={styles.alertText}>A loan was accepted by sid credi</Text>
-								</View>
-
-								<View style={styles.alertInterval}>
-									<Text style={styles.alertTime}>21 hours ago</Text>
-								</View>
-							</View>
-					</TouchableOpacity>
-
-			</View>
+			<ScrollView style={styles.notificationWrapper}>
+			{(!this.props.loading) ?
+			<ListView
+			enableEmptySections
+			initialListSize={10}
+			dataSource={this.dataSource}
+			renderRow={(data, sectionID, rowID) => <NotificationCell row={rowID} notification={data} navigation={this.props.navigation} loading={this.props.loading} />}
+			/>
+			: <ActivityIndicator size={'small'} />}
+			</ScrollView>
 		);
 	}
 }
 
 
 function mapStateToProps(state){
-	console.log(state);
 	return {
-		token: state.auth_login.detail.loginToken
+		token: state.auth_login.detail.loginToken,
+	  notification: state.user_notification.notification,
+		loading: state.user_notification.loading
 	};
 }
 
@@ -72,53 +77,6 @@ const styles = StyleSheet.create({
 	notificationWrapper:{
 	 flex: 1,
   },
-
-
-	outerWrapper: {
-		flexDirection: 'row',
-		height: 80,
-		borderBottomWidth: 0.5,
-		borderColor: '#bdbdbf',
-		backgroundColor: '#fff'
-	},
-
-	iconWrapper: {
-		flex: 1,
-		justifyContent: 'center'
-		//backgroundColor: 'blue'
-	},
-
-	iconStyle: {
-		height: 70,
-		width: 70
-	},
-
-	descriptionWrapper: {
-		flex: 4,
-		//backgroundColor: 'yellow',
-		borderLeftWidth: 0.5,
-		borderColor: '#bdbdbf'
-	},
-
-	description: {
-		padding: 15
-	},
-
-	alertText: {
-		fontFamily: 'open-sans',
-		color: "#576068"
-	},
-
-	alertInterval: {
-		paddingLeft: 15,
-		//paddingTop: 2
-	},
-
-	alertTime: {
-		fontFamily: 'open-sans',
-		color: "#576068",
-		fontSize: 11
-	}
 });
 
 
