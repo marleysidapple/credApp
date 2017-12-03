@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Image, ListView, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Text, View, ScrollView, Image, ListView, StyleSheet, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
 import { Icon, ButtonGroup, Badge } from 'react-native-elements';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { fetchAllRepayments } from './../../actions/Repayment';
@@ -12,13 +12,21 @@ class Repayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0
+      index: 0,
+      refreshing: false,
     }
   }
 
   async componentWillMount(){
 		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
 		this.createDataSource(this.props);
+  }
+
+  _onRefresh() {
+    this.setState({refreshing: true});
+    fetchData().then(() => {
+      this.setState({refreshing: false});
+    });
   }
 
   componentWillReceiveProps(nextProps){
@@ -32,8 +40,8 @@ class Repayment extends Component {
 
   updateIndex = (index) => {
     this.setState({index});
-    //_.filter(this.props.repaymentList, function(o) { return !o.payments_in; });
-    this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
+    // _.filter(this.props.repaymentList, {payments_in: false});
+    //this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -62,7 +70,18 @@ class Repayment extends Component {
                       buttons={buttons}
                       textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
         {(!this.props.repaymentLoadingStatus) ?
-        <ListView enableEmptySections  initialListSize={10} dataSource={this.dataSource} renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />} />
+        <ListView
+          enableEmptySections
+          refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
+        initialListSize={10}
+        dataSource={this.dataSource}
+        renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />}
+        />
         : <ActivityIndicator size={'small'} />}
 
       </ScrollView>
