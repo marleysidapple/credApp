@@ -23,7 +23,7 @@ class NotificationCell extends Component {
 							</View>
 							<View style={styles.descriptionWrapper}>
 								<View style={styles.description}>
-										<Text style={styles.alertText} numberOfLines={1}>{notification.alert} this is sample text to see where it expands</Text>
+										<Text style={styles.alertText} numberOfLines={1}>{notification.alert}</Text>
 								</View>
 
 								<View style={styles.alertInterval}>
