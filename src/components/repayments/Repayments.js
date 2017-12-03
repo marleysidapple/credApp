@@ -5,6 +5,7 @@ import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/c
 import { fetchAllRepayments } from './../../actions/Repayment';
 import { connect } from 'react-redux';
 import RepaymentListCell from './RepaymentListCell';
+import _ from 'lodash'
 
 class Repayment extends Component {
 
@@ -31,6 +32,7 @@ class Repayment extends Component {
 
   updateIndex = (index) => {
     this.setState({index});
+    //_.filter(this.props.repaymentList, function(o) { return !o.payments_in; });
     this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
   }
 
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
 
 
 function mapStateToProps(state){
-  console.log(state.user_repayment.repayments);
   return {
     token: state.auth_login.detail.loginToken,
     clientGuid: state.auth_login.detail.clientGuid,
