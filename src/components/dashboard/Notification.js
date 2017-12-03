@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { fetchAllNotification } from './../../actions/Notification';
 import PropTypes from 'prop-types';
 
 class Notification extends Component {
@@ -12,6 +13,7 @@ class Notification extends Component {
 
 
 	componentWillMount(){
+		this.props.fetchAllNotification(this.props.token);
 
 	}
 
@@ -51,6 +53,7 @@ class Notification extends Component {
 
 
 function mapStateToProps(state){
+	console.log(state);
 	return {
 		token: state.auth_login.detail.loginToken
 	};
@@ -119,4 +122,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps, { })(Notification);
+export default connect(mapStateToProps, { fetchAllNotification })(Notification);
