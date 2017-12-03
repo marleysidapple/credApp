@@ -23,7 +23,7 @@ class Loanlist extends Component {
 					params: { guid: loanGuid },
 					actions: [NavigationActions.navigate({routeName: 'LoanDetail', params: {loanGuid}})]
 				});
-				this.props.navigation.dispatch(navigateAction);				
+				this.props.navigation.dispatch(navigateAction);
 	 }
 
 
@@ -48,16 +48,16 @@ class Loanlist extends Component {
 					<View style={styles.iconStyle}>
 						<Icon containerStyle={{marginLeft: 5, marginTop: 5}} name={'book-multiple'} type='material-community' color='#444445' size={20}/>
 					</View>
-				</TouchableOpacity> 
+				</TouchableOpacity>
 		);
 	}
 
-} 
+}
 
 const styles=StyleSheet.create({
 	cardWrapperOne: {
-	    flex: 1,
-	    flexDirection: 'row',
+	  flex: 1,
+	  flexDirection: 'row',
 		backgroundColor: '#fff',
 		height: 85,
 		padding: 20
@@ -108,7 +108,7 @@ const styles=StyleSheet.create({
 	  	width: 50,
 	  	height: 50,
 	  	backgroundColor: 'transparent'
-	  	
+
 	 },
 
 	 iconStyle: {

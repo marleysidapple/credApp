@@ -48,7 +48,8 @@ const DashboardTabsCollection = TabNavigator({
 {
   lazy: true,
  // initialRouteName: 'Loans',
-  initialRouteName: 'Repayments',
+//  initialRouteName: 'Repayments',
+  initialRouteName: 'Notification',
   tabBarOptions: {
     labelStyle: {
       fontFamily: 'open-sans'
