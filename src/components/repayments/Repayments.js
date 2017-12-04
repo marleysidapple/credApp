@@ -12,16 +12,15 @@ class Repayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0,
-      refreshing: false,
+      selectedIndex: 0,
     }
+    this.updateIndex = this.updateIndex.bind(this);
   }
 
-  async componentDidMount(){
-		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+  async componentWillMount(){
+    this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
 		this.createDataSource(this.props);
   }
-
 
   componentWillReceiveProps(nextProps){
 		this.createDataSource(nextProps);
@@ -33,16 +32,16 @@ class Repayment extends Component {
 
 	}
 
-  updateIndex = (index) => {
-    this.setState({index});
+  updateIndex(selectedIndex){
+    this.setState({selectedIndex});
   //  this.props.repaymentList = _.filter(this.props.repaymentList, {payments_in: false});
-    if (this.state.index == 1){
+    if (this.state.selectedIndex == 1){
       this.props.fetchIncomingRepayments(this.props.token, this.props.clientGuid);
     }
-    if(this.state.index==2){
+    if(this.state.selectedIndex==2){
       this.props.fetchOutgoingRepayments(this.props.token, this.props.clientGuid);
     }
-    if (this.state.index==0){
+    if (this.state.selectedIndex==0){
       this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
     }
   }
@@ -66,13 +65,15 @@ class Repayment extends Component {
 
  render(){
    const buttons = ['All', 'Payments In', 'Payments Out'];
+   const { selectedIndex } = this.state;
    return(
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup  selectedBackgroundColor="#25ADE4"
                       onPress={this.updateIndex}
-                      selectedIndex={this.state.index}
+                      selectedIndex={selectedIndex}
                       buttons={buttons}
                       textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
+          <Text onPress={() => this.updateIndex(1)}>Update</Text>
         {(!this.props.repaymentLoadingStatus) ?
         <ListView
         enableEmptySections

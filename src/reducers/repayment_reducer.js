@@ -20,7 +20,8 @@ export default function(state=INITIAL_STATE, action){
 			return {...state, loading: true };
 
 		case GET_ALL_REPAYMENTS:
-			return { ...state, loading: false, repayments:action.payload, filter: "all"};
+    const repZero = _.filter(action.payload, {});
+			return { ...state, loading: false, repayments:repZero, filter: "all"};
 
     case GET_INCOMING_REPAYMENTS:
       const rep = _.filter(action.payload, {payments_in: true});
