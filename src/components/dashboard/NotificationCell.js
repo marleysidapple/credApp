@@ -9,10 +9,6 @@ class NotificationCell extends Component {
 		super(props);
 	}
 
-
-
-
-
 	render(){
     const {notification}  = this.props;
     console.log(notification);

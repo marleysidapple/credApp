@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, Image, ListView, StyleSheet, TouchableOpacity, ActivityIndicator, RefreshControl } from 'react-native';
 import { Icon, ButtonGroup, Badge } from 'react-native-elements';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
-import { fetchAllRepayments } from './../../actions/Repayment';
+import { fetchAllRepayments, fetchIncomingRepayments, fetchOutgoingRepayments } from './../../actions/Repayment';
 import { connect } from 'react-redux';
 import RepaymentListCell from './RepaymentListCell';
 import _ from 'lodash'
@@ -17,17 +17,11 @@ class Repayment extends Component {
     }
   }
 
-  async componentWillMount(){
-		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
+  async componentDidMount(){
+		this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
 		this.createDataSource(this.props);
   }
 
-  _onRefresh() {
-    this.setState({refreshing: true});
-    fetchData().then(() => {
-      this.setState({refreshing: false});
-    });
-  }
 
   componentWillReceiveProps(nextProps){
 		this.createDataSource(nextProps);
@@ -36,13 +30,23 @@ class Repayment extends Component {
 	createDataSource(props){
 		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 		this.dataSource = ds.cloneWithRows(props.repaymentList);
+
 	}
 
   updateIndex = (index) => {
     this.setState({index});
-    // _.filter(this.props.repaymentList, {payments_in: false});
-    //this.props.fetchAllRepayments(this.props.token, this.props.clientGuid, this.state.index);
+  //  this.props.repaymentList = _.filter(this.props.repaymentList, {payments_in: false});
+    if (this.state.index == 1){
+      this.props.fetchIncomingRepayments(this.props.token, this.props.clientGuid);
+    }
+    if(this.state.index==2){
+      this.props.fetchOutgoingRepayments(this.props.token, this.props.clientGuid);
+    }
+    if (this.state.index==0){
+      this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+    }
   }
+
 
   static navigationOptions = ({ navigation }) => ({
         title: <Text style={styles.textHeader}>REPAYMENTS</Text>,
@@ -71,13 +75,7 @@ class Repayment extends Component {
                       textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
         {(!this.props.repaymentLoadingStatus) ?
         <ListView
-          enableEmptySections
-          refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        }
+        enableEmptySections
         initialListSize={10}
         dataSource={this.dataSource}
         renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />}
@@ -109,6 +107,7 @@ const styles = StyleSheet.create({
 
 
 function mapStateToProps(state){
+  console.log(state.user_repayment.repayments);
   return {
     token: state.auth_login.detail.loginToken,
     clientGuid: state.auth_login.detail.clientGuid,
@@ -119,4 +118,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, { fetchAllRepayments })(Repayment);
+export default connect(mapStateToProps, { fetchAllRepayments, fetchIncomingRepayments, fetchOutgoingRepayments })(Repayment);

@@ -12,12 +12,10 @@ class Notification extends Component {
 		super(props);
 	}
 
-
 	async componentWillMount(){
 		this.props.fetchAllNotification(this.props.token);
 		this.createDataSource(this.props);
 	}
-
 
 	componentWillReceiveProps(nextProps){
 		this.createDataSource(nextProps);
@@ -37,7 +35,6 @@ class Notification extends Component {
 		  	headerLeft: null,
 		  	headerRight: null
 	});
-
 
 	render(){
 		return(

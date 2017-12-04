@@ -5,10 +5,12 @@ import {
   START_FETCH_REPAYMENTS,
 } from './../actions/types';
 
+import _ from 'lodash';
 
 const INITIAL_STATE = {
 	loading: true,
-	repayments: []
+	repayments: [],
+  filter: "all",
 }
 
 
@@ -18,7 +20,15 @@ export default function(state=INITIAL_STATE, action){
 			return {...state, loading: true };
 
 		case GET_ALL_REPAYMENTS:
-			return { ...state, loading: false, repayments:action.payload};
+			return { ...state, loading: false, repayments:action.payload, filter: "all"};
+
+    case GET_INCOMING_REPAYMENTS:
+      const rep = _.filter(action.payload, {payments_in: true});
+  		return { ...state, loading: false, repayments:rep, filter: "incoming"};
+
+      case GET_OUTGOING_REPAYMENTS:
+        const repOne = _.filter(action.payload, {payments_in: false});
+    		return { ...state, loading: false, repayments:repOne, filter: "outgoing"};
 
 		default:
 			return state;
