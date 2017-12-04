@@ -5,7 +5,7 @@ import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/c
 import { fetchAllRepayments, fetchIncomingRepayments, fetchOutgoingRepayments } from './../../actions/Repayment';
 import { connect } from 'react-redux';
 import RepaymentListCell from './RepaymentListCell';
-import _ from 'lodash'
+import _ from 'lodash';
 
 class Repayment extends Component {
 
@@ -13,12 +13,18 @@ class Repayment extends Component {
     super(props);
     this.state = {
       selectedIndex: 0,
-    }
+      refreshing: false,
+    };
+  }
+
+  _onRefresh() {
+    return new Promise((resolve) => {
+     setTimeout(()=>{resolve()}, 2000)
+   });
   }
 
  componentDidMount(){
       this.updateIndex(this.state.selectedIndex);
-    //  this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
 }
 
   componentWillReceiveProps(nextProps){
@@ -69,12 +75,18 @@ class Repayment extends Component {
         {(!this.props.repaymentLoadingStatus) ?
         <ListView
         enableEmptySections
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
+            title={'Loading...'}
+          />
+        }
         initialListSize={10}
         dataSource={this.dataSource}
         renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />}
         />
         : <ActivityIndicator size={'small'} />}
-
       </ScrollView>
    );
  }

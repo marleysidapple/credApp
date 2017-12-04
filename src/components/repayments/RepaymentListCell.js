@@ -51,12 +51,12 @@ class RepaymentListCell extends Component {
           ActionSheetIOS.showActionSheetWithOptions({
            options: this.state.actions,
            cancelButtonIndex: ((this.state.actions.length) -1),
-          // destructiveButtonIndex: ((this.state.actions.length) -1),
            title: "Mark Repayment As"
          },
          (buttonIndex) => {
-           //console.log(this.getRepaymentStatus(this.state.actions[buttonIndex]));
-           this.updateRepaymentScheduleStatus(repayment, this.getRepaymentStatus(this.state.actions[buttonIndex]));
+           if ((this.state.actions.length)-1 != buttonIndex){
+             this.updateRepaymentScheduleStatus(repayment, this.getRepaymentStatus(this.state.actions[buttonIndex]));
+           }
            this.setState({actions: []});
          });
        } else {
@@ -69,6 +69,7 @@ class RepaymentListCell extends Component {
           },
           (buttonIndex) => {
             this.setState({ clicked: 0 });
+            this.setState({actions: []});
           });
        }
   }
