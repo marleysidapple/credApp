@@ -11,7 +11,6 @@ class NotificationCell extends Component {
 
 	render(){
     const {notification}  = this.props;
-    console.log(notification);
 		return(
 					<TouchableOpacity style={styles.outerWrapper} key={notification.alertGuid}>
 							<View style={styles.iconWrapper}>
