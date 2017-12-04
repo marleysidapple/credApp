@@ -3,6 +3,8 @@ import {
   GET_INCOMING_REPAYMENTS,
 	GET_OUTGOING_REPAYMENTS,
   START_FETCH_REPAYMENTS,
+	START_UPDATE_REPAYMENT,
+	COMPLETE_UPDATE_REPAYMENT
 } from './types';
 
 import { API_URL, xRay } from 'react-native-dotenv';
@@ -72,12 +74,12 @@ export function updateRepaymentSchedule(loginToken, repaymentData){
 		axios.defaults.headers.common['xRay'] = xRay;
 		axios.defaults.headers.common['token'] = loginToken;
 
-		dispatch({ type: START_FETCH_REPAYMENTS });
+		dispatch({ type: START_UPDATE_REPAYMENT });
 		axios.post(API_URL + '/current-loans/update-transaction', repaymentData).then(response => {
 			console.log(response);
 			dispatch({
-				type: GET_OUTGOING_REPAYMENTS,
-				payload: repayments.data
+				type: COMPLETE_UPDATE_REPAYMENT,
+				payload: response.data
 			});
 		}).catch(err => {
 			// some err

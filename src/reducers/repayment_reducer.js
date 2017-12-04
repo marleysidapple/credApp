@@ -20,16 +20,15 @@ export default function(state=INITIAL_STATE, action){
 			return {...state, loading: true };
 
 		case GET_ALL_REPAYMENTS:
-    const repZero = _.filter(action.payload, {});
-			return { ...state, loading: false, repayments:repZero, filter: "all"};
+			return { ...state, loading: false, repayments:action.payload, filter: "all"};
 
     case GET_INCOMING_REPAYMENTS:
-      const rep = _.filter(action.payload, {payments_in: true});
-  		return { ...state, loading: false, repayments:rep, filter: "incoming"};
+      const incomingRepayment = _.filter(action.payload, {payments_in: true});
+  		return { ...state, loading: false, repayments:incomingRepayment, filter: "incoming"};
 
       case GET_OUTGOING_REPAYMENTS:
-        const repOne = _.filter(action.payload, {payments_in: false});
-    		return { ...state, loading: false, repayments:repOne, filter: "outgoing"};
+        const outgoingRepayment = _.filter(action.payload, {payments_in: false});
+    		return { ...state, loading: false, repayments:outgoingRepayment, filter: "outgoing"};
 
 		default:
 			return state;
