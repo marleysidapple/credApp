@@ -17,12 +17,6 @@ class Repayment extends Component {
     };
   }
 
-  _onRefresh() {
-    return new Promise((resolve) => {
-     setTimeout(()=>{resolve()}, 2000)
-   });
-  }
-
  componentDidMount(){
       this.updateIndex(this.state.selectedIndex);
 }
@@ -75,13 +69,6 @@ class Repayment extends Component {
         {(!this.props.repaymentLoadingStatus) ?
         <ListView
         enableEmptySections
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-            title={'Loading...'}
-          />
-        }
         initialListSize={10}
         dataSource={this.dataSource}
         renderRow={(data, sectionID, rowID) => <RepaymentListCell row={rowID} repayment={data} navigation={this.props.navigation} loading={this.props.repaymentLoadingStatus} />}

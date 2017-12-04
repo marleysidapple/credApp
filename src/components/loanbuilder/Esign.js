@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'rea
 import { Icon, Button } from 'react-native-elements';
 import { CARD_STYLE } from './../../../assets/css/common';
 import { NavigationActions } from 'react-navigation';
-import SignaturePad from 'react-native-signature-pad';
 
 
 class Esign extends Component {
@@ -15,7 +14,7 @@ class Esign extends Component {
 	 _signaturePadError = (error) => {
 	    console.error(error);
 	  };
- 
+
 	  _signaturePadChange = ({base64DataUrl}) => {
 	    console.log(base64DataUrl);
 	  };
@@ -34,20 +33,20 @@ class Esign extends Component {
 			navigationOptions: {
 	          tabBarVisible: false,
 	        },
-		  
+
 		    headerLeft: <TouchableOpacity onPress={() => {navigation.dispatch(NavigationActions.navigate({routeName: 'LoanBuilderStepFour'}))}}><Icon containerStyle={{marginLeft: 5, marginTop: 5}} name='arrow-left' type='material-community' color='#fff' size={25}/></TouchableOpacity>,
 		  	headerRight: null
 	});
-	
+
 	render(){
 		return(
 			<View style={styles.cardStyle}>
 				<View style={styles.issueInformation}>
 					<Text style={styles.esignInfo}>Please sign on the dotted line to send loan request to Jon Evans</Text>
 				</View>
-          				
-          		
-          		<View style={styles.signatureContainer}>	  
+
+
+          		<View style={styles.signatureContainer}>
           				{this.signatureInstance()}
                      <View>
                      	<Text style={{fontFamily: 'open-sans'}} onPress={() => this.props.navigation.navigate('Esign')}>Redraw</Text>
@@ -72,7 +71,7 @@ class Esign extends Component {
 
 const styles = StyleSheet.create({
 	textHeader: {
-		fontFamily: 'open-sans-bold', 
+		fontFamily: 'open-sans-bold',
 		color: '#eee',
 		fontWeight: '500',
 		fontSize: 20,
@@ -105,8 +104,8 @@ const styles = StyleSheet.create({
 	},
 
 	signatureContainer: {
-		 flex: 1, 
-		 borderWidth: 0.5, 
+		 flex: 1,
+		 borderWidth: 0.5,
 		 borderStyle: 'dotted',
 		 borderColor: '#c9c9c9',
 		 margin: 15
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
 		margin: 20
 	}
 
-	
+
 
 });
 
