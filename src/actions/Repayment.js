@@ -66,3 +66,7 @@ export function fetchOutgoingRepayments(loginToken, client_guid){
 		});
 	}
 }
+
+export function updateRepaymentSchedule(){
+	
+}

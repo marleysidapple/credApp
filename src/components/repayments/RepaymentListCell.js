@@ -4,6 +4,7 @@ import { Icon, ButtonGroup, Badge } from 'react-native-elements';
 import Moment from 'react-moment';
 import { FONT_NORMAL, LOAN_FONT_COLOR, FONT_SIZE } from './../../../assets/css/common';
 import { connect } from 'react-redux';
+import { updateRepaymentSchedule } from './../../actions/Repayment';
 
 
 class RepaymentListCell extends Component {
@@ -215,4 +216,11 @@ const styles = StyleSheet.create({
 
 });
 
-export default RepaymentListCell;
+
+function mapStateToProps(state){
+  return{
+
+  };
+}
+
+export default connect(mapStateToProps, { updateRepaymentSchedule })(RepaymentListCell);
