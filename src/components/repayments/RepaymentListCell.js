@@ -56,7 +56,7 @@ class RepaymentListCell extends Component {
          },
          (buttonIndex) => {
            //console.log(this.getRepaymentStatus(this.state.actions[buttonIndex]));
-           this.updateRepaymentScheduleStatus(this.getRepaymentStatus(repayment, this.state.actions[buttonIndex]));
+           this.updateRepaymentScheduleStatus(repayment, this.getRepaymentStatus(this.state.actions[buttonIndex]));
            this.setState({actions: []});
          });
        } else {
@@ -105,7 +105,7 @@ class RepaymentListCell extends Component {
                             <Text style={styles.loanStatus}>{repayment.status_name}</Text>
                           </Badge>
                   </View>
-                  <Text style={styles.loanContractNo}>Date Due: 2017-02-05</Text>
+                  <Text style={styles.loanContractNo}>Date Due: {repayment.scheduled_date}</Text>
             </View>
 
             <View style={styles.repaymentAmount}>

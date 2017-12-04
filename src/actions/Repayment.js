@@ -70,6 +70,7 @@ export function fetchOutgoingRepayments(loginToken, client_guid){
 }
 
 export function updateRepaymentSchedule(loginToken, repaymentData){
+	console.log(repaymentData);
 	return(dispatch) => {
 		axios.defaults.headers.common['xRay'] = xRay;
 		axios.defaults.headers.common['token'] = loginToken;

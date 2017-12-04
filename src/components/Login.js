@@ -11,7 +11,7 @@ class Login extends Component {
 		super(props);
 	}
 
-	
+
 
 	onLoginPress(){
 		Keyboard.dismiss();
@@ -37,9 +37,9 @@ class Login extends Component {
 				'Invalid email/password'
 			);
 		} else if(nexProps.detail != null && nexProps.detail.status == 'success'){
-			this.props.navigation.navigate('LoanList');
+			this.props.navigation.navigate('Repayments');
 		}
-	
+
 	}
 
 	 showEitherButtonOrSpinner(){
@@ -58,16 +58,16 @@ class Login extends Component {
 				<Input iconName={'envelope-o'}
                        placeholder={'Enter your email'}
                        value={this.props.email}
-                       returnKeyType={'next'}  
+                       returnKeyType={'next'}
                        keyboardType={'email-address'}
-                       onInputChange={(value) => this.props.handleLoginForm({prop:'email', value: value})} 
+                       onInputChange={(value) => this.props.handleLoginForm({prop:'email', value: value})}
                 />
 
                 <Input iconName={'key'}
                        placeholder={'Enter your password'}
                        secureTextEntry={true}
                        value={this.props.password}
-                       returnKeyType={'done'}  
+                       returnKeyType={'done'}
                        onInputChange={(value) => this.props.handleLoginForm({prop: 'password', value: value})}
                 />
 
@@ -95,25 +95,25 @@ export const styles = StyleSheet.create({
 	registerInfo: {
 		fontFamily: 'open-sans',
 		color: '#fff'
-		
+
 	},
 
 	linkToRegister: {
    		flexDirection: 'row',
     	alignSelf: 'center',
 		marginTop: 20,
-		justifyContent: 'center'		
+		justifyContent: 'center'
   	},
 
 	logo: {
 	  	alignSelf: 'center',
 	  	width: 180,
 	  	height: 150
-	  	
+
 	 },
 
 	loginButton: {
-		backgroundColor: '#fff', 
+		backgroundColor: '#fff',
 		borderRadius: 2,
 		marginTop: 15,
 	},
