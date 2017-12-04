@@ -3,11 +3,9 @@ import {
 	COMPLETE_UPDATE_REPAYMENT
 } from './../actions/types';
 
-import _ from 'lodash';
 
 const INITIAL_STATE = {
-	loading: true,
-	response: null,
+	loading: false,
 }
 
 
@@ -17,7 +15,7 @@ export default function(state=INITIAL_STATE, action){
 			return {...state, loading: true };
 
 		case COMPLETE_UPDATE_REPAYMENT:
-			return { ...state, loading: false, repayments:action.payload};
+			return { ...state, loading: false};
 
 		default:
 			return state;

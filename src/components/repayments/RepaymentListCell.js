@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
   return{
-    token: state.auth_login.detail.loginToken
+    token: state.auth_login.detail.loginToken,
   };
 }
 

@@ -105,6 +105,7 @@ function mapStateToProps(state){
     clientGuid: state.auth_login.detail.clientGuid,
     repaymentLoadingStatus: state.user_repayment.loading,
     repaymentList: state.user_repayment.repayments,
+    repaymentStatusUpdate: state.repayment_action.loading
   }
 }
 

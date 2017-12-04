@@ -8,8 +8,7 @@ import {
 } from './types';
 
 import { API_URL, xRay } from 'react-native-dotenv';
-import { AsyncStorage } from 'react-native';
-import { Alert } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import axios from 'axios';
 import { NavigationActions } from 'react-navigation';
 
@@ -70,18 +69,17 @@ export function fetchOutgoingRepayments(loginToken, client_guid){
 }
 
 export function updateRepaymentSchedule(loginToken, repaymentData){
-	console.log(repaymentData);
 	return(dispatch) => {
 		axios.defaults.headers.common['xRay'] = xRay;
 		axios.defaults.headers.common['token'] = loginToken;
 
 		dispatch({ type: START_UPDATE_REPAYMENT });
 		axios.post(API_URL + '/current-loans/update-transaction', repaymentData).then(response => {
-			console.log(response);
-			dispatch({
-				type: COMPLETE_UPDATE_REPAYMENT,
-				payload: response.data
-			});
+		dispatch({type: COMPLETE_UPDATE_REPAYMENT});
+			Alert.alert(
+				'Information',
+				'Repayment status updated Successfully'
+			)
 		}).catch(err => {
 			// some err
 			console.log(err);
