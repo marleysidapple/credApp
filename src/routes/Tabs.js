@@ -4,6 +4,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Loans from './../components/dashboard/Loans';
 import Profile from './../components/dashboard/Profile';
+import Home from './../components/dashboard/Home';
 import Notification from './../components/dashboard/Notification';
 import Repayments from './../components/repayments/Repayments';
 
@@ -12,11 +13,11 @@ import Loanroutes from './Loanroutes';
 
 
 const DashboardTabsCollection = TabNavigator({
-  Loans: {
-    screen: Loanroutes,
+  Dashboard: {
+    //screen: Loanroutes,
+    screen: Home,
     navigationOptions: {
-      header: null,
-    	tabBarIcon: ({ tintColor }) => <Icon name="textsms" size={25} color={tintColor} />,
+    	tabBarIcon: ({ tintColor }) => <Icon name="tachometer" type="font-awesome"  size={25} color={tintColor} />,
     }
   },
   Repayments: {
@@ -29,9 +30,7 @@ const DashboardTabsCollection = TabNavigator({
   Notification: {
     screen: Notification,
     navigationOptions: {
-    	//title: 'Notification',
     	tabBarIcon: ({ tintColor }) => <Icon name="contacts" size={25} color={tintColor} />,
-     // headerRight: <Button title="Add"></Button>,
     }
   },
 
@@ -47,9 +46,7 @@ const DashboardTabsCollection = TabNavigator({
 
 {
   lazy: true,
- // initialRouteName: 'Loans',
-//  initialRouteName: 'Repayments',
-  initialRouteName: 'Notification',
+  initialRouteName: 'Dashboard',
   tabBarOptions: {
     labelStyle: {
       fontFamily: 'open-sans'
