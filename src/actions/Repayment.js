@@ -67,6 +67,21 @@ export function fetchOutgoingRepayments(loginToken, client_guid){
 	}
 }
 
-export function updateRepaymentSchedule(){
-	
+export function updateRepaymentSchedule(loginToken, repaymentData){
+	return(dispatch) => {
+		axios.defaults.headers.common['xRay'] = xRay;
+		axios.defaults.headers.common['token'] = loginToken;
+
+		dispatch({ type: START_FETCH_REPAYMENTS });
+		axios.post(API_URL + '/current-loans/update-transaction', repaymentData).then(response => {
+			console.log(response);
+			dispatch({
+				type: GET_OUTGOING_REPAYMENTS,
+				payload: repayments.data
+			});
+		}).catch(err => {
+			// some err
+			console.log(err);
+		});
+	}
 }

@@ -42,7 +42,7 @@ class RepaymentListCell extends Component {
     }
   }
 
-  showActionSheet(availableActions){
+  showActionSheet(repayment, availableActions){
     if (availableActions != null && availableActions.length != 0){
             availableActions.map((status) => {
                this.state.actions.push(status.rst_title);
@@ -55,7 +55,8 @@ class RepaymentListCell extends Component {
            title: "Mark Repayment As"
          },
          (buttonIndex) => {
-           console.log(this.getRepaymentStatus(this.state.actions[buttonIndex]));
+           //console.log(this.getRepaymentStatus(this.state.actions[buttonIndex]));
+           this.updateRepaymentScheduleStatus(this.getRepaymentStatus(repayment, this.state.actions[buttonIndex]));
            this.setState({actions: []});
          });
        } else {
@@ -73,10 +74,24 @@ class RepaymentListCell extends Component {
   }
 
 
+  updateRepaymentScheduleStatus(repayment, updatedStatus){
+    const repaymentData = {
+      'loan_guid': repayment.loan_guid,
+      'repayment_number': repayment.repayment_number,
+      'schedule_guid': repayment.schedule_guid,
+      'schedule_date': repayment.scheduled_date,
+      'previous_status': repayment.status,
+      'updated_status': updatedStatus,
+      'transaction_type': repayment.trans_type
+    }
+    this.props.updateRepaymentSchedule(this.props.token, repaymentData);
+  }
+
+
   render(){
     const {repayment}  = this.props;
     return(
-      <TouchableOpacity style={styles.repaymentCell} key={repayment.guid} onPress={() => this.showActionSheet(repayment.myactions)}>
+      <TouchableOpacity style={styles.repaymentCell} key={repayment.guid} onPress={() => this.showActionSheet(repayment, repayment.myactions)}>
           <View style={styles.repaymentContent}>
             <View style={styles.imageWrapper}>
               <Image source={require('./../../../assets/images/repayment.png')} style={styles.repaymentIcon}  resizeMode={'contain'} />
@@ -219,7 +234,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
   return{
-
+    token: state.auth_login.detail.loginToken
   };
 }
 
