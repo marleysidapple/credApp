@@ -18,7 +18,6 @@ export function fetchAllNotification(loginToken){
 
 		dispatch({ type: START_FETCH_NOTIFICATION });
 		axios.post(API_URL + '/alerts/get-all').then(notification => {
-      console.log(notification);
 			dispatch({
 				type: GET_ALL_NOTIFICATION,
 				payload: notification.data.alerts

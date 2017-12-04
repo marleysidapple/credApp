@@ -14,35 +14,29 @@ class Repayment extends Component {
     this.state = {
       selectedIndex: 0,
     }
-    this.updateIndex = this.updateIndex.bind(this);
   }
 
-  async componentWillMount(){
-    this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
-		this.createDataSource(this.props);
-  }
+ componentDidMount(){
+      this.updateIndex(this.state.selectedIndex);
+    //  this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+}
 
   componentWillReceiveProps(nextProps){
-		this.createDataSource(nextProps);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		this.dataSource = ds.cloneWithRows(nextProps.repaymentList);
 	}
 
-	createDataSource(props){
-		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-		this.dataSource = ds.cloneWithRows(props.repaymentList);
-
-	}
 
   updateIndex(selectedIndex){
     this.setState({selectedIndex});
-  //  this.props.repaymentList = _.filter(this.props.repaymentList, {payments_in: false});
-    if (this.state.selectedIndex == 1){
+    if (selectedIndex == 0){
+      this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
+    }
+    if (selectedIndex == 1){
       this.props.fetchIncomingRepayments(this.props.token, this.props.clientGuid);
     }
-    if(this.state.selectedIndex==2){
+    if (selectedIndex == 2){
       this.props.fetchOutgoingRepayments(this.props.token, this.props.clientGuid);
-    }
-    if (this.state.selectedIndex==0){
-      this.props.fetchAllRepayments(this.props.token, this.props.clientGuid);
     }
   }
 
@@ -65,15 +59,13 @@ class Repayment extends Component {
 
  render(){
    const buttons = ['All', 'Payments In', 'Payments Out'];
-   const { selectedIndex } = this.state;
    return(
       <ScrollView style={styles.repaymentWrapper}>
         <ButtonGroup  selectedBackgroundColor="#25ADE4"
-                      onPress={this.updateIndex}
-                      selectedIndex={selectedIndex}
+                      onPress={this.updateIndex.bind(this)}
+                      selectedIndex={this.state.selectedIndex}
                       buttons={buttons}
                       textStyle={{fontFamily: 'open-sans', fontSize: 11}} />
-          <Text onPress={() => this.updateIndex(1)}>Update</Text>
         {(!this.props.repaymentLoadingStatus) ?
         <ListView
         enableEmptySections
@@ -108,7 +100,6 @@ const styles = StyleSheet.create({
 
 
 function mapStateToProps(state){
-  console.log(state.user_repayment.repayments);
   return {
     token: state.auth_login.detail.loginToken,
     clientGuid: state.auth_login.detail.clientGuid,
