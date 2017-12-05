@@ -4,7 +4,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Font } from 'expo';
 import Index from './src/Index';
 import AppWithNavigationState from './src/routes/Router';
-//adding redux 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -50,9 +49,9 @@ const styles = StyleSheet.create({
   container: {
      flex: 1,
   },
-  
+
  containerFull: {
- 
+
  },
 });
 
